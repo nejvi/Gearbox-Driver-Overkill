@@ -2,8 +2,8 @@
 Implementacja Skrzynki Biegów na konkurs DevUpgrade.
 
 # Twórcy
-Michał Wityk,
-Maciej Białobrzeski.
+## Michał Wityk,
+## Maciej Białobrzeski.
 
 # Event Storming
 

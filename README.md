@@ -1,12 +1,12 @@
 # Gearbox Driver
-Implementacja Skrzynki Biegów na konkurs DevUpgrade.
+Implementacja Skrzyni Biegów na konkurs DevUpgrade.
 
-# Twórcy
-## Michał Wityk,
-## Maciej Białobrzeski.
+## Twórcy
+Michał Wityk,  
+Maciej Białobrzeski
 
-# Event Storming
+## Event Storming
 
-# User Stories
+## User Stories
 
-# Diagram Klas
+## Diagram Klas

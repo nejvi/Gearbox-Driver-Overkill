@@ -5,9 +5,11 @@ VisualStudioVersion = 16.0.30011.22
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GearboxDriver.Hardware.API", "GearboxDriver.Hardware.API\GearboxDriver.Hardware.API.csproj", "{F66531A7-B496-4AF4-A653-48F301194A6B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GearboxDriver.Hardware.ACL", "GearboxDriver.Hardware.ACL\GearboxDriver.Hardware.ACL.csproj", "{7FD9859A-E056-4BDC-B0AB-87F00EF26E23}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GearboxDriver.Hardware.ACL", "GearboxDriver.Hardware.ACL\GearboxDriver.Hardware.ACL.csproj", "{7FD9859A-E056-4BDC-B0AB-87F00EF26E23}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GearboxDriver.Hardware.ACL.Tests", "GearboxDriver.Hardware.ACL.Tests\GearboxDriver.Hardware.ACL.Tests.csproj", "{14045A50-45FF-4045-958C-DFE8E6E5052E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GearboxDriver.Hardware.ACL.Tests", "GearboxDriver.Hardware.ACL.Tests\GearboxDriver.Hardware.ACL.Tests.csproj", "{14045A50-45FF-4045-958C-DFE8E6E5052E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GearboxDriver.Dashboard", "GearboxDriver.Dashboard\GearboxDriver.Dashboard.csproj", "{E0B914D6-7AE8-4CF7-B42E-3A39E1EB1D7D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{14045A50-45FF-4045-958C-DFE8E6E5052E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{14045A50-45FF-4045-958C-DFE8E6E5052E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{14045A50-45FF-4045-958C-DFE8E6E5052E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E0B914D6-7AE8-4CF7-B42E-3A39E1EB1D7D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E0B914D6-7AE8-4CF7-B42E-3A39E1EB1D7D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E0B914D6-7AE8-4CF7-B42E-3A39E1EB1D7D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E0B914D6-7AE8-4CF7-B42E-3A39E1EB1D7D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

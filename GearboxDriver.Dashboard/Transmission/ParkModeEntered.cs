@@ -1,6 +1,6 @@
 ﻿using GearboxDriver.Seedwork;
 
-namespace GearboxDriver.Dashboard.TransmissionModes
+namespace GearboxDriver.Dashboard.Transmission
 {
     public class ParkModeEntered : IEvent
     {

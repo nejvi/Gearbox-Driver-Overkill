@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
 using GearboxDriver.Seedwork;
 
-namespace GearboxDriver.Dashboard.TransmissionModes
+namespace GearboxDriver.Dashboard.Transmission
 {
     public class Lever
     {
-        private readonly TransmissionMode _currentMode;
+        private TransmissionMode _currentMode;
 
         public Lever()
         {
@@ -17,6 +17,8 @@ namespace GearboxDriver.Dashboard.TransmissionModes
             if (_currentMode == TransmissionMode.Drive)
                 throw new DomainRuleViolatedException("The car is already in drive mode.");
 
+            _currentMode = TransmissionMode.Drive;
+
             return new List<IEvent>{new DriveModeEntered()};
         }
 
@@ -24,6 +26,8 @@ namespace GearboxDriver.Dashboard.TransmissionModes
         {
             if (_currentMode == TransmissionMode.Park)
                 throw new DomainRuleViolatedException("The car is already in park mode.");
+
+            _currentMode = TransmissionMode.Park;
 
             return new List<IEvent> { new ParkModeEntered() };
         }
@@ -33,6 +37,8 @@ namespace GearboxDriver.Dashboard.TransmissionModes
             if (_currentMode == TransmissionMode.Reverse)
                 throw new DomainRuleViolatedException("The car is already in reverse mode.");
 
+            _currentMode = TransmissionMode.Reverse;
+
             return new List<IEvent> { new ReverseModeEntered() };
         }
 
@@ -40,6 +46,8 @@ namespace GearboxDriver.Dashboard.TransmissionModes
         {
             if (_currentMode == TransmissionMode.Neutral)
                 throw new DomainRuleViolatedException("The car is already in neutral mode.");
+
+            _currentMode = TransmissionMode.Neutral;
 
             return new List<IEvent> { new NeutralModeEntered() };
         }

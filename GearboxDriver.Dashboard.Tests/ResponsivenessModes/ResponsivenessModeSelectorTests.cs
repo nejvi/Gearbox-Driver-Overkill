@@ -1,4 +1,5 @@
 ﻿using GearboxDriver.Cabin.Responsiveness;
+using GearboxDriver.Seedwork;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
@@ -12,7 +13,7 @@ namespace GearboxDriver.Dashboard.Tests.ResponsivenessModes
         [Test]
         public void EnteringEconomicModeResultsInEvent()
         {
-            var selector = new ResponsivenessModeSelector(ResponsivenessMode.Comfort, AggressivenessLevel.First);
+            var selector = new ResponsivenessModeSelector();
 
             var events = selector.EnterEconomic();
 
@@ -22,7 +23,7 @@ namespace GearboxDriver.Dashboard.Tests.ResponsivenessModes
         [Test]
         public void EnteringComfortModeResultsInEvent()
         {
-            var selector = new ResponsivenessModeSelector(ResponsivenessMode.Economic, AggressivenessLevel.First);
+            var selector = new ResponsivenessModeSelector();
 
             var events = selector.EnterComfort();
 
@@ -32,7 +33,7 @@ namespace GearboxDriver.Dashboard.Tests.ResponsivenessModes
         [Test]
         public void EnteringSportModeResultsInEvent()
         {
-            var selector = new ResponsivenessModeSelector(ResponsivenessMode.Comfort, AggressivenessLevel.First);
+            var selector = new ResponsivenessModeSelector();
 
             var events = selector.EnterSport();
 
@@ -42,11 +43,59 @@ namespace GearboxDriver.Dashboard.Tests.ResponsivenessModes
         [Test]
         public void SettingAggressivenessLevelResultsInEvent()
         {
-            var selector = new ResponsivenessModeSelector(ResponsivenessMode.Comfort, AggressivenessLevel.First);
+            var selector = new ResponsivenessModeSelector();
 
             var events = selector.SetFirstAggressivenessLevel(AggressivenessLevel.Second);
 
             Assert.True(events.Any(x => x is AggressivenessLevelSelected));
+        }
+
+        [Test]
+        public void CannotEnterSportModeTwice()
+        {
+            var selector = new ResponsivenessModeSelector();
+
+            Assert.Throws<DomainRuleViolatedException>(() =>
+            {
+                selector.EnterSport();
+                selector.EnterSport();
+            });
+        }
+
+        [Test]
+        public void CannotEnterComfortModeTwice()
+        {
+            var selector = new ResponsivenessModeSelector();
+
+            Assert.Throws<DomainRuleViolatedException>(() =>
+            {
+                selector.EnterComfort();
+                selector.EnterComfort();
+            });
+        }
+
+        [Test]
+        public void CannotEnterEconomicModeTwice()
+        {
+            var selector = new ResponsivenessModeSelector();
+
+            Assert.Throws<DomainRuleViolatedException>(() =>
+            {
+                selector.EnterEconomic();
+                selector.EnterEconomic();
+            });
+        }
+
+        [Test]
+        public void CannotSetSameAggressivenessLevelTwice()
+        {
+            var selector = new ResponsivenessModeSelector();
+
+            Assert.Throws<DomainRuleViolatedException>(() =>
+            {
+                selector.SetFirstAggressivenessLevel(AggressivenessLevel.First);
+                selector.SetFirstAggressivenessLevel(AggressivenessLevel.First);
+            });
         }
     }
 }

@@ -50,7 +50,7 @@ namespace GearboxDriver.Cabin.ReadModel
                     CurrentResponsivenessMode = "ECONOMIC";
                     break;
                 case AggressivenessLevelSelected aggressivenessLevelSelected:
-                    CurrentAggressivenessLevel = aggressivenessLevelSelected.ToString();
+                    CurrentAggressivenessLevel = aggressivenessLevelSelected.Level.ToString();
                     break;
 
                 case RPMChanged rpmChanged:

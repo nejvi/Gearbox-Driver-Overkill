@@ -7,51 +7,60 @@ namespace GearboxDriver.Cabin.Responsiveness
     {
         private ResponsivenessMode _currentMode;
         private AggressivenessLevel _currentAggressivenessLevel;
+        public bool HasEverReportedBefore { get; set; }
 
-        public ResponsivenessModeSelector(ResponsivenessMode currentMode, AggressivenessLevel currentAggressivenessLevel)
+        public ResponsivenessModeSelector()
         {
-            _currentMode = currentMode;
-            _currentAggressivenessLevel = currentAggressivenessLevel;
+            _currentMode = ResponsivenessMode.Comfort;
+            _currentAggressivenessLevel = AggressivenessLevel.First;
         }
 
         public IReadOnlyCollection<IEvent> EnterEconomic()
         {
-            if (_currentMode == ResponsivenessMode.Economic)
+            if (_currentMode == ResponsivenessMode.Economic && HasEverReportedBefore)
                 throw new DomainRuleViolatedException("Economic mode was already selected");
 
             _currentMode = ResponsivenessMode.Economic;
+
+            HasEverReportedBefore = true;
 
             return new List<IEvent>{new EconomicModeEntered()};
         }
 
         public IReadOnlyCollection<IEvent> EnterComfort()
         {
-            if (_currentMode == ResponsivenessMode.Comfort)
+            if (_currentMode == ResponsivenessMode.Comfort && HasEverReportedBefore)
                 throw new DomainRuleViolatedException("Comfort mode was already selected");
 
             _currentMode = ResponsivenessMode.Comfort;
+
+            HasEverReportedBefore = true;
 
             return new List<IEvent>{new ComfortModeEntered()};
         }
 
         public IReadOnlyCollection<IEvent> EnterSport()
         {
-            if (_currentMode == ResponsivenessMode.Sport)
+            if (_currentMode == ResponsivenessMode.Sport && HasEverReportedBefore)
                 throw new DomainRuleViolatedException("Sport mode was already selected");
 
             _currentMode = ResponsivenessMode.Sport;
+
+            HasEverReportedBefore = true;
 
             return new List<IEvent> {new SportModeEntered()};
         }
 
         public IReadOnlyCollection<IEvent> SetFirstAggressivenessLevel(AggressivenessLevel level)
         {
-            if(_currentAggressivenessLevel == level)
+            if(_currentAggressivenessLevel == level && HasEverReportedBefore)
                 throw new DomainRuleViolatedException("This aggressiveness level was already selected");
 
             _currentAggressivenessLevel = level;
 
-            return new List<IEvent> { new SportModeEntered() };
+            HasEverReportedBefore = true;
+
+            return new List<IEvent> { new AggressivenessLevelSelected(level) };
         }
     }
 }

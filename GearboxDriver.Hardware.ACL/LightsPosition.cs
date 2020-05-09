@@ -4,11 +4,11 @@ using System.Text;
 
 namespace GearboxDriver.Hardware.ACL
 {
-    public class AngularSpeed : ValueObject
+    public class LightsPosition : ValueObject
     {
-        public double Value { get; }
+        public int Value { get; }
 
-        public AngularSpeed(double value)
+        public LightsPosition(int value)
         {
             Value = value;
         }

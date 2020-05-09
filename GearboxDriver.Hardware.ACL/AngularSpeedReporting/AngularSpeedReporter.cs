@@ -8,8 +8,7 @@ namespace GearboxDriver.Hardware.ACL.AngularSpeedReporting
     {
         private readonly IEventBus _eventBus;
         private readonly IAngularSpeedProvider _angularProvider;
-
-        public AngularSpeed _lastReportedAngularSpeed { get; set; }
+        private AngularSpeed _lastReportedAngularSpeed { get; set; }
 
         public AngularSpeedReporter(IEventBus eventBus, IAngularSpeedProvider angularProvider)
         {

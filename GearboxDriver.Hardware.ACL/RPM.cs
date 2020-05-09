@@ -1,12 +1,10 @@
 ﻿using GearboxDriver.Seedwork;
 using System;
 using System.Collections.Generic;
-using System.Text;
-using GearboxDriver.Seedwork;
 
 namespace GearboxDriver.Hardware.ACL
 {
-    public class RPM : ValueObject
+    public class RPM : ValueObject, IComparable<RPM>
     {
         public double Value { get; }
 

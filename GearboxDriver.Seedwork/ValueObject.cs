@@ -1,13 +1,19 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using Microsoft.VisualBasic.CompilerServices;
 
 namespace GearboxDriver.Seedwork
 {
     /// <summary>
     /// Copied from https://docs.microsoft.com/en-us/dotnet/architecture/microservices/microservice-ddd-cqrs-patterns/implement-value-objects
+    /// Added better equality comparisons.
     /// </summary>
     public abstract class ValueObject
     {
+        public static bool operator ==(ValueObject left, ValueObject right) => EqualOperator(left, right);
+        public static bool operator !=(ValueObject left, ValueObject right) => !EqualOperator(left, right);
+
         protected static bool EqualOperator(ValueObject left, ValueObject right)
         {
             if (ReferenceEquals(left, null) ^ ReferenceEquals(right, null))

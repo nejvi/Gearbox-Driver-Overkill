@@ -5,7 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="NewFile1.txt" />
+    <Compile Remove="Class1.cs" />
   </ItemGroup>
 
 </Project>

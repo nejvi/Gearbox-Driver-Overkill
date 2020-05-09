@@ -15,5 +15,35 @@ namespace GearboxDriver.Dashboard.Tests.TransmissionModes
 
             Assert.True(events.Any(x => x is DriveModeEntered));
         }
+
+        [Test]
+        public void EnteringParkModeResultsInEvent()
+        {
+            var lever = new Lever();
+
+            var events = lever.EnterParkMode();
+
+            Assert.True(events.Any(x => x is ParkModeEntered));
+        }
+
+        [Test]
+        public void EnteringReverseModeResultsInEvent()
+        {
+            var lever = new Lever();
+
+            var events = lever.EnterReverseMode();
+
+            Assert.True(events.Any(x => x is ReverseModeEntered));
+        }
+
+        [Test]
+        public void EnteringNeutralModeResultsInEvent()
+        {
+            var lever = new Lever();
+
+            var events = lever.EnterNeutralMode();
+
+            Assert.True(events.Any(x => x is NeutralModeEntered));
+        }
     }
 }

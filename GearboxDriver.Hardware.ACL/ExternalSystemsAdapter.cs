@@ -21,7 +21,7 @@ namespace GearboxDriver.Hardware.ACL
 
         public TiltPosition GetTiltPosition()
         {
-            var lightsPosition = _externalSystems.getLights().getLightsPosition();
+            var lightsPosition = _externalSystems.getLights()?.getLightsPosition();
 
             if (lightsPosition == null)
                 throw new Exception("No option in vehicle.");
@@ -43,5 +43,8 @@ namespace GearboxDriver.Hardware.ACL
             else
                 return false;
         }
+
+        public bool SupportsTiltPosition() =>      
+            !(_externalSystems.getLights()?.getLightsPosition() is null);
     }
 }

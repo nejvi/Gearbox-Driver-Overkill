@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace GearboxDriver.Dashboard.Responsiveness
+﻿namespace GearboxDriver.Cabin.Responsiveness
 {
     public enum AggressivenessLevel
     {

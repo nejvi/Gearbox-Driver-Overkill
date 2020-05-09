@@ -14,7 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\GearboxDriver.Dashboard\GearboxDriver.Dashboard.csproj" />
+    <ProjectReference Include="..\GearboxDriver.Dashboard\GearboxDriver.Cabin.csproj" />
   </ItemGroup>
 
 </Project>

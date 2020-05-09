@@ -1,6 +1,6 @@
 ﻿using GearboxDriver.Seedwork;
 
-namespace GearboxDriver.Dashboard.Transmission
+namespace GearboxDriver.Cabin.Transmission
 {
     public class NeutralModeEntered : IEvent
     {

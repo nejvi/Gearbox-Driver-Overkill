@@ -1,6 +1,6 @@
 ﻿using GearboxDriver.Seedwork;
 
-namespace GearboxDriver.Dashboard.Responsiveness
+namespace GearboxDriver.Cabin.Responsiveness
 {
     public class AggressivenessLevelSelected : IEvent
     {

@@ -1,4 +1,4 @@
-﻿namespace GearboxDriver.Dashboard.Transmission
+﻿namespace GearboxDriver.Cabin.Transmission
 {
     internal enum TransmissionMode
     {

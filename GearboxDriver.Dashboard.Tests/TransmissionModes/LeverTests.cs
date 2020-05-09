@@ -1,5 +1,5 @@
 ﻿using System.Linq;
-using GearboxDriver.Dashboard.Transmission;
+using GearboxDriver.Cabin.Transmission;
 using NUnit.Framework;
 
 namespace GearboxDriver.Dashboard.Tests.TransmissionModes

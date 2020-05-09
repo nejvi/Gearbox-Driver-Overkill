@@ -5,8 +5,7 @@ using System.Text;
 
 namespace GearboxDriver.Hardware.ACL
 {
-    public class VehicleTiltedDownhill : IEvent
+    public class VehicleStoppedSlipping : IEvent
     {
-
     }
 }

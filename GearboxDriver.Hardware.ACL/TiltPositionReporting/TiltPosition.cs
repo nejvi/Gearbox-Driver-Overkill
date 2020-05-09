@@ -1,4 +1,4 @@
-﻿namespace GearboxDriver.Hardware.ACL.LightPositionReporting
+﻿namespace GearboxDriver.Hardware.ACL.TiltPositionReporting
 {
     public enum TiltPosition
     {

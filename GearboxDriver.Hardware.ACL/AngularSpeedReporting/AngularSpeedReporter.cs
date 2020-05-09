@@ -19,7 +19,7 @@ namespace GearboxDriver.Hardware.ACL.AngularSpeedReporting
         public void TryToReport()
         {
             var angularSpeed = _angularProvider.GetCurrentAngularSpeed();
-            if (_lastReportedAngularSpeed == angularSpeed)
+            if (_lastReportedAngularSpeed == angularSpeed) // VehicleStartedSlipping, VehicleStoppedSlipping
                 return;
 
             _eventBus.SendEvent(new AngularSpeedChanged(angularSpeed));

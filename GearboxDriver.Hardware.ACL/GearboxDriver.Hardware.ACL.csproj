@@ -9,6 +9,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\GearboxDriver.Hardware.API\GearboxDriver.Hardware.API.csproj" />
     <ProjectReference Include="..\GearboxDriver.Seedwork\GearboxDriver.Seedwork.csproj" />
   </ItemGroup>
 

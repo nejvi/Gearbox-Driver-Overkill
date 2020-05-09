@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace GearboxDriver.Hardware.ACL
+﻿namespace GearboxDriver.Hardware.ACL
 {
     public class RPMChanged : IEvent
     {
-        public double Rpm { get; }
+        public RPM Rpm { get; }
 
-        public RPMChanged(double rpm)
+        public RPMChanged(RPM rpm)
         {
             Rpm = rpm;
         }

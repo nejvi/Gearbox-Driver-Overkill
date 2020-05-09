@@ -4,7 +4,7 @@ using System.Text;
 
 namespace GearboxDriver.Dashboard.Responsiveness
 {
-    public enum AggressivenessFactor
+    public enum AggressivenessLevel
     {
         First,
         Second,

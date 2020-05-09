@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GearboxDriver.Hardware.ACL"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GearboxDriver.Hardware.ACL.Tests", "GearboxDriver.Hardware.ACL.Tests\GearboxDriver.Hardware.ACL.Tests.csproj", "{14045A50-45FF-4045-958C-DFE8E6E5052E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GearboxDriver.Dashboard", "GearboxDriver.Dashboard\GearboxDriver.Dashboard.csproj", "{E0B914D6-7AE8-4CF7-B42E-3A39E1EB1D7D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GearboxDriver.Dashboard", "GearboxDriver.Dashboard\GearboxDriver.Dashboard.csproj", "{E0B914D6-7AE8-4CF7-B42E-3A39E1EB1D7D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GearboxDriver.Seedwork", "GearboxDriver.Seedwork\GearboxDriver.Seedwork.csproj", "{E9F14412-BC09-4B24-A547-7E685A4F006C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{E0B914D6-7AE8-4CF7-B42E-3A39E1EB1D7D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E0B914D6-7AE8-4CF7-B42E-3A39E1EB1D7D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E0B914D6-7AE8-4CF7-B42E-3A39E1EB1D7D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E9F14412-BC09-4B24-A547-7E685A4F006C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E9F14412-BC09-4B24-A547-7E685A4F006C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E9F14412-BC09-4B24-A547-7E685A4F006C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E9F14412-BC09-4B24-A547-7E685A4F006C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

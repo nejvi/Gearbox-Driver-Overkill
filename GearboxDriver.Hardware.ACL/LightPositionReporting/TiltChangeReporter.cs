@@ -4,7 +4,7 @@
     {
         private readonly IEventBus _eventBus;
         private readonly ITiltPositionProvider _tiltProvider;
-        private LightsPosition LastReportedLights { get; set; }
+        private VehicleTiltPosition LastReportedTiltPosition { get; set; }
 
         public TiltChangeReporter(IEventBus eventBus, ITiltPositionProvider tiltProvider)
         {
@@ -14,12 +14,20 @@
 
         public void TryToReport()
         {
-            var lights = _tiltProvider.GetCurrentLights();
-            if (LastReportedLights == lights)
+            var tiltPosition = _tiltProvider.GetCurrentTiltPosition();
+            if (LastReportedTiltPosition == tiltPosition)
                 return;
 
-            _eventBus.SendEvent(new LightsPositionChanged(lights)); // VehicleTiltedUphill, VehicleTiltedDownhill, VehicleTiledToStraightPosition
-            LastReportedLights = lights;
+            if (tiltPosition.Value == TiltPosition.Balanced)
+                _eventBus.SendEvent(new VehicleTiledToStraightPosition(tiltPosition));
+
+            if (tiltPosition.Value == TiltPosition.Downwards)
+                _eventBus.SendEvent(new VehicleTiltedDownhill(tiltPosition));
+
+            if (tiltPosition.Value == TiltPosition.Upwards)
+                _eventBus.SendEvent(new VehicleTiltedUphill(tiltPosition));
+
+            LastReportedTiltPosition = tiltPosition;
         }
     }
 }

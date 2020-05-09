@@ -1,4 +1,6 @@
-﻿namespace GearboxDriver.Hardware.ACL
+﻿using GearboxDriver.Seedwork;
+
+namespace GearboxDriver.Hardware.ACL
 {
     public class RPMChanged : IEvent
     {

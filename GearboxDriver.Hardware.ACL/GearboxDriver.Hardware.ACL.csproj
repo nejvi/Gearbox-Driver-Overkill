@@ -8,4 +8,8 @@
     <Compile Remove="Class1.cs" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\GearboxDriver.Seedwork\GearboxDriver.Seedwork.csproj" />
+  </ItemGroup>
+
 </Project>

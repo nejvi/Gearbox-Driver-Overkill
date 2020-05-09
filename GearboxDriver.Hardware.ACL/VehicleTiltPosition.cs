@@ -1,14 +1,16 @@
-﻿using System;
+﻿using GearboxDriver.Hardware.ACL.LightPositionReporting;
+using GearboxDriver.Seedwork;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace GearboxDriver.Hardware.ACL
 {
-    public class LightsPosition : ValueObject
+    public class VehicleTiltPosition : ValueObject
     {
-        public int Value { get; }
+        public TiltPosition Value { get; }
 
-        public LightsPosition(int value)
+        public VehicleTiltPosition(TiltPosition value)
         {
             Value = value;
         }

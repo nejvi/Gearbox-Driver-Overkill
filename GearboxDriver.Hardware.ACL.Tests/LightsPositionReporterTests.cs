@@ -30,7 +30,7 @@ namespace GearboxDriver.Hardware.ACL.Tests
         [Test]
         public void SendsLightsPositionEventOnChange()
         {
-            var lightPosition = new LightsPosition(4);
+            var lightPosition = new VehicleTiltPosition(4);
             _providerMock.Setup(x => x.GetCurrentLights()).Returns(lightPosition);
 
             _reporter.TryToReport();
@@ -41,7 +41,7 @@ namespace GearboxDriver.Hardware.ACL.Tests
         [Test]
         public void WhenValueDuplicatedSendsOnlyOneEvent()
         {
-            var lightPosition = new LightsPosition(4);
+            var lightPosition = new VehicleTiltPosition(4);
             _providerMock.Setup(x => x.GetCurrentLights()).Returns(lightPosition);
 
             _reporter.TryToReport();
@@ -53,8 +53,8 @@ namespace GearboxDriver.Hardware.ACL.Tests
         [Test]
         public void WhenTwoDifferentValuesSendsTwoEvents()
         {
-            var firstLightPosition = new LightsPosition(4);
-            var secondLightPosition = new LightsPosition(7);
+            var firstLightPosition = new VehicleTiltPosition(4);
+            var secondLightPosition = new VehicleTiltPosition(7);
 
             _providerMock.SetupSequence(x => x.GetCurrentLights())
                 .Returns(firstLightPosition)

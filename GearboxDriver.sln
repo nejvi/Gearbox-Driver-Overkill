@@ -11,7 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GearboxDriver.Hardware.ACL.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GearboxDriver.Dashboard", "GearboxDriver.Dashboard\GearboxDriver.Dashboard.csproj", "{E0B914D6-7AE8-4CF7-B42E-3A39E1EB1D7D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GearboxDriver.Seedwork", "GearboxDriver.Seedwork\GearboxDriver.Seedwork.csproj", "{E9F14412-BC09-4B24-A547-7E685A4F006C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GearboxDriver.Seedwork", "GearboxDriver.Seedwork\GearboxDriver.Seedwork.csproj", "{E9F14412-BC09-4B24-A547-7E685A4F006C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

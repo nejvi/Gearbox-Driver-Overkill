@@ -2,6 +2,6 @@
 {
     public interface ITiltPositionProvider
     {
-        VehicleTiltPosition GetCurrentTiltPosition();
+        TiltPosition GetTiltPosition();
     }
 }

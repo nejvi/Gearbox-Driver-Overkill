@@ -2,7 +2,7 @@
 
 namespace GearboxDriver.Dashboard.TransmissionModes
 {
-    public class DriveModeEntered : IEvent
+    public class ParkModeEntered : IEvent
     {
     }
 }

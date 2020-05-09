@@ -1,6 +1,10 @@
 ﻿namespace GearboxDriver.Dashboard.TransmissionModes
 {
-    public class TransmissionMode
+    internal enum TransmissionMode
     {
+        Park,
+        Reverse,
+        Drive,
+        Neutral
     }
 }

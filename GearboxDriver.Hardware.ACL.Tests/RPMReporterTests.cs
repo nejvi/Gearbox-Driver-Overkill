@@ -1,3 +1,4 @@
+using GearboxDriver.Hardware.ACL.RPMReporting;
 using Moq;
 using NUnit.Framework;
 

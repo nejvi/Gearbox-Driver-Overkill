@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace GearboxDriver.Hardware.ACL
+﻿namespace GearboxDriver.Hardware.ACL.RPMReporting
 {
     public class RPMReporter
     {

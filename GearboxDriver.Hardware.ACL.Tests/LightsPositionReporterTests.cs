@@ -1,24 +1,24 @@
-﻿using GearboxDriver.Hardware.ACL.LightsReporting;
-using Moq;
+﻿using Moq;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using GearboxDriver.Hardware.ACL.LightPositionReporting;
 
 namespace GearboxDriver.Hardware.ACL.Tests
 {
     public class LightsPositionReporterTests
     {
         private Mock<IEventBus> _eventBusMock;
-        private Mock<ILightsPositionProvider> _providerMock;
-        private LightsPositionReporter _reporter;
+        private Mock<ITiltPositionProvider> _providerMock;
+        private TiltChangeReporter _reporter;
 
         [SetUp]
         public void SetUp()
         {
             _eventBusMock = new Mock<IEventBus>();
-            _providerMock = new Mock<ILightsPositionProvider>();
-            _reporter = new LightsPositionReporter(_eventBusMock.Object, _providerMock.Object);
+            _providerMock = new Mock<ITiltPositionProvider>();
+            _reporter = new TiltChangeReporter(_eventBusMock.Object, _providerMock.Object);
         }
 
         [Test]
@@ -31,7 +31,7 @@ namespace GearboxDriver.Hardware.ACL.Tests
         public void SendsLightsPositionEventOnChange()
         {
             var lightPosition = new VehicleTiltPosition(4);
-            _providerMock.Setup(x => x.GetCurrentLights()).Returns(lightPosition);
+            _providerMock.Setup(x => x.GetTiltPosition()).Returns(lightPosition);
 
             _reporter.TryToReport();
 
@@ -42,7 +42,7 @@ namespace GearboxDriver.Hardware.ACL.Tests
         public void WhenValueDuplicatedSendsOnlyOneEvent()
         {
             var lightPosition = new VehicleTiltPosition(4);
-            _providerMock.Setup(x => x.GetCurrentLights()).Returns(lightPosition);
+            _providerMock.Setup(x => x.GetTiltPosition()).Returns(lightPosition);
 
             _reporter.TryToReport();
             _reporter.TryToReport();
@@ -56,7 +56,7 @@ namespace GearboxDriver.Hardware.ACL.Tests
             var firstLightPosition = new VehicleTiltPosition(4);
             var secondLightPosition = new VehicleTiltPosition(7);
 
-            _providerMock.SetupSequence(x => x.GetCurrentLights())
+            _providerMock.SetupSequence(x => x.GetTiltPosition())
                 .Returns(firstLightPosition)
                 .Returns(secondLightPosition);
 

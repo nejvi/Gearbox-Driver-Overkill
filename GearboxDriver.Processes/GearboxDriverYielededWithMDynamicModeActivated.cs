@@ -1,4 +1,5 @@
 ﻿using GearboxDriver.Cabin.MDynamic;
+using GearboxDriver.Gearshift;
 using GearboxDriver.Hardware.ACL;
 using GearboxDriver.Seedwork;
 using System;
@@ -9,16 +10,22 @@ namespace GearboxDriver.Processes
 {
     public class GearboxDriverYielededWithMDynamicModeActivated : IProcessManager
     {
+        private GearshiftService _service;
+
+        public GearboxDriverYielededWithMDynamicModeActivated(GearshiftService service)
+        {
+            _service = service;
+        }
         
         public void ApplyEvent(IEvent @event)
         {
             switch (@event)
             {
                 case VehicleStartedSlipping _:
-                    //Send information to negotiator
+                    _service.AbstainFromChangingGears();
                     break;
                 case VehicleStoppedSlipping _:
-                    //Send information to negotiator
+                    _service.StopAbstainingFromChangingGears();
                     break;
             }
         }

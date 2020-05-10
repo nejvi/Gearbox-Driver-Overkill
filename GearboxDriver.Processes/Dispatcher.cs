@@ -1,0 +1,37 @@
+﻿using GearboxDriver.Cabin.Towing;
+using GearboxDriver.Seedwork;
+
+namespace GearboxDriver.Processes
+{
+    public class Dispatcher
+    {
+        private readonly ProcessManagerPool _pool;
+
+        public Dispatcher()
+        {
+            _pool = new ProcessManagerPool();
+        }
+
+        public void ApplyEvent(IEvent @event)
+        {
+            ManageProcessesLifetime(@event);
+
+            _pool.Dispatch(@event);
+        }
+
+        private void ManageProcessesLifetime(IEvent @event)
+        {
+            switch (@event)
+            {
+                case TrailerHookBecameOccupied _:
+                    _pool.Add(new SmoothBrakingWithTrailerAttached());
+                    break;
+                case TrailerHookStoppedBeingOccupied _:
+                    _pool.Remove(typeof(SmoothBrakingWithTrailerAttached));
+                    break;
+            }
+        }
+
+       
+    }
+}

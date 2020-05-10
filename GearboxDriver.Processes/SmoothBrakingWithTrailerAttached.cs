@@ -10,9 +10,9 @@ namespace GearboxDriver.Processes
         private int CurrentGear { get; set; }
         private GearshiftService _service;
 
-        public SmoothBrakingWithTrailerAttached(GearshiftService service)
+        public SmoothBrakingWithTrailerAttached(/*GearshiftService service*/)
         {
-            _service = service;
+            //_service = service;
             CarMovingDownhill = false;
         }
 
@@ -25,7 +25,7 @@ namespace GearboxDriver.Processes
                     if (!CarMovingDownhill)
                     {
                         CarMovingDownhill = true;
-                        _service.TargetGear(CurrentGear - 1); // todo bardziej rozbudowane
+                        //_service.TargetGear(CurrentGear - 1); // todo bardziej rozbudowane
                     }
                     
                     break;

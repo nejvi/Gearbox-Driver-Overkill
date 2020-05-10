@@ -6,17 +6,17 @@ namespace GearboxDriver.Cabin.Pedals
 {
     public class PedalPanel
     {
-        private double CurrentGasPedalPressure; // todo value object
-        private double CurrentBrakePressure; // todo value object
+        private PedalPressure CurrentGasPressure;
+        private PedalPressure CurrentBrakePressure;
 
-        public IReadOnlyCollection<IEvent> ChangeGasPressure()
+        public IReadOnlyCollection<IEvent> ChangeGasPressure(PedalPressure pressure)
         {
-            throw new NotImplementedException();
+            return new List<IEvent> { new GasPressureChanged(pressure) };
         }
 
-        public IReadOnlyCollection<IEvent> ChangeBrakePressure()
+        public IReadOnlyCollection<IEvent> ChangeBrakePressure(PedalPressure pressure)
         {
-            throw new NotImplementedException();
+            return new List<IEvent> { new BrakePressureChanged(pressure) };
         }
     }
 }

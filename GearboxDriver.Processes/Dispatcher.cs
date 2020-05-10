@@ -1,4 +1,7 @@
-﻿using GearboxDriver.Cabin.Towing;
+﻿using GearboxDriver.Cabin.ManualGearshifting;
+using GearboxDriver.Cabin.MDynamic;
+using GearboxDriver.Cabin.Towing;
+using GearboxDriver.Hardware.ACL;
 using GearboxDriver.Seedwork;
 
 namespace GearboxDriver.Processes
@@ -28,6 +31,18 @@ namespace GearboxDriver.Processes
                     break;
                 case TrailerHookStoppedBeingOccupied _:
                     _pool.Remove(typeof(SmoothBrakingWithTrailerAttached));
+                    break;
+                case ManualGearshiftingModeEntered _:
+                    _pool.Add(new NoInterferenceToGearshiftWithManualMode());
+                    break;
+                case ManualGearshiftingModeExited _:
+                    _pool.Remove(typeof(NoInterferenceToGearshiftWithManualMode));
+                    break;
+                case MDynamicModeEntered _:
+                    _pool.Add(new GearboxDriverYielededWithMDynamicModeActivated());
+                    break;
+                case MDynamicModeExited _:
+                    _pool.Remove(typeof(GearboxDriverYielededWithMDynamicModeActivated));
                     break;
             }
         }

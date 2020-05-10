@@ -1,10 +1,11 @@
-﻿using System;
+﻿using GearboxDriver.Hardware.ACL.Runtime;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace GearboxDriver.Hardware.ACL.VehicleSlippingReporting
 {
-    public class SlippingReporter
+    public class SlippingReporter : IReporter
     {
         private readonly IEventBus _eventBus;
         private readonly ISlippingProvider _angularProvider;

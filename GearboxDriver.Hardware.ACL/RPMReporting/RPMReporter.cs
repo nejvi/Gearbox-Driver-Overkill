@@ -1,6 +1,8 @@
-﻿namespace GearboxDriver.Hardware.ACL.RPMReporting
+﻿using GearboxDriver.Hardware.ACL.Runtime;
+
+namespace GearboxDriver.Hardware.ACL.RPMReporting
 {
-    public class RPMReporter
+    public class RPMReporter : IReporter
     {
         private readonly IEventBus _eventBus;
         private readonly IRPMProvider _rpmProvider;

@@ -1,6 +1,8 @@
-﻿namespace GearboxDriver.Hardware.ACL.TiltPositionReporting
+﻿using GearboxDriver.Hardware.ACL.Runtime;
+
+namespace GearboxDriver.Hardware.ACL.TiltPositionReporting
 {
-    public class TiltChangeReporter
+    public class TiltChangeReporter : IReporter
     {
         private readonly IEventBus _eventBus;
         private readonly ITiltPositionProvider _tiltProvider;

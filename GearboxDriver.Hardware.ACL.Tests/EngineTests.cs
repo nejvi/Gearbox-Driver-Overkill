@@ -47,7 +47,7 @@ namespace GearboxDriver.Hardware.ACL.Tests
             engine.Start();
 
             foreach(var reporterMock in reporterMocks)
-                reporterMock.Verify(x => x.Report());        
+                reporterMock.Verify(x => x.TryToReport());        
         }
     }
 }

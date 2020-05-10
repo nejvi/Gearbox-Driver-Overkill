@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace GearboxDriver.Hardware.ACL
 {
-    public class RPM : ValueObject, IComparable<RPM>
+    public class RPM : ValueObject
     {
         public double Value { get; }
 

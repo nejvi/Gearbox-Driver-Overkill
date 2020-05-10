@@ -35,7 +35,7 @@ namespace GearboxDriver.Hardware.ACL.Runtime
             while (true)
             {
                 foreach (IReporter reporter in _reporters)
-                    reporter.Report();
+                    reporter.TryToReport();
 
                 Task.Delay(_tickRate).Wait();
             }

@@ -1,6 +1,7 @@
 ﻿using GearboxDriver.Cabin.ManualGearshifting;
 using GearboxDriver.Cabin.MDynamic;
 using GearboxDriver.Cabin.Towing;
+using GearboxDriver.Gearshift;
 using GearboxDriver.Hardware.ACL;
 using GearboxDriver.Seedwork;
 
@@ -9,10 +10,12 @@ namespace GearboxDriver.Processes
     public class Dispatcher
     {
         private readonly ProcessManagerPool _pool;
+        private readonly GearshiftService _service;
 
-        public Dispatcher()
+        public Dispatcher(GearshiftService service)
         {
             _pool = new ProcessManagerPool();
+            _service = service;
         }
 
         public void ApplyEvent(IEvent @event)
@@ -39,7 +42,7 @@ namespace GearboxDriver.Processes
                     _pool.Remove(typeof(NoInterferenceToGearshiftWithManualMode));
                     break;
                 case MDynamicModeEntered _:
-                    _pool.Add(new GearboxDriverYielededWithMDynamicModeActivated());
+                    _pool.Add(new GearboxDriverYielededWithMDynamicModeActivated(_service));
                     break;
                 case MDynamicModeExited _:
                     _pool.Remove(typeof(GearboxDriverYielededWithMDynamicModeActivated));

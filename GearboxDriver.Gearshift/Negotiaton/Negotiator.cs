@@ -9,7 +9,7 @@ namespace GearboxDriver.Gearshift.Negotiaton
         private Optional<ModifySmoothnessDemand> _modifySmoothness;
         private Optional<FollowRpmDemand> _followRpm;
 
-        public Negotiator()
+        public Negotiator() // instantiate _yield/_targetGear/_modifySmoothness/_followRpm (?)
         {
         }
 
@@ -36,6 +36,7 @@ namespace GearboxDriver.Gearshift.Negotiaton
 
         public void Issue(YieldDemand demand)
         {
+            // Check null if not instantiated (?)
             if (_yield.HasValue)
                 throw new DomainRuleViolatedException("Yield demand has already been issued.");
 

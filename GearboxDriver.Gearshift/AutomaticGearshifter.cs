@@ -2,7 +2,7 @@
 
 namespace GearboxDriver.Gearshift
 {
-    public class Gearshifter
+    public class AutomaticGearshifter
     {
         private IShiftingProgram Program { get; set; }
         private IGearbox Gearbox { get; set; }

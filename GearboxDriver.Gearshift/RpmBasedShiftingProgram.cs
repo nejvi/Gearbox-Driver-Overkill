@@ -3,12 +3,12 @@ using GearboxDriver.Seedwork;
 
 namespace GearboxDriver.Gearshift
 {
-    public class QuantifiedShiftingProgram : IShiftingProgram
+    public class RpmBasedShiftingProgram : IShiftingProgram
     {
         private Rpm LowerShiftPoint { get; }
         private Rpm UpperShiftPoint { get; }
 
-        public QuantifiedShiftingProgram(Rpm lowerShiftPoint, Rpm upperShiftPoint)
+        public RpmBasedShiftingProgram(Rpm lowerShiftPoint, Rpm upperShiftPoint)
         {
             if (lowerShiftPoint.Value <= 0)
                 throw new DomainRuleViolatedException("Lower shift point cannot be less or equal to zero");

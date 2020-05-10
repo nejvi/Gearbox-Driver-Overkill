@@ -1,4 +1,5 @@
-﻿using GearboxDriver.Hardware.ACL;
+﻿using GearboxDriver.Gearshift;
+using GearboxDriver.Hardware.ACL;
 using GearboxDriver.Seedwork;
 
 namespace GearboxDriver.Processes
@@ -6,9 +7,12 @@ namespace GearboxDriver.Processes
     public class SmoothBrakingWithTrailerAttached : IProcessManager
     {
         private bool CarMovingDownhill { get; set; }
+        private int CurrentGear { get; set; }
+        private GearshiftService _service;
 
-        public SmoothBrakingWithTrailerAttached()
+        public SmoothBrakingWithTrailerAttached(GearshiftService service)
         {
+            _service = service;
             CarMovingDownhill = false;
         }
 
@@ -16,17 +20,19 @@ namespace GearboxDriver.Processes
         {
             switch (@event)
             {
+                //case GearUpshifted // todo
                 case VehicleTiltedDownhill _:
                     if (!CarMovingDownhill)
                     {
                         CarMovingDownhill = true;
-                        // todo downshift ??
+                        _service.TargetGear(CurrentGear - 1); // todo bardziej rozbudowane
                     }
                     
                     break;
                 case VehicleTiledToStraightPosition _:
                 case VehicleTiltedUphill _:
                     CarMovingDownhill = false;
+                    _service.StopTargetingGear();
                     break;
             }
         }

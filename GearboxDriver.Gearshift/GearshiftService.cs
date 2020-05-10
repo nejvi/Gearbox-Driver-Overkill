@@ -28,7 +28,7 @@ namespace GearboxDriver.Gearshift
             _gearshifter.SetProgram(_negotiator.Negotiate());
         }
 
-        public void TargetGear(int gearNumber) // TODO ValueObject
+        public void TargetGear(GearNumber gearNumber)
         {
             _negotiator.Issue(new TargetGearDemand(gearNumber));
 

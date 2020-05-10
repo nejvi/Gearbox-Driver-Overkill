@@ -2,9 +2,9 @@
 {
     public class TargetGearDemand 
     {
-        public int Gear { get; } // todo Value Object
+        public GearNumber Gear { get; }
 
-        public TargetGearDemand(int gear)
+        public TargetGearDemand(GearNumber gear)
         {
             Gear = gear;
         }

@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace GearboxDriver.Gearshift.Negotiator
+﻿namespace GearboxDriver.Gearshift.Negotiaton
 {
     public class ModifySmoothnessDemand 
     {

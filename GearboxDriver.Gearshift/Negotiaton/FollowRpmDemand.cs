@@ -1,7 +1,6 @@
-﻿using System;
-using GearboxDriver.Hardware.ACL;
+﻿using GearboxDriver.Hardware.ACL;
 
-namespace GearboxDriver.Gearshift.Negotiator
+namespace GearboxDriver.Gearshift.Negotiaton
 {
     public class FollowRpmDemand
     {

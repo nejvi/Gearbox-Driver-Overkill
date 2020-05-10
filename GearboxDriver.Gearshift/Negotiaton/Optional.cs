@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace GearboxDriver.Gearshift.Negotiator
+﻿namespace GearboxDriver.Gearshift.Negotiaton
 {
     internal class Optional<T> where T : class
     {
@@ -13,6 +9,10 @@ namespace GearboxDriver.Gearshift.Negotiator
         {
             InnerValue = innerValue;
             HasValue = innerValue != null;
+        }
+        public static Optional<T> Empty()
+        {
+            return new Optional<T>(null);
         }
     }
 }

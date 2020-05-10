@@ -4,11 +4,11 @@ using System.Collections.Generic;
 
 namespace GearboxDriver.Hardware.ACL
 {
-    public class RPM : ValueObject
+    public class Rpm : ValueObject
     {
         public double Value { get; }
 
-        public RPM(double value)
+        public Rpm(double value)
         {
             Value = value;
         }

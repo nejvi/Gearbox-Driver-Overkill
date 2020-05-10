@@ -1,37 +1,33 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using GearboxDriver.Hardware.ACL;
+﻿using GearboxDriver.Hardware.ACL;
 using GearboxDriver.Seedwork;
 
 namespace GearboxDriver.Gearshift
 {
-    public class QuantifiedShiftingProgram
+    public class QuantifiedShiftingProgram : IShiftingProgram
     {
-        private List<ShiftPoint> ShiftPointsAscending { get; }
+        private Rpm LowerShiftPoint { get; }
+        private Rpm UpperShiftPoint { get; }
 
-        public QuantifiedShiftingProgram(IEnumerable<ShiftPoint> shiftPoints)
+        public QuantifiedShiftingProgram(Rpm lowerShiftPoint, Rpm upperShiftPoint)
         {
-            if (!shiftPoints.Any())
-                throw new DomainRuleViolatedException("A shifting program needs to contain at least one shift point.");
+            if (lowerShiftPoint.Value <= 0)
+                throw new DomainRuleViolatedException("Lower shift point cannot be less or equal to zero");
 
-            if (shiftPoints.Any(x => x.Threshold.Value <= 0))
-                throw new DomainRuleViolatedException("A shifting program must provide at least one shiftpoint that supports 0 RPM.");
+            if (upperShiftPoint.Value <= lowerShiftPoint.Value)
+                throw new DomainRuleViolatedException("Upper shift point cannot be lower or equal to the lower shift point");
 
-            if (shiftPoints.Select(x => x.Threshold).Distinct().Count() != shiftPoints.Select(x => x.Threshold).Count())
-                throw new DomainRuleViolatedException("Shifting program cannot contain any shift points with the same threshold");
-
-            ShiftPointsAscending = shiftPoints.OrderBy(x => x.Threshold.Value).ToList();
+            LowerShiftPoint = lowerShiftPoint;
+            UpperShiftPoint = upperShiftPoint;
         }
 
-        public Gear GearFor(RPM rpm)
+
+        public SuggestedAction GetSuggestedActionFor(Rpm rpm)
         {
-            var firstGearAbove = ShiftPointsAscending.FirstOrDefault(x => x.Threshold.Value >= rpm.Value);
-            var firstGearBelowOrEqual = ShiftPointsAscending.Last(x => x.Threshold.Value <= rpm.Value);
+            if (rpm.Value < LowerShiftPoint.Value) return SuggestedAction.Downshift;
 
-            if (firstGearAbove == null)
-                return ShiftPointsAscending.Last().Gear;
+            if (rpm.Value > UpperShiftPoint.Value) return SuggestedAction.Upshift;
 
-            return firstGearBelowOrEqual.Gear;
-        }
+            return SuggestedAction.Retain;
+        } 
     }
 }

@@ -27,7 +27,7 @@ namespace GearboxDriver.Hardware.ACL.Tests
         [Test]
         public void SendsRpmEventOnChange()
         {
-            var rpm = new RPM(2137d);
+            var rpm = new Rpm(2137d);
             _providerMock.Setup(x => x.GetCurrentRpm()).Returns(rpm);
 
             _reporter.TryToReport();
@@ -38,7 +38,7 @@ namespace GearboxDriver.Hardware.ACL.Tests
         [Test]
         public void WhenValueDuplicatedSendsOnlyOneEvent()
         {
-            var rpm = new RPM(2137d);
+            var rpm = new Rpm(2137d);
             _providerMock.Setup(x => x.GetCurrentRpm()).Returns(rpm);
 
             _reporter.TryToReport();
@@ -50,8 +50,8 @@ namespace GearboxDriver.Hardware.ACL.Tests
         [Test]
         public void WhenTwoDifferentValuesSendsTwoEvents()
         {
-            var firstRpm = new RPM(2137d);
-            var secondRpm = new RPM(1728d);
+            var firstRpm = new Rpm(2137d);
+            var secondRpm = new Rpm(1728d);
 
             _providerMock.SetupSequence(x => x.GetCurrentRpm())
                 .Returns(firstRpm)

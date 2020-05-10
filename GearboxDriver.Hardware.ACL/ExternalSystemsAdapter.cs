@@ -12,11 +12,11 @@ namespace GearboxDriver.Hardware.ACL
     {
         private ExternalSystems _externalSystems;
 
-        public RPM GetCurrentRpm()
+        public Rpm GetCurrentRpm()
         {
             var currentRpm = _externalSystems.getCurrentRpm();
 
-            return new RPM(currentRpm);
+            return new Rpm(currentRpm);
         }
 
         public TiltPosition GetTiltPosition()

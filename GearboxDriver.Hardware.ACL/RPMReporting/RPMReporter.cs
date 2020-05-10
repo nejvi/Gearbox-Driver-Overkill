@@ -6,7 +6,7 @@ namespace GearboxDriver.Hardware.ACL.RPMReporting
     {
         private readonly IEventBus _eventBus;
         private readonly IRPMProvider _rpmProvider;
-        private RPM _lastReportedRpm { get; set; }
+        private Rpm _lastReportedRpm { get; set; }
 
         public RPMReporter(IEventBus eventBus, IRPMProvider rpmProvider)
         {

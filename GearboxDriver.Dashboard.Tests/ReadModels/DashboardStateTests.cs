@@ -104,7 +104,7 @@ namespace GearboxDriver.Dashboard.Tests.ReadModels
         public void WhenRPMChangedEventOccuredCurrentRPMChanges()
         {
             var dashboardState = new DashboardState();
-            var rpmChanged = new RPMChanged(new RPM(1500d));
+            var rpmChanged = new RPMChanged(new Rpm(1500d));
 
             dashboardState.Apply(rpmChanged);
 

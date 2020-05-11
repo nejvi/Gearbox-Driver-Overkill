@@ -4,5 +4,7 @@
     {
         void Upshift();
         void Downshift();
+
+        Gear CurrentGear { get; }
     }
 }

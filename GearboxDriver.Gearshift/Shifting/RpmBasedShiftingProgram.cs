@@ -11,13 +11,14 @@ namespace GearboxDriver.Gearshift.Shifting
             Range = range;
         }
 
-        public SuggestedAction GetSuggestedActionFor(Rpm rpm)
+        public SuggestedAction GetSuggestedActionFor(Gear currentGear, Rpm rpm)
         {
             if (rpm.Value < Range.LowerShiftPoint.Value) return SuggestedAction.Downshift;
 
             if (rpm.Value > Range.UpperShiftPoint.Value) return SuggestedAction.Upshift;
 
             return SuggestedAction.Retain;
-        } 
+        }
+
     }
 }

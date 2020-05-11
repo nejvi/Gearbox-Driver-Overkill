@@ -15,7 +15,7 @@ namespace GearboxDriver.Gearshift.Shifting
 
         public void HandleRpmChange(Rpm rpm)
         {
-            var suggestedAction = Program.GetSuggestedActionFor(rpm);
+            var suggestedAction = Program.GetSuggestedActionFor(Gearbox.CurrentGear, rpm);
 
             if (suggestedAction == SuggestedAction.Upshift)
                 Gearbox.Upshift();

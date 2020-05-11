@@ -78,5 +78,41 @@ namespace GearboxDriver.Gearshift.Tests.Negotiation
 
             Assert.True(program is GearTargetingShiftingProgram);
         }
+
+        [Test]
+        public void NegotiatedTargetGearProgramReflectsTheDemand()
+        {
+            var negotiator = new Negotiator();
+            negotiator.Issue(new TargetGearDemand(new Gear(2)));
+
+            var program = negotiator.Negotiate();
+
+            Assert.AreEqual(SuggestedAction.Upshift, program.GetSuggestedActionFor(new Gear(1), new Rpm(1000)));
+            Assert.AreEqual(SuggestedAction.Retain, program.GetSuggestedActionFor(new Gear(2), new Rpm(1000)));
+            Assert.AreEqual(SuggestedAction.Downshift, program.GetSuggestedActionFor(new Gear(3), new Rpm(1000)));
+        }
+
+        [Test]
+        public void NegotiatedFollowRpmProgramReflectsTheDemand()
+        {
+            var negotiator = new Negotiator();
+            negotiator.Issue(_dummyFollowRpmDemand);
+
+            var program = negotiator.Negotiate();
+
+            var rpmInTheMiddleOfDemandedRange = new Rpm((_dummyFollowRpmDemand.ShiftpointRange.LowerShiftPoint.Value +
+                                                         _dummyFollowRpmDemand.ShiftpointRange.UpperShiftPoint.Value) /
+                                                        2);
+
+            var rpmBelowDemandedRange = new Rpm(_dummyFollowRpmDemand.ShiftpointRange.LowerShiftPoint.Value - 1);
+
+            var rpmAboveDemandedRange = new Rpm(_dummyFollowRpmDemand.ShiftpointRange.UpperShiftPoint.Value + 1);
+
+            var anyGear = new Gear(2);
+
+            Assert.AreEqual(SuggestedAction.Retain, program.GetSuggestedActionFor(anyGear, rpmInTheMiddleOfDemandedRange));
+            Assert.AreEqual(SuggestedAction.Downshift, program.GetSuggestedActionFor(anyGear, rpmBelowDemandedRange));
+            Assert.AreEqual(SuggestedAction.Upshift, program.GetSuggestedActionFor(anyGear, rpmAboveDemandedRange));
+        }
     }
 }

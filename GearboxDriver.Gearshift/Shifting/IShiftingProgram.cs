@@ -4,6 +4,6 @@ namespace GearboxDriver.Gearshift.Shifting
 {
     public interface IShiftingProgram
     {
-        SuggestedAction GetSuggestedActionFor(Rpm rpm);
+        SuggestedAction GetSuggestedActionFor(Gear currentGear, Rpm rpm);
     }
 }

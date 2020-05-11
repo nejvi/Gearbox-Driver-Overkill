@@ -32,7 +32,7 @@ namespace GearboxDriver.Gearshift.Tests.Shifting
         [Test]
         public void DownshiftsWhenSuggestedActionIsDownshift()
         {
-            _programMock.Setup(x => x.GetSuggestedActionFor(It.IsAny<Rpm>())).Returns(SuggestedAction.Downshift);
+            _programMock.Setup(x => x.GetSuggestedActionFor(It.IsAny<Gear>(), It.IsAny<Rpm>())).Returns(SuggestedAction.Downshift);
             _gearshifter.SetProgram(_programMock.Object);
             
             _gearshifter.HandleRpmChange(new Rpm(2000));
@@ -43,7 +43,7 @@ namespace GearboxDriver.Gearshift.Tests.Shifting
         [Test]
         public void UpshiftsWhenSuggestedActionIsUpshift()
         {
-            _programMock.Setup(x => x.GetSuggestedActionFor(It.IsAny<Rpm>())).Returns(SuggestedAction.Upshift);
+            _programMock.Setup(x => x.GetSuggestedActionFor(It.IsAny<Gear>(), It.IsAny<Rpm>())).Returns(SuggestedAction.Upshift);
             _gearshifter.SetProgram(_programMock.Object);
            
             _gearshifter.HandleRpmChange(new Rpm(2000));
@@ -55,7 +55,7 @@ namespace GearboxDriver.Gearshift.Tests.Shifting
         [Test]
         public void RetainsWhenSuggestedActionIsRetain()
         {
-            _programMock.Setup(x => x.GetSuggestedActionFor(It.IsAny<Rpm>())).Returns(SuggestedAction.Retain);
+            _programMock.Setup(x => x.GetSuggestedActionFor(It.IsAny<Gear>(), It.IsAny<Rpm>())).Returns(SuggestedAction.Retain);
             _gearshifter.SetProgram(_programMock.Object);
 
             _gearshifter.HandleRpmChange(new Rpm(2000));
@@ -68,12 +68,27 @@ namespace GearboxDriver.Gearshift.Tests.Shifting
         {
             var rpm = new Rpm(2000);
 
-            _programMock.Setup(x => x.GetSuggestedActionFor(rpm)).Returns(SuggestedAction.Retain);
+            _programMock.Setup(x => x.GetSuggestedActionFor(It.IsAny<Gear>(), rpm)).Returns(SuggestedAction.Retain);
             _gearshifter.SetProgram(_programMock.Object);
 
             _gearshifter.HandleRpmChange(new Rpm(2000));
 
-            _programMock.Verify(x => x.GetSuggestedActionFor(rpm));
+            _programMock.Verify(x => x.GetSuggestedActionFor(It.IsAny<Gear>(), rpm));
+        }
+
+        [Test]
+        public void QueriesTheProgramGivingTheGearFromGearbox()
+        {
+            var rpm = new Rpm(2000);
+
+            _gearboxMock.Setup(x => x.CurrentGear).Returns(new Gear(3));
+
+            _programMock.Setup(x => x.GetSuggestedActionFor(new Gear(3), It.IsAny<Rpm>())).Returns(SuggestedAction.Retain);
+            _gearshifter.SetProgram(_programMock.Object);
+
+            _gearshifter.HandleRpmChange(new Rpm(2000));
+
+            _programMock.Verify(x => x.GetSuggestedActionFor(It.IsAny<Gear>(), rpm));
         }
 
         [Test]
@@ -81,12 +96,12 @@ namespace GearboxDriver.Gearshift.Tests.Shifting
         {
             var rpm = new Rpm(2000);
 
-            _programMock.Setup(x => x.GetSuggestedActionFor(rpm)).Returns(SuggestedAction.Upshift);
+            _programMock.Setup(x => x.GetSuggestedActionFor(It.IsAny<Gear>(), rpm)).Returns(SuggestedAction.Upshift);
             _gearshifter.SetProgram(_programMock.Object);
             _gearshifter.HandleRpmChange(new Rpm(2000));
 
             var secondProgramMock = new Mock<IShiftingProgram>();
-            secondProgramMock.Setup(x => x.GetSuggestedActionFor(rpm)).Returns(SuggestedAction.Downshift);
+            secondProgramMock.Setup(x => x.GetSuggestedActionFor(It.IsAny<Gear>(), rpm)).Returns(SuggestedAction.Downshift);
             _gearshifter.SetProgram(secondProgramMock.Object);
             _gearshifter.HandleRpmChange(new Rpm(2000));
 

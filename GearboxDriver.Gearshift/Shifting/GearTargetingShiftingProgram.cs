@@ -4,7 +4,6 @@ namespace GearboxDriver.Gearshift.Shifting
 {
     public class GearTargetingShiftingProgram : IShiftingProgram
     {
-        private Gear CurrentGear { get; set; }
         private Gear TargetedGear { get; }
 
         public GearTargetingShiftingProgram(Gear targetedGear)
@@ -12,12 +11,12 @@ namespace GearboxDriver.Gearshift.Shifting
             TargetedGear = targetedGear;
         }
 
-        public SuggestedAction GetSuggestedActionFor(Rpm rpm)
+        public SuggestedAction GetSuggestedActionFor(Gear currentGear, Rpm rpm)
         {
-            if (CurrentGear.Value > TargetedGear.Value)
+            if (currentGear.Value > TargetedGear.Value)
                 return SuggestedAction.Downshift;
 
-            if (CurrentGear.Value < TargetedGear.Value)
+            if (currentGear.Value < TargetedGear.Value)
                 return SuggestedAction.Upshift;
 
             return SuggestedAction.Retain;

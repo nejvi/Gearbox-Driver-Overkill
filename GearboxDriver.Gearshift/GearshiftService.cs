@@ -3,7 +3,7 @@ using GearboxDriver.Hardware.ACL;
 
 namespace GearboxDriver.Gearshift
 {
-    public class GearshiftService
+    public class GearshiftService : IGearshiftService
     {
         private readonly Negotiator _negotiator;
         private readonly AutomaticGearshifter _gearshifter;

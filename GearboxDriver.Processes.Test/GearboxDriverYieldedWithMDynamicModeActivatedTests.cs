@@ -16,9 +16,7 @@ namespace GearboxDriver.Processes.Test
         [Test]
         public void WhenVehicleIsSlippingAbstainFromChangingGears()
         {
-            var gearShifter = new AutomaticGearshifter();
-            var negotiator = new Negotiator();
-            var serviceMock = new Mock<GearshiftService>(negotiator, gearShifter);
+            var serviceMock = new Mock<IGearshiftService>();
 
             var processManager = new GearboxDriverYielededWithMDynamicModeActivated(serviceMock.Object);
             var @event = new VehicleStartedSlipping();

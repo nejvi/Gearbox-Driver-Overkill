@@ -10,9 +10,9 @@ namespace GearboxDriver.Processes
 {
     public class GearboxDriverYielededWithMDynamicModeActivated : IProcessManager
     {
-        private GearshiftService _service;
+        private IGearshiftService _service;
 
-        public GearboxDriverYielededWithMDynamicModeActivated(GearshiftService service)
+        public GearboxDriverYielededWithMDynamicModeActivated(IGearshiftService service)
         {
             _service = service;
         }

@@ -10,7 +10,12 @@ namespace GearboxDriver.Hardware.ACL
 {
     public class ExternalSystemsAdapter : IRPMProvider, ITiltPositionProvider, ISlippingProvider
     {
-        private ExternalSystems _externalSystems;
+        private readonly ExternalSystems _externalSystems;
+
+        public ExternalSystemsAdapter(ExternalSystems externalSystems)
+        {
+            _externalSystems = externalSystems;
+        }
 
         public Rpm GetCurrentRpm()
         {

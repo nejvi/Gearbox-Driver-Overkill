@@ -2,8 +2,5 @@
 {
     public class YieldDemand
     {
-        public YieldDemand()
-        {
-        }
     }
 }

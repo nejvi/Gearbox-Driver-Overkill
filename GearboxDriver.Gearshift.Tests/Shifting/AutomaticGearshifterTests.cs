@@ -26,6 +26,7 @@ namespace GearboxDriver.Gearshift.Tests.Shifting
             _gearshifter.HandleRpmChange(new Rpm(1000));
             _gearshifter.HandleRpmChange(new Rpm(2000));
 
+            _gearboxMock.Verify(x => x.CurrentGear);
             _gearboxMock.VerifyNoOtherCalls();
         }
 
@@ -60,6 +61,7 @@ namespace GearboxDriver.Gearshift.Tests.Shifting
 
             _gearshifter.HandleRpmChange(new Rpm(2000));
 
+            _gearboxMock.Verify(x => x.CurrentGear);
             _gearboxMock.VerifyNoOtherCalls();
         }
 

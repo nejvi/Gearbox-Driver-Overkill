@@ -10,11 +10,6 @@ namespace GearboxDriver.Hardware.API
         private double angularSpeed = 150;
         private Lights lights = new Lights();
 
-        ExternalSystems()
-        {
-
-        }
-
         public double getCurrentRpm()
         {
             //sciagnij RPM z dostepnego miejsca

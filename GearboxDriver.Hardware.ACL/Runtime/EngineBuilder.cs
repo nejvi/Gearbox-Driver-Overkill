@@ -13,9 +13,11 @@ namespace GearboxDriver.Hardware.ACL.Runtime
             _reporters = new List<IReporter>();
         }
 
-        public void AddReporter(IReporter reporter)
+        public EngineBuilder AddReporter(IReporter reporter)
         {
             _reporters.Add(reporter);
+
+            return this;
         }
 
         public Engine Build()

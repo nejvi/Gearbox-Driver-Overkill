@@ -18,6 +18,7 @@ namespace GearboxDriver.Hardware.ACL.TiltPositionReporting
         public void TryToReport()
         {
             var vehicleTiltPosition = _tiltProvider.GetTiltPosition();
+
             if (LastReportedVehicleTiltPosition == vehicleTiltPosition && isEverReported)
                 return;
 

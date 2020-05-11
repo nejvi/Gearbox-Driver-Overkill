@@ -4,10 +4,10 @@ namespace GearboxDriver.Gearshift
 {
     class GearTargetingShiftingProgram : IShiftingProgram
     {
-        private GearNumber CurrentGear { get; set; }
-        private GearNumber TargetedGear { get; }
+        private Gear CurrentGear { get; set; }
+        private Gear TargetedGear { get; }
 
-        public GearTargetingShiftingProgram(GearNumber targetedGear)
+        public GearTargetingShiftingProgram(Gear targetedGear)
         {
             TargetedGear = targetedGear;
         }

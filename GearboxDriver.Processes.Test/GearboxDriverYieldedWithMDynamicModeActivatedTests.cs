@@ -1,6 +1,7 @@
 ﻿using GearboxDriver.Gearshift;
 using GearboxDriver.Gearshift.Negotiaton;
 using GearboxDriver.Hardware.ACL;
+using GearboxDriver.Seedwork;
 using Moq;
 using Newtonsoft.Json.Schema;
 using NUnit.Framework;
@@ -29,9 +30,7 @@ namespace GearboxDriver.Processes.Test
         [Test]
         public void WhenVehicleStoppedSlippingStopAbstainingFromChangingGears()
         {
-            var gearShifter = new AutomaticGearshifter();
-            var negotiator = new Negotiator();
-            var serviceMock = new Mock<GearshiftService>(negotiator, gearShifter);
+            var serviceMock = new Mock<IGearshiftService>();
 
             var processManager = new GearboxDriverYielededWithMDynamicModeActivated(serviceMock.Object);
             var @event = new VehicleStoppedSlipping();

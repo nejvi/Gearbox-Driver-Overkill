@@ -9,9 +9,9 @@ namespace GearboxDriver.Gearshift
     {
         void AbstainFromChangingGears();
         void StopAbstainingFromChangingGears();
-        void TargetGear(GearNumber gearNumber);
+        void TargetGear(Gear gearNumber);
         void StopTargetingGear();
-        void KeepFollowingRpm(Rpm lowerShiftpoint, Rpm upperShiftpoint);
-        void ApplySharpnessFactor(double percentage);
+        void KeepFollowingRpm(ShiftpointRange shiftpointRange);
+        void ApplySharpnessFactor(Percentage percentage);
     }
 }

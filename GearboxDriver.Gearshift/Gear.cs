@@ -5,11 +5,11 @@ using System.Text;
 
 namespace GearboxDriver.Gearshift
 {
-    public class GearNumber : ValueObject
+    public class Gear : ValueObject
     {
         public int Value { get; }
 
-        public GearNumber(int value)
+        public Gear(int value)
         {
             Value = value;
         }

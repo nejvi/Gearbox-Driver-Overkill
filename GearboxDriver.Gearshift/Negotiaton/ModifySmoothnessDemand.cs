@@ -2,9 +2,9 @@
 {
     public class ModifySmoothnessDemand 
     {
-        public double Percentage { get; } // todo Value Object
+        public Percentage Percentage { get; }
 
-        public ModifySmoothnessDemand(double percentage)
+        public ModifySmoothnessDemand(Percentage percentage)
         {
             Percentage = percentage;
         }

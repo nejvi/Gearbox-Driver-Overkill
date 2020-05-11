@@ -2,9 +2,9 @@
 {
     public class TargetGearDemand 
     {
-        public GearNumber Gear { get; }
+        public Gear Gear { get; }
 
-        public TargetGearDemand(GearNumber gear)
+        public TargetGearDemand(Gear gear)
         {
             Gear = gear;
         }

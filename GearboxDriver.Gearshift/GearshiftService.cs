@@ -28,7 +28,7 @@ namespace GearboxDriver.Gearshift
             _gearshifter.SetProgram(_negotiator.Negotiate());
         }
 
-        public void TargetGear(GearNumber gearNumber)
+        public void TargetGear(Gear gearNumber)
         {
             _negotiator.Issue(new TargetGearDemand(gearNumber));
 
@@ -42,14 +42,14 @@ namespace GearboxDriver.Gearshift
             _gearshifter.SetProgram(_negotiator.Negotiate());
         }
 
-        public void KeepFollowingRpm(Rpm lowerShiftpoint, Rpm upperShiftpoint) // TODO Value Object - range
+        public void KeepFollowingRpm(ShiftpointRange shiftpointRange)
         {
-            _negotiator.Issue(new FollowRpmDemand(lowerShiftpoint, upperShiftpoint));
+            _negotiator.Issue(new FollowRpmDemand(shiftpointRange));
 
             _gearshifter.SetProgram(_negotiator.Negotiate());
         }
 
-        public void ApplySharpnessFactor(double percentage) // TODO Value Object - range
+        public void ApplySharpnessFactor(Percentage percentage)
         {
             _negotiator.Issue(new ModifySmoothnessDemand(percentage)); // TODO may not be needed!
 

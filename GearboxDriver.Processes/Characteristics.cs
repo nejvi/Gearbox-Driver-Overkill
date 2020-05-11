@@ -23,10 +23,7 @@ namespace GearboxDriver.Processes
                 { AggressivenessLevel.Third, new Percentage(1.3d) }
             };
 
-        public ShiftpointRange GetRangeForResponsivenessMode(ResponsivenessMode responsivenessMode)
-            => RangeForModes[responsivenessMode];
-
-        public Percentage GetPercentageForAggressivenessLevel(AggressivenessLevel aggressivenessLevel)
-            => PercentageForAggressivenesLevel[aggressivenessLevel];
+        public ShiftpointRange GetRangeFor(ResponsivenessMode responsivenessMode, AggressivenessLevel aggressivenessLevel)
+            => RangeForModes[responsivenessMode].AsModifiedBy(PercentageForAggressivenesLevel[aggressivenessLevel]);
     }
 }

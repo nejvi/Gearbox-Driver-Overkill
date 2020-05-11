@@ -38,12 +38,7 @@ namespace GearboxDriver.Processes
             UpdateCurrentMode();
         }
 
-        private void UpdateCurrentMode()
-        {
-            var modeRange = _characteristics.GetRangeForResponsivenessMode(CurrentResponsivenessMode);
-            var aggresivenessPercentage = _characteristics.GetPercentageForAggressivenessLevel(CurrentAggressivenessLevel);
-
-            _service.KeepFollowingRpm(modeRange.AsModifiedBy(aggresivenessPercentage));
-        }
+        private void UpdateCurrentMode() 
+            => _service.KeepFollowingRpm(_characteristics.GetRangeFor(CurrentResponsivenessMode, CurrentAggressivenessLevel));
     }
 }

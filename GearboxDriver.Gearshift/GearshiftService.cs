@@ -43,7 +43,7 @@ namespace GearboxDriver.Gearshift
             _gearshifter.SetProgram(_negotiator.Negotiate());
         }
 
-        public void KeepFollowingRpm(ShiftpointRange range) // TODO Value Object - range
+        public void KeepFollowingRpm(ShiftpointRange range)
         {
             _negotiator.Issue(new FollowRpmDemand(range));
 

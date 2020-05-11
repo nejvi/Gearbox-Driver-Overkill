@@ -1,18 +1,27 @@
-﻿using GearboxDriver.Cabin.Responsiveness;
+﻿using System.Collections.Generic;
+using GearboxDriver.Cabin.Responsiveness;
 using GearboxDriver.Gearshift;
 using GearboxDriver.Hardware.ACL;
 using GearboxDriver.Seedwork;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace GearboxDriver.Processes
 {
     public class RpmBasedByModes : IProcessManager
     {
-        private IGearshiftService _service;
+        private readonly IGearshiftService _service;
         private ResponsivenessMode ResponsivenessMode { get; set; }
         private AggressivenessLevel AggressivenessLevel { get; set; }
+
+        private readonly Dictionary<ResponsivenessMode, ShiftpointRange> RangeForModes = new Dictionary<ResponsivenessMode, ShiftpointRange>
+        {
+            {ResponsivenessMode.Economic, new ShiftpointRange(new Rpm(1000d), new Rpm(2000d)) }
+        };
+
+        private readonly Dictionary<AggressivenessLevel, Percentage> PercentageForAggressivenesLevel =
+            new Dictionary<AggressivenessLevel, Percentage>
+            {
+                {AggressivenessLevel.First, new Percentage(1.0d) }
+            };
 
         public RpmBasedByModes(IGearshiftService service)
         {
@@ -24,18 +33,20 @@ namespace GearboxDriver.Processes
             switch (@event)
             {
                 case ComfortModeEntered _:
-                    RpmBasedByComfortMode();
+                    ResponsivenessMode = ResponsivenessMode.Comfort;
                     break;
                 case EconomicModeEntered _:
-                    RpmBasedByEconomicMode();
+                    ResponsivenessMode = ResponsivenessMode.Economic;
                     break;
                 case SportModeEntered _:
-                    RpmBasedBySportMode();
+                    ResponsivenessMode = ResponsivenessMode.Sport;
                     break;
                 case AggressivenessLevelSelected aggressivenessLevel:
-                    RpmBasedByAggressivenessLevel(aggressivenessLevel.Level);
+                    AggressivenessLevel = aggressivenessLevel.Level;
                     break;
             }
+
+            UpdateCurrentMode();
         }
 
         public void RpmBasedByMode(double modificator = 1)
@@ -72,14 +83,11 @@ namespace GearboxDriver.Processes
             }
         }
 
-        public void RpmBasedByEconomicMode(double modificator = 1)
+        public void RpmBasedByEconomicMode(Percentage percentage)
         {
             ResponsivenessMode = ResponsivenessMode.Economic;
 
-            var lowerShiftPoint = new Rpm(1000d * modificator);
-            var upperShiftPoint = new Rpm(2000d * modificator);
-
-            _service.KeepFollowingRpm(new ShiftpointRange(lowerShiftPoint, upperShiftPoint));
+            _service.KeepFollowingRpm(RangeForModes[ResponsivenessMode].AsModifiedBy(PercentageForAggressivenesLevel[AggressivenessLevel]));
         }
 
         public void RpmBasedByComfortMode(double modificator = 1)
@@ -100,6 +108,11 @@ namespace GearboxDriver.Processes
             var upperShiftPoint = new Rpm(2500d * modificator);
 
             _service.KeepFollowingRpm(new ShiftpointRange(lowerShiftPoint, upperShiftPoint));
+        }
+
+        private void UpdateCurrentMode()
+        {
+            _service.KeepFollowingRpm(RangeForModes[ResponsivenessMode].AsModifiedBy(PercentageForAggressivenesLevel[AggressivenessLevel]));
         }
     }
 }

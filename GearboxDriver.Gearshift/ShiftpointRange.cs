@@ -20,6 +20,11 @@ namespace GearboxDriver.Gearshift
             UpperShiftPoint = upperShiftPoint;
         }
 
+        public ShiftpointRange AsModifiedBy(Percentage percentage)
+        {
+            return new ShiftpointRange(new Rpm(LowerShiftPoint.Value * percentage.Value), new Rpm(UpperShiftPoint.Value * percentage.Value));
+        }
+
         protected override IEnumerable<object> GetAtomicValues()
         {
             yield return UpperShiftPoint.Value;

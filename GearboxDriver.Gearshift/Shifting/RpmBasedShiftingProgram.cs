@@ -1,7 +1,7 @@
 ﻿using GearboxDriver.Hardware.ACL;
 using GearboxDriver.Seedwork;
 
-namespace GearboxDriver.Gearshift
+namespace GearboxDriver.Gearshift.Shifting
 {
     public class RpmBasedShiftingProgram : IShiftingProgram
     {

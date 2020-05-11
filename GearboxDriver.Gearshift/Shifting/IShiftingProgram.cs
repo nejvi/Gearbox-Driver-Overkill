@@ -1,6 +1,6 @@
 ﻿using GearboxDriver.Hardware.ACL;
 
-namespace GearboxDriver.Gearshift
+namespace GearboxDriver.Gearshift.Shifting
 {
     public interface IShiftingProgram
     {

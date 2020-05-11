@@ -1,8 +1,8 @@
 ﻿using GearboxDriver.Hardware.ACL;
 
-namespace GearboxDriver.Gearshift
+namespace GearboxDriver.Gearshift.Shifting
 {
-    class YieldingShiftingProgram : IShiftingProgram
+    public class YieldingShiftingProgram : IShiftingProgram
     {
         public SuggestedAction GetSuggestedActionFor(Rpm rpm)
         {

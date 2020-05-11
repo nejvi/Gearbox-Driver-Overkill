@@ -1,4 +1,5 @@
-﻿using GearboxDriver.Seedwork;
+﻿using GearboxDriver.Gearshift.Shifting;
+using GearboxDriver.Seedwork;
 
 namespace GearboxDriver.Gearshift.Negotiaton
 {
@@ -6,14 +7,12 @@ namespace GearboxDriver.Gearshift.Negotiaton
     {
         private Optional<YieldDemand> _yield;
         private Optional<TargetGearDemand> _targetGear;
-        private Optional<ModifySmoothnessDemand> _modifySmoothness;
         private Optional<FollowRpmDemand> _followRpm;
 
         public Negotiator()
         {
             _yield = Optional<YieldDemand>.Empty();
             _targetGear = Optional<TargetGearDemand>.Empty();
-            _modifySmoothness = Optional<ModifySmoothnessDemand>.Empty();
             _followRpm = Optional<FollowRpmDemand>.Empty();
         }
 
@@ -25,13 +24,6 @@ namespace GearboxDriver.Gearshift.Negotiaton
             if (_targetGear.HasValue)
                 return new GearTargetingShiftingProgram(_targetGear.InnerValue.Gear);
 
-            if (_modifySmoothness.HasValue && _followRpm.HasValue)
-            {
-                var demand = _followRpm.InnerValue.AsAffectedBy(_modifySmoothness.InnerValue);
-
-                return new RpmBasedShiftingProgram(demand.LowerShiftpoint, demand.UpperShifpoint);
-            }
-            
             if (_followRpm.HasValue)
                 return new RpmBasedShiftingProgram(_followRpm.InnerValue.LowerShiftpoint, _followRpm.InnerValue.UpperShifpoint);
 
@@ -68,22 +60,6 @@ namespace GearboxDriver.Gearshift.Negotiaton
                 throw new DomainRuleViolatedException("Target gear demand has not been been issued.");
 
             _targetGear = Optional<TargetGearDemand>.Empty();
-        }
-
-        public void Issue(ModifySmoothnessDemand demand)
-        {
-            if (_modifySmoothness.HasValue)
-                throw new DomainRuleViolatedException("Modify smoothness demand has already been issued.");
-
-            _modifySmoothness = new Optional<ModifySmoothnessDemand>(demand);
-        }
-
-        public void RevokeModifySmoothnessDemand()
-        {
-            if (!_modifySmoothness.HasValue)
-                throw new DomainRuleViolatedException("Modify smoothness demand has not been been issued.");
-
-            _modifySmoothness = Optional<ModifySmoothnessDemand>.Empty();
         }
 
         public void Issue(FollowRpmDemand demand)

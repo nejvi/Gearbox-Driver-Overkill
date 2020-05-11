@@ -1,8 +1,8 @@
 ﻿using GearboxDriver.Hardware.ACL;
 
-namespace GearboxDriver.Gearshift
+namespace GearboxDriver.Gearshift.Shifting
 {
-    class GearTargetingShiftingProgram : IShiftingProgram
+    public class GearTargetingShiftingProgram : IShiftingProgram
     {
         private Gear CurrentGear { get; set; }
         private Gear TargetedGear { get; }

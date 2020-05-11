@@ -1,11 +1,17 @@
 ﻿using GearboxDriver.Hardware.ACL;
 
-namespace GearboxDriver.Gearshift
+namespace GearboxDriver.Gearshift.Shifting
 {
     public class AutomaticGearshifter
     {
+        private IGearbox Gearbox { get; }
         private IShiftingProgram Program { get; set; }
-        private IGearbox Gearbox { get; set; }
+
+        public AutomaticGearshifter(IGearbox gearbox)
+        {
+            Gearbox = gearbox;
+            Program = new YieldingShiftingProgram();
+        }
 
         public void HandleRpmChange(Rpm rpm)
         {

@@ -25,7 +25,7 @@ namespace GearboxDriver.Gearshift.Negotiaton
                 return new GearTargetingShiftingProgram(_targetGear.InnerValue.Gear);
 
             if (_followRpm.HasValue)
-                return new RpmBasedShiftingProgram(_followRpm.InnerValue.LowerShiftpoint, _followRpm.InnerValue.UpperShifpoint);
+                return new RpmBasedShiftingProgram(_followRpm.InnerValue.ShiftpointRange);
 
             return new YieldingShiftingProgram();
         }

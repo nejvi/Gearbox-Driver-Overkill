@@ -10,13 +10,5 @@ namespace GearboxDriver.Gearshift.Negotiaton
         {
             ShiftpointRange = shiftpointRange;
         }
-
-        public FollowRpmDemand AsAffectedBy(ModifySmoothnessDemand modificator)
-        {
-            return new FollowRpmDemand( new ShiftpointRange(
-                new Rpm(ShiftpointRange.LowerShiftPoint.Value * modificator.Percentage), 
-                new Rpm(ShiftpointRange.UpperShiftPoint.Value * modificator.Percentage)
-                )); // Todo review
-        }
     }
 }

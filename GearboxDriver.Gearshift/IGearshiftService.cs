@@ -12,6 +12,5 @@ namespace GearboxDriver.Gearshift
         void TargetGear(Gear gearNumber);
         void StopTargetingGear();
         void KeepFollowingRpm(ShiftpointRange shiftpointRange);
-        void ApplySharpnessFactor(Percentage percentage);
     }
 }

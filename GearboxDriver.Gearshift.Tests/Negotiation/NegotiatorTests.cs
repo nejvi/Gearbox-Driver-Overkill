@@ -7,6 +7,10 @@ namespace GearboxDriver.Gearshift.Tests.Negotiation
 {
     public class NegotiatorTests
     {
+        private readonly FollowRpmDemand _dummyFollowRpmDemand = new FollowRpmDemand(new ShiftpointRange(new Rpm(1000), new Rpm(4000)));
+        private readonly TargetGearDemand _dummyTargetGearDemand = new TargetGearDemand(new Gear(3));
+        private readonly YieldDemand _dummyYieldDemand = new YieldDemand();
+
         [Test]
         public void YieldsByDefault()
         {
@@ -21,7 +25,7 @@ namespace GearboxDriver.Gearshift.Tests.Negotiation
         public void GivenOnlyFollowRpmDemandItWinsTheNegotiation()
         {
             var negotiator = new Negotiator();
-            negotiator.Issue(new FollowRpmDemand(new Rpm(4000), new Rpm(1000)));
+            negotiator.Issue(_dummyFollowRpmDemand);
 
             var program = negotiator.Negotiate();
 
@@ -32,7 +36,7 @@ namespace GearboxDriver.Gearshift.Tests.Negotiation
         public void GivenOnlyTargetGearDemandItWinsTheNegotiation()
         {
             var negotiator = new Negotiator();
-            negotiator.Issue(new TargetGearDemand(new GearNumber(3)));
+            negotiator.Issue(_dummyTargetGearDemand);
 
             var program = negotiator.Negotiate();
 
@@ -43,11 +47,36 @@ namespace GearboxDriver.Gearshift.Tests.Negotiation
         public void GivenOnlyYieldDemandItWinsTheNegotiation()
         {
             var negotiator = new Negotiator();
-            negotiator.Issue(new YieldDemand());
+            negotiator.Issue(_dummyYieldDemand);
 
             var program = negotiator.Negotiate();
 
             Assert.True(program is YieldingShiftingProgram);
+        }
+
+        [Test]
+        public void YieldDemandWinsOverAllOtherDemands()
+        {
+            var negotiator = new Negotiator();
+            negotiator.Issue(_dummyYieldDemand);
+            negotiator.Issue(_dummyTargetGearDemand);
+            negotiator.Issue(_dummyFollowRpmDemand);
+
+            var program = negotiator.Negotiate();
+
+            Assert.True(program is YieldingShiftingProgram);
+        }
+
+        [Test]
+        public void TargetGearDemandWinsOverFollowRpmDemand()
+        {
+            var negotiator = new Negotiator();
+            negotiator.Issue(_dummyTargetGearDemand);
+            negotiator.Issue(_dummyFollowRpmDemand);
+
+            var program = negotiator.Negotiate();
+
+            Assert.True(program is GearTargetingShiftingProgram);
         }
     }
 }

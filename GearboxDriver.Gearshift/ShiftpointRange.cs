@@ -13,13 +13,17 @@ namespace GearboxDriver.Gearshift
 
         public ShiftpointRange(Rpm lowerShiftPoint, Rpm upperShiftPoint)
         {
+            if (lowerShiftPoint.Value > upperShiftPoint.Value)
+                throw new DomainRuleViolatedException("Upper shiftpoint value cannot be lower than lower shiftpoint value");
+
             LowerShiftPoint = lowerShiftPoint;
             UpperShiftPoint = upperShiftPoint;
         }
 
         protected override IEnumerable<object> GetAtomicValues()
         {
-            yield return UpperShiftPoint.Value - LowerShiftPoint.Value;
+            yield return UpperShiftPoint.Value;
+            yield return LowerShiftPoint.Value;
         }
     }
 }

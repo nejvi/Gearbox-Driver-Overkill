@@ -9,8 +9,12 @@ namespace GearboxDriver.Gearshift.Negotiaton
         private Optional<ModifySmoothnessDemand> _modifySmoothness;
         private Optional<FollowRpmDemand> _followRpm;
 
-        public Negotiator() // instantiate _yield/_targetGear/_modifySmoothness/_followRpm (?)
+        public Negotiator()
         {
+            _yield = Optional<YieldDemand>.Empty();
+            _targetGear = Optional<TargetGearDemand>.Empty();
+            _modifySmoothness = Optional<ModifySmoothnessDemand>.Empty();
+            _followRpm = Optional<FollowRpmDemand>.Empty();
         }
 
         public IShiftingProgram Negotiate()
@@ -36,7 +40,6 @@ namespace GearboxDriver.Gearshift.Negotiaton
 
         public void Issue(YieldDemand demand)
         {
-            // Check null if not instantiated (?)
             if (_yield.HasValue)
                 throw new DomainRuleViolatedException("Yield demand has already been issued.");
 

@@ -10,8 +10,4 @@
     <ProjectReference Include="..\GearboxDriver.Seedwork\GearboxDriver.Seedwork.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Integration\" />
-  </ItemGroup>
-
 </Project>

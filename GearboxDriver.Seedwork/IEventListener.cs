@@ -2,6 +2,6 @@
 {
     public interface IEventListener
     {
-        void SendEvent(IEvent @event);
+        void HandleEvent(IEvent @event);
     }
 }

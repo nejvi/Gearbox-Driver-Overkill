@@ -13,7 +13,7 @@ namespace GearboxDriver.Processes.Test
         [Test]
         public void CannotAddSameProcessManagersTwice()
         {
-            var processManagerPool = new ProcessManagerPool();
+            var processManagerPool = new ProcessPool();
 
             var processManager = new Mock<IProcessManager>();
 
@@ -27,7 +27,7 @@ namespace GearboxDriver.Processes.Test
         [Test]
         public void CannotRemoveSameProcessManagerTwice()
         {
-            var processManagerPool = new ProcessManagerPool();
+            var processManagerPool = new ProcessPool();
 
             var processManager = new SmoothBrakingWithTrailerAttached();
 

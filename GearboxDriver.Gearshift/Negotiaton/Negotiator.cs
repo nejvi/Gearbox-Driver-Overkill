@@ -64,9 +64,6 @@ namespace GearboxDriver.Gearshift.Negotiaton
 
         public void Issue(FollowRpmDemand demand)
         {
-            if (_followRpm.HasValue)
-                throw new DomainRuleViolatedException("Follow RPM demand has already been issued.");
-
             _followRpm = new Optional<FollowRpmDemand>(demand);
         }
 

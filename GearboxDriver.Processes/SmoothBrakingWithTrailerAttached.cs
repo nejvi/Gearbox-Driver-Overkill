@@ -6,13 +6,14 @@ namespace GearboxDriver.Processes
 {
     public class SmoothBrakingWithTrailerAttached : IProcessManager
     {
+        private bool HookOccupied { get; set; }
         private bool CarMovingDownhill { get; set; }
         private int CurrentGear { get; set; }
-        private GearshiftService _service;
+        private readonly IGearshiftService _service;
 
-        public SmoothBrakingWithTrailerAttached(/*GearshiftService service*/)
+        public SmoothBrakingWithTrailerAttached(IGearshiftService service)
         {
-            //_service = service;
+            _service = service;
             CarMovingDownhill = false;
         }
 

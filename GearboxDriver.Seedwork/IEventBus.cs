@@ -6,5 +6,6 @@ namespace GearboxDriver.Seedwork
     {
         void SendEvent(IEvent @event);
         void SendEvent(IEnumerable<IEvent> events);
+        void Attach(IEventListener listener);
     }
 }

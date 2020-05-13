@@ -7,7 +7,7 @@ namespace GearboxDriver.Processes
 {
     public class Characteristics
     {
-        private readonly Dictionary<ResponsivenessMode, ShiftpointRange> RangeForModes =
+        private readonly Dictionary<ResponsivenessMode, ShiftpointRange> _rangeForMode =
             new Dictionary<ResponsivenessMode, ShiftpointRange>
             {
                 { ResponsivenessMode.Economic, new ShiftpointRange(new Rpm(1000d), new Rpm(2000d)) },
@@ -15,7 +15,7 @@ namespace GearboxDriver.Processes
                 { ResponsivenessMode.Sport, new ShiftpointRange(new Rpm(1500d), new Rpm(5000d)) }
             };
 
-        private readonly Dictionary<AggressivenessLevel, Percentage> PercentageForAggressivenesLevel =
+        private readonly Dictionary<AggressivenessLevel, Percentage> _bumpPercentageForAggressivenessLevel =
             new Dictionary<AggressivenessLevel, Percentage>
             {
                 { AggressivenessLevel.First, new Percentage(1.0d) },
@@ -24,6 +24,6 @@ namespace GearboxDriver.Processes
             };
 
         public ShiftpointRange GetRangeFor(ResponsivenessMode responsivenessMode, AggressivenessLevel aggressivenessLevel)
-            => RangeForModes[responsivenessMode].AsModifiedBy(PercentageForAggressivenesLevel[aggressivenessLevel]);
+            => _rangeForMode[responsivenessMode].AsModifiedBy(_bumpPercentageForAggressivenessLevel[aggressivenessLevel]);
     }
 }

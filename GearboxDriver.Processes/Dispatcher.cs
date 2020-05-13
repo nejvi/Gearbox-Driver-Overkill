@@ -9,12 +9,12 @@ namespace GearboxDriver.Processes
 {
     public class Dispatcher
     {
-        private readonly ProcessManagerPool _pool;
+        private readonly ProcessPool _pool;
         private readonly GearshiftService _service;
 
         public Dispatcher(GearshiftService service)
         {
-            _pool = new ProcessManagerPool();
+            _pool = new ProcessPool();
             _service = service;
         }
 
@@ -22,16 +22,16 @@ namespace GearboxDriver.Processes
         {
             ManageProcessesLifetime(@event);
 
-            _pool.Dispatch(@event);
+            //_pool.Dispatch(@event);
         }
 
         private void ManageProcessesLifetime(IEvent @event)
         {
             switch (@event)
             {
-                case TrailerHookBecameOccupied _:
-                    _pool.Add(new SmoothBrakingWithTrailerAttached());
-                    break;
+                //case TrailerHookBecameOccupied _:
+                //    _pool.Add(new SmoothBrakingWithTrailerAttached());
+                //    break;
                 case TrailerHookStoppedBeingOccupied _:
                     _pool.Remove(typeof(SmoothBrakingWithTrailerAttached));
                     break;

@@ -8,6 +8,7 @@
   <ItemGroup>
     <ProjectReference Include="..\GearboxDriver.Dashboard\GearboxDriver.Cabin.csproj" />
     <ProjectReference Include="..\GearboxDriver.Hardware.ACL\GearboxDriver.Hardware.ACL.csproj" />
+    <ProjectReference Include="..\GearboxDriver.Processes\GearboxDriver.Processes.csproj" />
     <ProjectReference Include="..\GearboxDriver.SampleInfrastructure\GearboxDriver.SampleInfrastructure.csproj" />
   </ItemGroup>
 

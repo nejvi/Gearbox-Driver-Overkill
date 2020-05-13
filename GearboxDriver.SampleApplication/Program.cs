@@ -2,9 +2,12 @@
 using GearboxDriver.Cabin;
 using GearboxDriver.Cabin.Pedals;
 using GearboxDriver.Cabin.Responsiveness;
-using GearboxDriver.Cabin.Transmission;
+using GearboxDriver.Gearshift;
+using GearboxDriver.Gearshift.Negotiaton;
+using GearboxDriver.Gearshift.Shifting;
 using GearboxDriver.Hardware.ACL;
 using GearboxDriver.Hardware.API;
+using GearboxDriver.Processes;
 using GearboxDriver.SampleInfrastructure;
 
 namespace GearboxDriver.SampleApplication
@@ -18,9 +21,9 @@ namespace GearboxDriver.SampleApplication
             var externalSystemsAdapter = new ExternalSystemsAdapter(externalSystems);
 
             new AntiCorruptionLayerStartup(eventBus, externalSystemsAdapter).Start();
+            new ProcessesStartup(eventBus, new GearshiftService(new Negotiator(), new AutomaticGearshifter(null /*todo*/)), new Characteristics()).Start();
 
             var cabinService = new CabinService(eventBus);
-
             cabinService.SetDriveMode();
             cabinService.SetResponsivenessMode(ResponsivenessMode.Sport);
             cabinService.SetAggressivenessLevel(AggressivenessLevel.Third);

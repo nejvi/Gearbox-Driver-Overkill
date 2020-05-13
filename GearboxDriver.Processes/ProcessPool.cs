@@ -6,31 +6,37 @@ using GearboxDriver.Seedwork;
 
 namespace GearboxDriver.Processes
 {
-    public class ProcessManagerPool
+    public class ProcessPool : IEventListener
     {
-        private List<IProcessManager> _processManagers { get; }
+        private List<IProcessManager> ProcessManagers { get; }
+
+        public ProcessPool()
+        {
+            ProcessManagers = new List<IProcessManager>();
+        }
 
         public void Add(IProcessManager processManager)
         {
-            if (_processManagers.Any(x => x.GetType() == processManager.GetType()))
+            if (ProcessManagers.Any(x => x.GetType() == processManager.GetType()))
                 throw new ArgumentException("Such process already exists in the pool.");
 
-            _processManagers.Add(processManager);
+            ProcessManagers.Add(processManager);
         }
 
         public void Remove(Type processType)
         {
-            var process = _processManagers.SingleOrDefault(x => x.GetType() == processType);
+            var process = ProcessManagers.SingleOrDefault(x => x.GetType() == processType);
 
             if (process == null)
                 throw new ArgumentException("Such process does not exist in the pool.");
 
-            _processManagers.Remove(process);
+            ProcessManagers.Remove(process);
         }
 
-        public void Dispatch(IEvent @event)
+
+        public void HandleEvent(IEvent @event)
         {
-            foreach (var manager in _processManagers)
+            foreach (var manager in ProcessManagers)
                 manager.ApplyEvent(@event);
         }
     }

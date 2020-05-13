@@ -17,7 +17,7 @@ namespace GearboxDriver.SampleInfrastructure
         public void SendEvent(IEvent @event)
         {
             foreach (var listener in _listeners)
-                listener.SendEvent(@event);
+                listener.HandleEvent(@event);
         }
 
         public void SendEvent(IEnumerable<IEvent> events)
@@ -26,7 +26,7 @@ namespace GearboxDriver.SampleInfrastructure
                 SendEvent(@event);
         }
 
-        public void SubscribeForEvents(IEventListener listener)
+        public void Attach(IEventListener listener)
         {
             _listeners.Add(listener);
         }

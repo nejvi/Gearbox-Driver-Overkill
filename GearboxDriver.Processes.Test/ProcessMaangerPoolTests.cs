@@ -1,4 +1,5 @@
-﻿using GearboxDriver.Seedwork;
+﻿using GearboxDriver.Gearshift;
+using GearboxDriver.Seedwork;
 using Moq;
 using NUnit.Framework;
 using System;
@@ -17,7 +18,7 @@ namespace GearboxDriver.Processes.Test
 
             var processManager = new Mock<IProcessManager>();
 
-            Assert.Throws<ArgumentNullException>(() =>
+            Assert.Throws<ArgumentException>(() =>
             {
                 processManagerPool.Add(processManager.Object);
                 processManagerPool.Add(processManager.Object);
@@ -28,10 +29,10 @@ namespace GearboxDriver.Processes.Test
         public void CannotRemoveSameProcessManagerTwice()
         {
             var processManagerPool = new ProcessPool();
+            var serviceMock = new Mock<IGearshiftService>();
+            var processManager = new SmoothBrakingWithTrailerAttached(serviceMock.Object);
 
-            var processManager = new SmoothBrakingWithTrailerAttached();
-
-            Assert.Throws<ArgumentNullException>(() =>
+            Assert.Throws<ArgumentException>(() =>
             {
                 processManagerPool.Add(processManager);
                 processManagerPool.Remove(typeof(SmoothBrakingWithTrailerAttached));

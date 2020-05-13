@@ -1,4 +1,5 @@
-﻿using GearboxDriver.Hardware.ACL;
+﻿using GearboxDriver.Gearshift;
+using GearboxDriver.Hardware.ACL;
 using GearboxDriver.Seedwork;
 using Moq;
 using NUnit.Framework;
@@ -13,7 +14,8 @@ namespace GearboxDriver.Processes.Test
         [Test]
         public void WhenVehicleTiltedDownHillCarIsMovingDownhill()
         {
-            var manager = new SmoothBrakingWithTrailerAttached();
+            var serviceMock = new Mock<IGearshiftService>();
+            var manager = new SmoothBrakingWithTrailerAttached(serviceMock.Object);
 
             var @event = new VehicleTiltedDownhill();
 

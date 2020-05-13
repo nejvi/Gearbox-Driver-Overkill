@@ -6,7 +6,7 @@ using GearboxDriver.PublishedLanguage.ManualGearshifting;
 
 namespace GearboxDriver.Hardware.ACL
 {
-    public class GearboxAdapter
+    public class GearboxAdapter 
     {
         private readonly Gearbox _gearbox;
 

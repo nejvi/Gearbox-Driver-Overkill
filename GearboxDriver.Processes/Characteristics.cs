@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace GearboxDriver.Processes
 {
-    public class Characteristics
+    public class Characteristics : ICharacteristics
     {
         private readonly Dictionary<ResponsivenessMode, ShiftpointRange> _rangeForMode =
             new Dictionary<ResponsivenessMode, ShiftpointRange>
@@ -25,5 +25,6 @@ namespace GearboxDriver.Processes
 
         public ShiftpointRange GetRangeFor(ResponsivenessMode responsivenessMode, AggressivenessLevel aggressivenessLevel)
             => _rangeForMode[responsivenessMode].AsModifiedBy(_bumpPercentageForAggressivenessLevel[aggressivenessLevel]);
+
     }
 }

@@ -11,7 +11,7 @@ namespace GearboxDriver.Gearshift
         void AbstainFromChangingGears();
         void StopAbstainingFromChangingGears();
         void TargetGear(Gear gearNumber);
-        void StopTargetingGear();
+        void StopTargetingAnyGear();
         void KeepFollowingRpm(ShiftpointRange shiftpointRange);
         void DoEngineBraking();
         void StopDoingEngineBraking();

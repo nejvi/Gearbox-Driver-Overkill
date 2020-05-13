@@ -12,7 +12,7 @@ namespace GearboxDriver.Processes.Test
         {
             var serviceMock = new Mock<IGearshiftService>();
             var characteristics = new Characteristics();
-            var processManager = new ResponsivenessModeUpdatingProcess(serviceMock.Object, characteristics);
+            var processManager = new ResponsivenessModeProgramUpdatingProcess(serviceMock.Object, characteristics);
 
             processManager.ApplyEvent(new ComfortModeEntered());
             processManager.ApplyEvent(new AggressivenessLevelSelected(AggressivenessLevel.First));
@@ -25,7 +25,7 @@ namespace GearboxDriver.Processes.Test
         {
             var serviceMock = new Mock<IGearshiftService>();
             var characteristics = new Characteristics();
-            var processManager = new ResponsivenessModeUpdatingProcess(serviceMock.Object, characteristics);
+            var processManager = new ResponsivenessModeProgramUpdatingProcess(serviceMock.Object, characteristics);
 
             processManager.ApplyEvent(new ComfortModeEntered());
             processManager.ApplyEvent(new AggressivenessLevelSelected(AggressivenessLevel.Second));
@@ -39,7 +39,7 @@ namespace GearboxDriver.Processes.Test
         {
             var serviceMock = new Mock<IGearshiftService>();
             var characteristics = new Characteristics();
-            var processManager = new ResponsivenessModeUpdatingProcess(serviceMock.Object, characteristics);
+            var processManager = new ResponsivenessModeProgramUpdatingProcess(serviceMock.Object, characteristics);
 
             processManager.ApplyEvent(new ComfortModeEntered());
             processManager.ApplyEvent(new AggressivenessLevelSelected(AggressivenessLevel.Third));
@@ -52,7 +52,7 @@ namespace GearboxDriver.Processes.Test
         {
             var serviceMock = new Mock<IGearshiftService>();
             var characteristics = new Characteristics();
-            var processManager = new ResponsivenessModeUpdatingProcess(serviceMock.Object, characteristics);
+            var processManager = new ResponsivenessModeProgramUpdatingProcess(serviceMock.Object, characteristics);
 
             processManager.ApplyEvent(new EconomicModeEntered());
             processManager.ApplyEvent(new AggressivenessLevelSelected(AggressivenessLevel.First));
@@ -65,7 +65,7 @@ namespace GearboxDriver.Processes.Test
         {
             var serviceMock = new Mock<IGearshiftService>();
             var characteristics = new Characteristics();
-            var processManager = new ResponsivenessModeUpdatingProcess(serviceMock.Object, characteristics);
+            var processManager = new ResponsivenessModeProgramUpdatingProcess(serviceMock.Object, characteristics);
 
             processManager.ApplyEvent(new EconomicModeEntered());
             processManager.ApplyEvent(new AggressivenessLevelSelected(AggressivenessLevel.Second));
@@ -78,7 +78,7 @@ namespace GearboxDriver.Processes.Test
         {
             var serviceMock = new Mock<IGearshiftService>();
             var characteristics = new Characteristics();
-            var processManager = new ResponsivenessModeUpdatingProcess(serviceMock.Object, characteristics);
+            var processManager = new ResponsivenessModeProgramUpdatingProcess(serviceMock.Object, characteristics);
 
             processManager.ApplyEvent(new EconomicModeEntered());
             processManager.ApplyEvent(new AggressivenessLevelSelected(AggressivenessLevel.Third));
@@ -91,7 +91,7 @@ namespace GearboxDriver.Processes.Test
         {
             var serviceMock = new Mock<IGearshiftService>();
             var characteristics = new Characteristics();
-            var processManager = new ResponsivenessModeUpdatingProcess(serviceMock.Object, characteristics);
+            var processManager = new ResponsivenessModeProgramUpdatingProcess(serviceMock.Object, characteristics);
 
             processManager.ApplyEvent(new SportModeEntered());
             processManager.ApplyEvent(new AggressivenessLevelSelected(AggressivenessLevel.First));
@@ -104,7 +104,7 @@ namespace GearboxDriver.Processes.Test
         {
             var serviceMock = new Mock<IGearshiftService>();
             var characteristics = new Characteristics();
-            var processManager = new ResponsivenessModeUpdatingProcess(serviceMock.Object, characteristics);
+            var processManager = new ResponsivenessModeProgramUpdatingProcess(serviceMock.Object, characteristics);
 
             processManager.ApplyEvent(new SportModeEntered());
             processManager.ApplyEvent(new AggressivenessLevelSelected(AggressivenessLevel.Second));
@@ -117,7 +117,7 @@ namespace GearboxDriver.Processes.Test
         {
             var serviceMock = new Mock<IGearshiftService>();
             var characteristics = new Characteristics();
-            var processManager = new ResponsivenessModeUpdatingProcess(serviceMock.Object, characteristics);
+            var processManager = new ResponsivenessModeProgramUpdatingProcess(serviceMock.Object, characteristics);
 
             processManager.ApplyEvent(new SportModeEntered());
             processManager.ApplyEvent(new AggressivenessLevelSelected(AggressivenessLevel.Third));

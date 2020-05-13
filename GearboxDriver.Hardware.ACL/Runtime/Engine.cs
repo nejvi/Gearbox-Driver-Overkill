@@ -8,8 +8,8 @@ namespace GearboxDriver.Hardware.ACL.Runtime
 {
     public class Engine
     {
-        private TimeSpan _tickRate;
-        private IReadOnlyCollection<IReporter> _reporters;
+        private readonly TimeSpan _tickRate = TimeSpan.FromSeconds(1);
+        private readonly IReadOnlyCollection<IReporter> _reporters;
         private bool _isRunning;
 
         public Engine(IReadOnlyCollection<IReporter> reporters)

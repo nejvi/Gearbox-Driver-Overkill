@@ -21,5 +21,10 @@ namespace GearboxDriver.PublishedLanguage.Gearbox
         {
             return new Gear(Value - gear.Value);
         }
+
+        public Gear UpshiftedBy(Gear gear)
+        {
+            return new Gear(Value + gear.Value);
+        }
     }
 }

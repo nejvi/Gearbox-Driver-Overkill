@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using GearboxDriver.Hardware.ACL;
 using GearboxDriver.Seedwork;
 
@@ -16,7 +17,7 @@ namespace GearboxDriver.SampleInfrastructure
 
         public void SendEvent(IEvent @event)
         {
-            foreach (var listener in _listeners)
+            foreach (var listener in _listeners.ToList())
                 listener.HandleEvent(@event);
         }
 

@@ -4,14 +4,14 @@ using GearboxDriver.Seedwork;
 
 namespace GearboxDriver.Processes
 {
-    public class RpmBasedByModes : IProcess
+    public class ResponsivenessModeProgramUpdatingProcess : IProcess
     {
         private readonly IGearshiftService _service;
         private readonly Characteristics _characteristics;
         private ResponsivenessMode CurrentResponsivenessMode { get; set; }
         private AggressivenessLevel CurrentAggressivenessLevel { get; set; }
 
-        public RpmBasedByModes(IGearshiftService service, Characteristics characteristics)
+        public ResponsivenessModeProgramUpdatingProcess(IGearshiftService service, Characteristics characteristics)
         {
             _service = service;
             _characteristics = characteristics;

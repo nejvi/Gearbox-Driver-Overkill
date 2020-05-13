@@ -1,19 +1,16 @@
 ﻿using GearboxDriver.Cabin.Pedals;
 using GearboxDriver.Cabin.Responsiveness;
 using GearboxDriver.Seedwork;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace GearboxDriver.Processes
 {
-    public class GearYieldedWithKickdownActivated : IProcess
+    public class KickdownDetectionProcess : IProcess
     {
         private bool KickdownActivated { get; set; }
         private bool StrongKickdownActivated { get; set; }
         private ResponsivenessMode ResponsivenessMode { get; set; }
 
-        public GearYieldedWithKickdownActivated()
+        public KickdownDetectionProcess()
         {
             KickdownActivated = false;
             StrongKickdownActivated = false;

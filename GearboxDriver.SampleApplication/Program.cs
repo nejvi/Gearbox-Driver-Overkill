@@ -19,6 +19,7 @@ namespace GearboxDriver.SampleApplication
             var externalSystems = new ExternalSystems();
             var eventBus = new EventBusThatYouDontWantToUseInProduction();
             var externalSystemsAdapter = new ExternalSystemsAdapter(externalSystems);
+            eventBus.Attach(new EventLogger());
 
             new AntiCorruptionLayerStartup(eventBus, externalSystemsAdapter).Start();
             new ProcessesStartup(eventBus, new GearshiftService(new Negotiator(), new AutomaticGearshifter(null /*todo*/)), new Characteristics()).Start();
@@ -28,6 +29,7 @@ namespace GearboxDriver.SampleApplication
             cabinService.SetResponsivenessMode(ResponsivenessMode.Sport);
             cabinService.SetAggressivenessLevel(AggressivenessLevel.Third);
             cabinService.ApplyGasPedalPressure(new PedalPressure(0.75));
+
 
             Console.ReadKey();
         }

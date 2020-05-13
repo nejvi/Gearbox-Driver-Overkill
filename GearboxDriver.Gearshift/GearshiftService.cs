@@ -36,7 +36,7 @@ namespace GearboxDriver.Gearshift
             _gearshifter.SetProgram(_negotiator.Negotiate());
         }
 
-        public void StopTargetingGear()
+        public void StopTargetingAnyGear()
         {
             _negotiator.RevokeTargetGearDemand();
 

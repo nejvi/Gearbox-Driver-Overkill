@@ -19,7 +19,7 @@ namespace GearboxDriver.Processes.Test
         {
             var serviceMock = new Mock<IGearshiftService>();
 
-            var processManager = new GearboxDriverYielededWithMDynamicModeActivated(serviceMock.Object);
+            var processManager = new MDynamicSlippingDetectionProcess(serviceMock.Object);
             var @event = new VehicleStartedSlipping();
 
             processManager.ApplyEvent(@event);
@@ -32,7 +32,7 @@ namespace GearboxDriver.Processes.Test
         {
             var serviceMock = new Mock<IGearshiftService>();
 
-            var processManager = new GearboxDriverYielededWithMDynamicModeActivated(serviceMock.Object);
+            var processManager = new MDynamicSlippingDetectionProcess(serviceMock.Object);
             var @event = new VehicleStoppedSlipping();
 
             processManager.ApplyEvent(@event);

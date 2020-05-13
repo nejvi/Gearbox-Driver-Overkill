@@ -10,5 +10,10 @@ namespace GearboxDriver.Hardware.ACL
         {
             Rpm = rpm;
         }
+
+        public override string ToString()
+        {
+            return $"Rpm changed to {Rpm.Value}";
+        }
     }
 }

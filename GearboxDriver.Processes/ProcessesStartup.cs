@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using GearboxDriver.Gearshift;
+﻿using GearboxDriver.Gearshift;
 using GearboxDriver.Seedwork;
 
 namespace GearboxDriver.Processes
@@ -23,10 +20,10 @@ namespace GearboxDriver.Processes
         {
             var pool = new ProcessPool();
             pool.Add(new TrailerEngineBrakingDetectionProcess(_gearshiftService));
-            pool.Add(new GearYieldedWithKickdownActivated());
-            pool.Add(new NoInterferenceToGearshiftWithManualMode());
-            pool.Add(new GearboxDriverYielededWithMDynamicModeActivated(_gearshiftService));
-            pool.Add(new RpmBasedByModes(_gearshiftService, _engineCharacteristics));
+            pool.Add(new KickdownDetectionProcess());
+            pool.Add(new ManualModeProgramUpdatingProcess(_gearshiftService));
+            pool.Add(new MDynamicSlippingDetectionProcess(_gearshiftService));
+            pool.Add(new ResponsivenessModeProgramUpdatingProcess(_gearshiftService, _engineCharacteristics));
             _eventBus.Attach(pool);
         }
     }

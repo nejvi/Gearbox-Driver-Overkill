@@ -30,10 +30,5 @@ namespace GearboxDriver.Hardware.ACL
                     break;
             }
         }
-
-        public void HandleTransmission(IEvent @event)
-        {
-
-        }
     }
 }

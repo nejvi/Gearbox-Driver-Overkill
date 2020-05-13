@@ -9,10 +9,10 @@ using System.Text;
 
 namespace GearboxDriver.Processes.Test
 {
-    public class ProcessMaangerPoolTests
+    public class ProcessPoolTests
     {
         [Test]
-        public void CannotAddSameProcessManagersTwice()
+        public void CannotAddSameProcessTwice()
         {
             var processManagerPool = new ProcessPool();
 
@@ -26,7 +26,7 @@ namespace GearboxDriver.Processes.Test
         }
 
         [Test]
-        public void CannotRemoveSameProcessManagerTwice()
+        public void CannotRemoveSameProcessTwice()
         {
             var processManagerPool = new ProcessPool();
             var serviceMock = new Mock<IGearshiftService>();

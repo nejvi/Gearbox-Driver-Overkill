@@ -5,14 +5,14 @@ using NUnit.Framework;
 
 namespace GearboxDriver.Processes.Test
 {
-    public class RpmBasedByModesTests
+    public class ResponsivenessModeUpdatingProcessTests
     {
         [Test]
-        public void WhenComfortModeEnteredAndAggressivenessLevelSelectedIsFirstEventOccuredSendsProperRange()
+        public void WhenComfortModeEnteredAndFirstAggressivenessLevelSelectedEventOccursSendsAdequateDemand()
         {
             var serviceMock = new Mock<IGearshiftService>();
             var characteristics = new Characteristics();
-            var processManager = new RpmBasedByModes(serviceMock.Object, characteristics);
+            var processManager = new ResponsivenessModeUpdatingProcess(serviceMock.Object, characteristics);
 
             processManager.ApplyEvent(new ComfortModeEntered());
             processManager.ApplyEvent(new AggressivenessLevelSelected(AggressivenessLevel.First));
@@ -21,11 +21,11 @@ namespace GearboxDriver.Processes.Test
         }
 
         [Test]
-        public void WhenComfortModeEnteredAndAggressivenessLevelSelectedIsSecondEventOccuredSendsProperRange()
+        public void WhenComfortModeEnteredAndAggressivenessLevelSelectedIsSecondEventOccuredSendsAdequateDemand()
         {
             var serviceMock = new Mock<IGearshiftService>();
             var characteristics = new Characteristics();
-            var processManager = new RpmBasedByModes(serviceMock.Object, characteristics);
+            var processManager = new ResponsivenessModeUpdatingProcess(serviceMock.Object, characteristics);
 
             processManager.ApplyEvent(new ComfortModeEntered());
             processManager.ApplyEvent(new AggressivenessLevelSelected(AggressivenessLevel.Second));
@@ -35,11 +35,11 @@ namespace GearboxDriver.Processes.Test
         }
 
         [Test]
-        public void WhenComfortModeEnteredAndAggressivenessLevelSelectedIsThirdEventOccuredSendsProperRange()
+        public void WhenComfortModeEnteredAndAggressivenessLevelSelectedIsThirdEventOccuredSendsAdequateDemand()
         {
             var serviceMock = new Mock<IGearshiftService>();
             var characteristics = new Characteristics();
-            var processManager = new RpmBasedByModes(serviceMock.Object, characteristics);
+            var processManager = new ResponsivenessModeUpdatingProcess(serviceMock.Object, characteristics);
 
             processManager.ApplyEvent(new ComfortModeEntered());
             processManager.ApplyEvent(new AggressivenessLevelSelected(AggressivenessLevel.Third));
@@ -48,11 +48,11 @@ namespace GearboxDriver.Processes.Test
         }
 
         [Test]
-        public void WhenEconomicModeEnteredAndAggressivenessLevelSelectedIsFirstEventOccuredSendsProperRange()
+        public void WhenEconomicModeEnteredAndAggressivenessLevelSelectedIsFirstEventOccuredSendsAdequateDemand()
         {
             var serviceMock = new Mock<IGearshiftService>();
             var characteristics = new Characteristics();
-            var processManager = new RpmBasedByModes(serviceMock.Object, characteristics);
+            var processManager = new ResponsivenessModeUpdatingProcess(serviceMock.Object, characteristics);
 
             processManager.ApplyEvent(new EconomicModeEntered());
             processManager.ApplyEvent(new AggressivenessLevelSelected(AggressivenessLevel.First));
@@ -61,11 +61,11 @@ namespace GearboxDriver.Processes.Test
         }
 
         [Test]
-        public void WhenEconomicModeEnteredAndAggressivenessLevelSelectedIsSecondEventOccuredSendsProperRange()
+        public void WhenEconomicModeEnteredAndAggressivenessLevelSelectedIsSecondEventOccuredSendsAdequateDemand()
         {
             var serviceMock = new Mock<IGearshiftService>();
             var characteristics = new Characteristics();
-            var processManager = new RpmBasedByModes(serviceMock.Object, characteristics);
+            var processManager = new ResponsivenessModeUpdatingProcess(serviceMock.Object, characteristics);
 
             processManager.ApplyEvent(new EconomicModeEntered());
             processManager.ApplyEvent(new AggressivenessLevelSelected(AggressivenessLevel.Second));
@@ -74,11 +74,11 @@ namespace GearboxDriver.Processes.Test
         }
 
         [Test]
-        public void WhenEconomicModeEnteredAndAggressivenessLevelSelectedIsThirdEventOccuredSendsProperRange()
+        public void WhenEconomicModeEnteredAndAggressivenessLevelSelectedIsThirdEventOccuredSendsAdequateDemand()
         {
             var serviceMock = new Mock<IGearshiftService>();
             var characteristics = new Characteristics();
-            var processManager = new RpmBasedByModes(serviceMock.Object, characteristics);
+            var processManager = new ResponsivenessModeUpdatingProcess(serviceMock.Object, characteristics);
 
             processManager.ApplyEvent(new EconomicModeEntered());
             processManager.ApplyEvent(new AggressivenessLevelSelected(AggressivenessLevel.Third));
@@ -87,11 +87,11 @@ namespace GearboxDriver.Processes.Test
         }
 
         [Test]
-        public void WhenSportModeEnteredAndAggressivenessLevelSelectedIsFirstEventOccuredSendsProperRange()
+        public void WhenSportModeEnteredAndAggressivenessLevelSelectedIsFirstEventOccuredSendsAdequateDemand()
         {
             var serviceMock = new Mock<IGearshiftService>();
             var characteristics = new Characteristics();
-            var processManager = new RpmBasedByModes(serviceMock.Object, characteristics);
+            var processManager = new ResponsivenessModeUpdatingProcess(serviceMock.Object, characteristics);
 
             processManager.ApplyEvent(new SportModeEntered());
             processManager.ApplyEvent(new AggressivenessLevelSelected(AggressivenessLevel.First));
@@ -100,11 +100,11 @@ namespace GearboxDriver.Processes.Test
         }
 
         [Test]
-        public void WhenSportModeEnteredAndAggressivenessLevelSelectedIsSecondEventOccuredSendsProperRange()
+        public void WhenSportModeEnteredAndAggressivenessLevelSelectedIsSecondEventOccuredSendsAdequateDemand()
         {
             var serviceMock = new Mock<IGearshiftService>();
             var characteristics = new Characteristics();
-            var processManager = new RpmBasedByModes(serviceMock.Object, characteristics);
+            var processManager = new ResponsivenessModeUpdatingProcess(serviceMock.Object, characteristics);
 
             processManager.ApplyEvent(new SportModeEntered());
             processManager.ApplyEvent(new AggressivenessLevelSelected(AggressivenessLevel.Second));
@@ -113,11 +113,11 @@ namespace GearboxDriver.Processes.Test
         }
 
         [Test]
-        public void WhenSportModeEnteredAndAggressivenessLevelSelectedIsThirdEventOccuredSendsProperRange()
+        public void WhenSportModeEnteredAndAggressivenessLevelSelectedIsThirdEventOccuredSendsAdequateDemand()
         {
             var serviceMock = new Mock<IGearshiftService>();
             var characteristics = new Characteristics();
-            var processManager = new RpmBasedByModes(serviceMock.Object, characteristics);
+            var processManager = new ResponsivenessModeUpdatingProcess(serviceMock.Object, characteristics);
 
             processManager.ApplyEvent(new SportModeEntered());
             processManager.ApplyEvent(new AggressivenessLevelSelected(AggressivenessLevel.Third));

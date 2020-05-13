@@ -1,4 +1,6 @@
-﻿namespace GearboxDriver.Gearshift.Negotiation
+﻿using GearboxDriver.PublishedLanguage.Gearbox;
+
+namespace GearboxDriver.Gearshift.Negotiation
 {
     public class TargetGearDemand 
     {

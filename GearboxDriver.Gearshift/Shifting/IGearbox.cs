@@ -1,4 +1,6 @@
-﻿namespace GearboxDriver.Gearshift.Shifting
+﻿using GearboxDriver.PublishedLanguage.Gearbox;
+
+namespace GearboxDriver.Gearshift.Shifting
 {
     public interface IGearbox
     {

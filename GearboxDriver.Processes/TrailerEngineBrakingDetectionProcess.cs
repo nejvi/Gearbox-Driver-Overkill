@@ -1,5 +1,6 @@
 ﻿using GearboxDriver.Gearshift;
 using GearboxDriver.Hardware.ACL;
+using GearboxDriver.PublishedLanguage.Gearbox;
 using GearboxDriver.PublishedLanguage.Towing;
 using GearboxDriver.Seedwork;
 
@@ -32,8 +33,9 @@ namespace GearboxDriver.Processes
                 case TrailerHookStoppedBeingOccupied _:
                     HookOccupied = false;
                     break;
-                //case GearUpshifted _: // todo
-                //case GearDownshifted _: // todo
+                case GearChanged gearChanged:
+                    CurrentGear = gearChanged.EnteredGear;
+                    break;
                 case VehicleTiltedDownhill _:
                     CarMovingDownhill = true;
                     _service.TargetGear(CurrentGear.DownshiftedBy(new Gear(1)));

@@ -1,5 +1,6 @@
 ﻿using GearboxDriver.Gearshift.Negotiation;
 using GearboxDriver.Gearshift.Shifting;
+using GearboxDriver.PublishedLanguage.Gearbox;
 
 namespace GearboxDriver.Gearshift
 {

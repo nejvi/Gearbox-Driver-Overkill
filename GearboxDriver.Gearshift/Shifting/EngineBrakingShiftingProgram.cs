@@ -1,5 +1,6 @@
 ﻿using System;
 using GearboxDriver.Hardware.ACL;
+using GearboxDriver.PublishedLanguage.Gearbox;
 
 namespace GearboxDriver.Gearshift.Shifting
 {

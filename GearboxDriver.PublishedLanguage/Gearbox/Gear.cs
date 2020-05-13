@@ -1,7 +1,7 @@
-﻿using GearboxDriver.Seedwork;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using GearboxDriver.Seedwork;
 
-namespace GearboxDriver.Gearshift
+namespace GearboxDriver.PublishedLanguage.Gearbox
 {
     public class Gear : ValueObject
     {

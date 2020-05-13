@@ -1,5 +1,6 @@
 ﻿using GearboxDriver.Gearshift.Shifting;
 using GearboxDriver.Hardware.ACL;
+using GearboxDriver.PublishedLanguage.Gearbox;
 using NUnit.Framework;
 
 namespace GearboxDriver.Gearshift.Tests.Shifting

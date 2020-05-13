@@ -1,13 +1,10 @@
-﻿using GearboxDriver.Seedwork;
-using System;
-using System.Collections.Generic;
-using System.Net.Mail;
-using System.Text;
+﻿using System.Collections.Generic;
 
-namespace GearboxDriver.Hardware.ACL
+namespace GearboxDriver.Seedwork
 {
     public interface IEventBus
     {
         void SendEvent(IEvent @event);
+        void SendEvent(IEnumerable<IEvent> events);
     }
 }

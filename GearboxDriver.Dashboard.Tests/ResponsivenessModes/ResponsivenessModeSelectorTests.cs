@@ -45,7 +45,7 @@ namespace GearboxDriver.Dashboard.Tests.ResponsivenessModes
         {
             var selector = new ResponsivenessModeSelector();
 
-            var events = selector.SetFirstAggressivenessLevel(AggressivenessLevel.Second);
+            var events = selector.SetAggressivenessLevel(AggressivenessLevel.Second);
 
             Assert.True(events.Any(x => x is AggressivenessLevelSelected));
         }
@@ -93,8 +93,8 @@ namespace GearboxDriver.Dashboard.Tests.ResponsivenessModes
 
             Assert.Throws<DomainRuleViolatedException>(() =>
             {
-                selector.SetFirstAggressivenessLevel(AggressivenessLevel.First);
-                selector.SetFirstAggressivenessLevel(AggressivenessLevel.First);
+                selector.SetAggressivenessLevel(AggressivenessLevel.First);
+                selector.SetAggressivenessLevel(AggressivenessLevel.First);
             });
         }
     }

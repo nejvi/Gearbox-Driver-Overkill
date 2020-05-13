@@ -51,7 +51,7 @@ namespace GearboxDriver.Cabin.Responsiveness
             return new List<IEvent> {new SportModeEntered()};
         }
 
-        public IReadOnlyCollection<IEvent> SetFirstAggressivenessLevel(AggressivenessLevel level)
+        public IReadOnlyCollection<IEvent> SetAggressivenessLevel(AggressivenessLevel level)
         {
             if(_currentAggressivenessLevel == level && HasEverReportedBefore)
                 throw new DomainRuleViolatedException("This aggressiveness level was already selected");

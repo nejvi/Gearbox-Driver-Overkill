@@ -108,7 +108,7 @@ namespace GearboxDriver.Dashboard.Tests.ReadModels
 
             dashboardState.Apply(rpmChanged);
 
-            Assert.AreEqual(dashboardState.CurrentRPM, 1500d.ToString());
+            Assert.AreEqual(dashboardState.CurrentRpm, 1500d.ToString());
         }
 
         [Test]

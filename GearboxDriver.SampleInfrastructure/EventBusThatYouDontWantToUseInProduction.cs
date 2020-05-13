@@ -20,6 +20,12 @@ namespace GearboxDriver.SampleInfrastructure
                 listener.SendEvent(@event);
         }
 
+        public void SendEvent(IEnumerable<IEvent> events)
+        {
+            foreach (var @event in events) 
+                SendEvent(@event);
+        }
+
         public void SubscribeForEvents(IEventListener listener)
         {
             _listeners.Add(listener);

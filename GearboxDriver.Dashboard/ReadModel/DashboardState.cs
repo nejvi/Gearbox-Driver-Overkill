@@ -9,7 +9,7 @@ namespace GearboxDriver.Cabin.ReadModel
     public class DashboardState
     {
         public string CurrentTransmissionMode { get; private set; }
-        public string CurrentRPM { get; private set; }
+        public string CurrentRpm { get; private set; }
         public string CurrentResponsivenessMode { get; private set; }
         public string CurrentAggressivenessLevel { get; private set; }
         public bool IsInManualGearshiftingMode { get; private set; }
@@ -19,7 +19,7 @@ namespace GearboxDriver.Cabin.ReadModel
             CurrentResponsivenessMode = "COMFORT";
             CurrentTransmissionMode = "PARK";
             CurrentResponsivenessMode = AggressivenessLevel.First.ToString();
-            CurrentRPM = "0";
+            CurrentRpm = "0";
             IsInManualGearshiftingMode = false;
         }
 
@@ -54,7 +54,7 @@ namespace GearboxDriver.Cabin.ReadModel
                     break;
 
                 case RPMChanged rpmChanged:
-                    CurrentRPM = rpmChanged.Rpm.Value.ToString();
+                    CurrentRpm = rpmChanged.Rpm.Value.ToString();
                     break;
 
                 case ManualGearshiftingModeEntered _:

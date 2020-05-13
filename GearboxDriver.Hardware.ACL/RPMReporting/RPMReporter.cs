@@ -1,4 +1,5 @@
 ﻿using GearboxDriver.Hardware.ACL.Runtime;
+using GearboxDriver.Seedwork;
 
 namespace GearboxDriver.Hardware.ACL.RPMReporting
 {

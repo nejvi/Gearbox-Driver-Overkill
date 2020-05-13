@@ -1,4 +1,5 @@
 using GearboxDriver.Hardware.ACL.RPMReporting;
+using GearboxDriver.Seedwork;
 using Moq;
 using NUnit.Framework;
 

@@ -2,6 +2,7 @@
 using GearboxDriver.Hardware.ACL.Runtime;
 using GearboxDriver.Hardware.ACL.TiltPositionReporting;
 using GearboxDriver.Hardware.ACL.VehicleSlippingReporting;
+using GearboxDriver.Seedwork;
 
 namespace GearboxDriver.Hardware.ACL
 {

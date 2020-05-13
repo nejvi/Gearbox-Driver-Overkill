@@ -1,6 +1,5 @@
-﻿using GearboxDriver.Gearshift.Negotiaton;
+﻿using GearboxDriver.Gearshift.Negotiation;
 using GearboxDriver.Gearshift.Shifting;
-using GearboxDriver.Hardware.ACL;
 
 namespace GearboxDriver.Gearshift
 {
@@ -46,6 +45,20 @@ namespace GearboxDriver.Gearshift
         public void KeepFollowingRpm(ShiftpointRange range)
         {
             _negotiator.Issue(new FollowRpmDemand(range));
+
+            _gearshifter.SetProgram(_negotiator.Negotiate());
+        }
+
+        public void DoEngineBraking()
+        {
+            _negotiator.Issue(new EngineBrakingDemand());
+
+            _gearshifter.SetProgram(_negotiator.Negotiate());
+        }
+
+        public void StopDoingEngineBraking()
+        {
+            _negotiator.RevokeEngineBrakingDemand();
 
             _gearshifter.SetProgram(_negotiator.Negotiate());
         }

@@ -16,7 +16,7 @@ namespace GearboxDriver.Processes.Test
         {
             var processManagerPool = new ProcessPool();
 
-            var processManager = new Mock<IProcessManager>();
+            var processManager = new Mock<IProcess>();
 
             Assert.Throws<ArgumentException>(() =>
             {
@@ -30,13 +30,13 @@ namespace GearboxDriver.Processes.Test
         {
             var processManagerPool = new ProcessPool();
             var serviceMock = new Mock<IGearshiftService>();
-            var processManager = new SmoothBrakingWithTrailerAttached(serviceMock.Object);
+            var processManager = new TrailerEngineBrakingDetectionProcess(serviceMock.Object);
 
             Assert.Throws<ArgumentException>(() =>
             {
                 processManagerPool.Add(processManager);
-                processManagerPool.Remove(typeof(SmoothBrakingWithTrailerAttached));
-                processManagerPool.Remove(typeof(SmoothBrakingWithTrailerAttached));
+                processManagerPool.Remove(typeof(TrailerEngineBrakingDetectionProcess));
+                processManagerPool.Remove(typeof(TrailerEngineBrakingDetectionProcess));
             });
         }
     }

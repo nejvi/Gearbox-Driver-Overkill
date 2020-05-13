@@ -1,4 +1,4 @@
-﻿using GearboxDriver.Gearshift.Negotiaton;
+﻿using GearboxDriver.Gearshift.Negotiation;
 using GearboxDriver.Gearshift.Shifting;
 using GearboxDriver.Hardware.ACL;
 using NUnit.Framework;
@@ -77,6 +77,44 @@ namespace GearboxDriver.Gearshift.Tests.Negotiation
             var program = negotiator.Negotiate();
 
             Assert.True(program is GearTargetingShiftingProgram);
+        }
+
+        [Test]
+        public void RevokingTargetGearDemandMakesItGoBackToFollowRpmDemand()
+        {
+            var negotiator = new Negotiator();
+            negotiator.Issue(_dummyTargetGearDemand);
+            negotiator.Issue(_dummyFollowRpmDemand);
+            negotiator.RevokeTargetGearDemand();
+
+            var program = negotiator.Negotiate();
+
+            Assert.True(program is RpmBasedShiftingProgram);
+        }
+
+        [Test]
+        public void EngineBreakingDemandAltersAffectsTheProgramWhenInRpm()
+        {
+            var negotiator = new Negotiator();
+            negotiator.Issue(_dummyFollowRpmDemand);
+            negotiator.Issue(new EngineBrakingDemand());
+
+            var program = negotiator.Negotiate();
+
+            Assert.True(program is EngineBrakingShiftingProgram);
+        }
+
+        [Test]
+        public void RevokingEngineBrakingProgramMakesNegotiatorReturnRpmBackAgain()
+        {
+            var negotiator = new Negotiator();
+            negotiator.Issue(_dummyFollowRpmDemand);
+            negotiator.Issue(new EngineBrakingDemand());
+            negotiator.RevokeEngineBrakingDemand();
+
+            var program = negotiator.Negotiate();
+
+            Assert.True(program is RpmBasedShiftingProgram);
         }
 
         [Test]

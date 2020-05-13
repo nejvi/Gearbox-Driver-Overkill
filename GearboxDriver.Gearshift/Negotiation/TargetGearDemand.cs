@@ -1,4 +1,4 @@
-﻿namespace GearboxDriver.Gearshift.Negotiaton
+﻿namespace GearboxDriver.Gearshift.Negotiation
 {
     public class TargetGearDemand 
     {

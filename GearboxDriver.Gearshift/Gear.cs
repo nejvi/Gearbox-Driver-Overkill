@@ -1,7 +1,5 @@
 ﻿using GearboxDriver.Seedwork;
-using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace GearboxDriver.Gearshift
 {
@@ -17,6 +15,11 @@ namespace GearboxDriver.Gearshift
         protected override IEnumerable<object> GetAtomicValues()
         {
             yield return Value;
+        }
+
+        public Gear DownshiftedBy(Gear gear)
+        {
+            return new Gear(Value - gear.Value);
         }
     }
 }

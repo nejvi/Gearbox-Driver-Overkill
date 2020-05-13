@@ -53,7 +53,7 @@ namespace GearboxDriver.Cabin.ReadModel
                     CurrentAggressivenessLevel = aggressivenessLevelSelected.Level.ToString();
                     break;
 
-                case RPMChanged rpmChanged:
+                case RpmChanged rpmChanged:
                     CurrentRpm = rpmChanged.Rpm.Value.ToString();
                     break;
 

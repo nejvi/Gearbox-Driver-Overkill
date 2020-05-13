@@ -6,7 +6,7 @@ using System.Text;
 
 namespace GearboxDriver.Processes
 {
-    public class NoInterferenceToGearshiftWithManualMode : IProcessManager
+    public class NoInterferenceToGearshiftWithManualMode : IProcess
     {
         private bool VehicleInManualMode { get; set; }
 

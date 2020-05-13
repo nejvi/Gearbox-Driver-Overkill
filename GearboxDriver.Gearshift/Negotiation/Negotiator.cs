@@ -1,18 +1,20 @@
 ﻿using GearboxDriver.Gearshift.Shifting;
 using GearboxDriver.Seedwork;
 
-namespace GearboxDriver.Gearshift.Negotiaton
+namespace GearboxDriver.Gearshift.Negotiation
 {
     public class Negotiator
     {
         private Optional<YieldDemand> _yield;
         private Optional<TargetGearDemand> _targetGear;
+        private Optional<EngineBrakingDemand> _performEngineBraking;
         private Optional<FollowRpmDemand> _followRpm;
 
         public Negotiator()
         {
             _yield = Optional<YieldDemand>.Empty();
             _targetGear = Optional<TargetGearDemand>.Empty();
+            _performEngineBraking = Optional<EngineBrakingDemand>.Empty();
             _followRpm = Optional<FollowRpmDemand>.Empty();
         }
 
@@ -25,16 +27,19 @@ namespace GearboxDriver.Gearshift.Negotiaton
                 return new GearTargetingShiftingProgram(_targetGear.InnerValue.Gear);
 
             if (_followRpm.HasValue)
+            {
+                if (_performEngineBraking.HasValue)
+                    return new EngineBrakingShiftingProgram(new RpmBasedShiftingProgram(_followRpm.InnerValue.ShiftpointRange));
+
                 return new RpmBasedShiftingProgram(_followRpm.InnerValue.ShiftpointRange);
+            }
+                
 
             return new YieldingShiftingProgram();
         }
 
         public void Issue(YieldDemand demand)
         {
-            if (_yield.HasValue)
-                throw new DomainRuleViolatedException("Yield demand has already been issued.");
-
             _yield = new Optional<YieldDemand>(demand);
         }
 
@@ -48,9 +53,6 @@ namespace GearboxDriver.Gearshift.Negotiaton
 
         public void Issue(TargetGearDemand demand)
         {
-            if (_targetGear.HasValue)
-                throw new DomainRuleViolatedException("Target gear demand has already been issued.");
-
             _targetGear = new Optional<TargetGearDemand>(demand);
         }
 
@@ -67,12 +69,17 @@ namespace GearboxDriver.Gearshift.Negotiaton
             _followRpm = new Optional<FollowRpmDemand>(demand);
         }
 
-        public void RevokeFollowRpmDemand()
+        public void Issue(EngineBrakingDemand demand)
         {
-            if (!_followRpm.HasValue)
-                throw new DomainRuleViolatedException("Follow RPM demand has not been been issued.");
+            _performEngineBraking = new Optional<EngineBrakingDemand>(demand);
+        }
 
-            _followRpm = Optional<FollowRpmDemand>.Empty();
+        public void RevokeEngineBrakingDemand()
+        {
+            if (!_performEngineBraking.HasValue)
+                throw new DomainRuleViolatedException("Engine braking demand has not been been issued.");
+
+            _performEngineBraking = Optional<EngineBrakingDemand>.Empty();
         }
     }
 }

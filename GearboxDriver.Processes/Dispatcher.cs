@@ -33,7 +33,7 @@ namespace GearboxDriver.Processes
                 //    _pool.Add(new SmoothBrakingWithTrailerAttached());
                 //    break;
                 case TrailerHookStoppedBeingOccupied _:
-                    _pool.Remove(typeof(SmoothBrakingWithTrailerAttached));
+                    _pool.Remove(typeof(TrailerEngineBrakingDetectionProcess));
                     break;
                 case ManualGearshiftingModeEntered _:
                     _pool.Add(new NoInterferenceToGearshiftWithManualMode());

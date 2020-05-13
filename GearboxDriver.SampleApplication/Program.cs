@@ -3,7 +3,7 @@ using GearboxDriver.Cabin;
 using GearboxDriver.Cabin.Pedals;
 using GearboxDriver.Cabin.Responsiveness;
 using GearboxDriver.Gearshift;
-using GearboxDriver.Gearshift.Negotiaton;
+using GearboxDriver.Gearshift.Negotiation;
 using GearboxDriver.Gearshift.Shifting;
 using GearboxDriver.Hardware.ACL;
 using GearboxDriver.Hardware.API;

@@ -1,5 +1,4 @@
 ﻿using GearboxDriver.Gearshift;
-using GearboxDriver.Gearshift.Negotiaton;
 using GearboxDriver.Hardware.ACL;
 using GearboxDriver.Seedwork;
 using Moq;

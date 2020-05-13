@@ -2,11 +2,11 @@
 
 namespace GearboxDriver.Hardware.ACL
 {
-    public class RPMChanged : IEvent
+    public class RpmChanged : IEvent
     {
         public Rpm Rpm { get; }
 
-        public RPMChanged(Rpm rpm)
+        public RpmChanged(Rpm rpm)
         {
             Rpm = rpm;
         }

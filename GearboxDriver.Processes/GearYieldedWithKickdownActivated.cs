@@ -7,7 +7,7 @@ using System.Text;
 
 namespace GearboxDriver.Processes
 {
-    public class GearYieldedWithKickdownActivated : IProcessManager
+    public class GearYieldedWithKickdownActivated : IProcess
     {
         private bool KickdownActivated { get; set; }
         private bool StrongKickdownActivated { get; set; }

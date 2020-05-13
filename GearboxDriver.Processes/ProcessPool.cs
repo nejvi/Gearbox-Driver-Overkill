@@ -8,19 +8,19 @@ namespace GearboxDriver.Processes
 {
     public class ProcessPool : IEventListener
     {
-        private List<IProcessManager> ProcessManagers { get; }
+        private List<IProcess> ProcessManagers { get; }
 
         public ProcessPool()
         {
-            ProcessManagers = new List<IProcessManager>();
+            ProcessManagers = new List<IProcess>();
         }
 
-        public void Add(IProcessManager processManager)
+        public void Add(IProcess process)
         {
-            if (ProcessManagers.Any(x => x.GetType() == processManager.GetType()))
+            if (ProcessManagers.Any(x => x.GetType() == process.GetType()))
                 throw new ArgumentException("Such process already exists in the pool.");
 
-            ProcessManagers.Add(processManager);
+            ProcessManagers.Add(process);
         }
 
         public void Remove(Type processType)

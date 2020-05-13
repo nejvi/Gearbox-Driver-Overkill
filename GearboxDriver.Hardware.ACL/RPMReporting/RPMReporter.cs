@@ -21,7 +21,7 @@ namespace GearboxDriver.Hardware.ACL.RPMReporting
             if (_lastReportedRpm == rpm) 
                 return;
 
-            _eventBus.SendEvent(new RPMChanged(rpm));
+            _eventBus.SendEvent(new RpmChanged(rpm));
             _lastReportedRpm = rpm;
         }
     }

@@ -1,4 +1,4 @@
-﻿namespace GearboxDriver.Gearshift.Negotiaton
+﻿namespace GearboxDriver.Gearshift.Negotiation
 {
     internal class Optional<T> where T : class
     {

@@ -4,7 +4,7 @@ using GearboxDriver.Seedwork;
 
 namespace GearboxDriver.Processes
 {
-    public class RpmBasedByModes : IProcessManager
+    public class RpmBasedByModes : IProcess
     {
         private readonly IGearshiftService _service;
         private readonly Characteristics _characteristics;

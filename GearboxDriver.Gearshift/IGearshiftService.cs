@@ -12,5 +12,7 @@ namespace GearboxDriver.Gearshift
         void TargetGear(Gear gearNumber);
         void StopTargetingGear();
         void KeepFollowingRpm(ShiftpointRange shiftpointRange);
+        void DoEngineBraking();
+        void StopDoingEngineBraking();
     }
 }

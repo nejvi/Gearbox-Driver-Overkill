@@ -3,7 +3,7 @@ using GearboxDriver.Seedwork;
 
 namespace GearboxDriver.Processes
 {
-    public interface IProcessManager
+    public interface IProcess
     {
         void ApplyEvent(IEvent @event);
     }

@@ -22,7 +22,7 @@ namespace GearboxDriver.Processes
         public void Start()
         {
             var pool = new ProcessPool();
-            pool.Add(new SmoothBrakingWithTrailerAttached(_gearshiftService));
+            pool.Add(new TrailerEngineBrakingDetectionProcess(_gearshiftService));
             pool.Add(new GearYieldedWithKickdownActivated());
             pool.Add(new NoInterferenceToGearshiftWithManualMode());
             pool.Add(new GearboxDriverYielededWithMDynamicModeActivated(_gearshiftService));

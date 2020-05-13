@@ -14,7 +14,11 @@ namespace GearboxDriver.Hardware.ACL
 
         public void SetDriveMode()
         {
-            _gearbox.setGearBoxCurrentParams(new Object[2] { 1, _gearbox.getCurrentGear()});
+            var currentGear = _gearbox.getCurrentGear();
+            if(currentGear == null)
+                currentGear = 1;
+
+            _gearbox.setGearBoxCurrentParams(new Object[2] { 1, currentGear});
         }
 
         public void SetNeutralMode()

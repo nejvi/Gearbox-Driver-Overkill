@@ -1,27 +1,19 @@
 ﻿using GearboxDriver.Gearshift;
-using GearboxDriver.Hardware.ACL;
-using GearboxDriver.Seedwork;
 using Moq;
-using Newtonsoft.Json.Schema;
 using NUnit.Framework;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Text;
-using GearboxDriver.Gearshift.Shifting;
 using GearboxDriver.PublishedLanguage.VehicleMotion;
 using GearboxDriver.PublishedLanguage.MDynamic;
 
 namespace GearboxDriver.Processes.Test
 {
-    public class GearboxDriverYieldedWithMDynamicModeActivatedTests
+    public class MDynamicSlippingDetectionProcessTests
     {
         [Test]
         public void WhenVehicleIsSlippingAbstainFromChangingGears()
         {
             var serviceMock = new Mock<IGearshiftService>();
 
-            var processManager = new MDynamicSlippingDetectionProcess(serviceMock.Object);
+            var processManager = new Processes.MDynamicSlippingDetectionProcess(serviceMock.Object);
 
             processManager.ApplyEvent(new MDynamicModeEntered());
             processManager.ApplyEvent(new VehicleStartedSlipping());
@@ -34,7 +26,7 @@ namespace GearboxDriver.Processes.Test
         {
             var serviceMock = new Mock<IGearshiftService>();
 
-            var processManager = new MDynamicSlippingDetectionProcess(serviceMock.Object);
+            var processManager = new Processes.MDynamicSlippingDetectionProcess(serviceMock.Object);
 
             processManager.ApplyEvent(new MDynamicModeEntered());
             processManager.ApplyEvent(new VehicleStartedSlipping());

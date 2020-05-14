@@ -12,9 +12,9 @@ namespace GearboxDriver.Processes.Test
         [Test]
         public void WhenComfortModeEnteredAndGasPressureChangedToSingularKickdownAndNewRpmChangedToSingularTargetGearIsDownshiftedByOne()
         {
-            var characteristicsMock = new KickdownCharacteristics();
+            var characteristics = new KickdownCharacteristics();
             var serviceMock = new Mock<IGearshiftService>();
-            var process = new KickdownDetectionProcess(characteristicsMock, serviceMock.Object);;
+            var process = new KickdownDetectionProcess(characteristics, serviceMock.Object);;
 
             process.ApplyEvent(new GearChanged(new Gear(3), new Gear(2)));
             process.ApplyEvent(new RpmChanged(new Rpm(4500)));

@@ -10,14 +10,14 @@ namespace GearboxDriver.Hardware.ACL.Tests
     {
         private Mock<IEventBus> _eventBusMock;
         private Mock<IRpmSensor> _providerMock;
-        private RPMReporter _reporter;
+        private RpmReporter _reporter;
         
         [SetUp]
         public void SetUp()
         {
             _eventBusMock = new Mock<IEventBus>();
             _providerMock = new Mock<IRpmSensor>();
-            _reporter = new RPMReporter(_eventBusMock.Object, _providerMock.Object);
+            _reporter = new RpmReporter(_eventBusMock.Object, _providerMock.Object);
         }
 
         [Test]
@@ -34,7 +34,7 @@ namespace GearboxDriver.Hardware.ACL.Tests
 
             _reporter.TryToReport();
 
-            _eventBusMock.Verify(x => x.SendEvent(It.Is<RpmChanged>(y => y.Rpm == rpm)), Times.Once);
+            _eventBusMock.Verify(x => x.SendEvent(It.Is<RpmChanged>(y => y.NewRpm == rpm)), Times.Once);
         }
 
         [Test]
@@ -46,7 +46,7 @@ namespace GearboxDriver.Hardware.ACL.Tests
             _reporter.TryToReport();
             _reporter.TryToReport();
 
-            _eventBusMock.Verify(x => x.SendEvent(It.Is<RpmChanged>(y => y.Rpm == rpm)), Times.Once);
+            _eventBusMock.Verify(x => x.SendEvent(It.Is<RpmChanged>(y => y.NewRpm == rpm)), Times.Once);
         }
 
         [Test]
@@ -62,8 +62,8 @@ namespace GearboxDriver.Hardware.ACL.Tests
             _reporter.TryToReport();
             _reporter.TryToReport();
 
-            _eventBusMock.Verify(x => x.SendEvent(It.Is<RpmChanged>(y => y.Rpm == firstRpm)), Times.Once);
-            _eventBusMock.Verify(x => x.SendEvent(It.Is<RpmChanged>(y => y.Rpm == secondRpm)), Times.Once);
+            _eventBusMock.Verify(x => x.SendEvent(It.Is<RpmChanged>(y => y.NewRpm == firstRpm)), Times.Once);
+            _eventBusMock.Verify(x => x.SendEvent(It.Is<RpmChanged>(y => y.NewRpm == secondRpm)), Times.Once);
         }
     }
 }

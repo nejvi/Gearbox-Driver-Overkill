@@ -13,23 +13,23 @@ namespace GearboxDriver.Processes
         private const double SingularKickdownThresholdInSportsMode = 0.7d;
         private const double SingularKickdownThresholdInComfortMode = 0.5d;
 
-        public KickdownAction GetActionFor(ResponsivenessMode responsivenessMode, PedalPressure pedalPressure)
+        public SuggestedKickdownAction GetActionFor(ResponsivenessMode responsivenessMode, PedalPressure pedalPressure)
         {
             switch(responsivenessMode)
             {
                 case ResponsivenessMode.Comfort:
                     if (pedalPressure.Value > SingularKickdownThresholdInComfortMode)
-                        return KickdownAction.Singular;
+                        return SuggestedKickdownAction.Singular;
                     break;
                 case ResponsivenessMode.Sport:
                     if (pedalPressure.Value >= SingularKickdownThresholdInSportsMode)
-                        return KickdownAction.Singular;
+                        return SuggestedKickdownAction.Singular;
                     else if (pedalPressure.Value > DoubleKickdownThresholdInSportsMode)
-                        return KickdownAction.Double;
+                        return SuggestedKickdownAction.Double;
                     break;
             }
 
-            return KickdownAction.None;
+            return SuggestedKickdownAction.None;
         }
     }
 }

@@ -122,8 +122,8 @@ namespace GearboxDriver.SampleApplication.Demo
 
         public static void PlayTowingScenario()
         {
-            TimeHelper.PlayMessage("\n\nTowing mode? Hold our beer. We will attach a trailer and the car will enter a hill in the middle of the demo.\n", 3);
-            TimeHelper.PlayMessage("\n\nYou can observe gear downshift as soon as the car tilts down. The gear will be restored along with the position.\n", 3);
+            TimeHelper.PlayMessage("\n\nTowing mode? Hold our beer. We will attach a trailer and the car will enter a hill in the middle of the demo.", 3);
+            TimeHelper.PlayMessage("You can observe gear downshift as soon as the car tilts down. The gear will be restored along with the position.\n", 3);
 
             var eventBus = new EventBusThatYouDontWantToUseInProduction();
             SetupSystem(eventBus);
@@ -155,7 +155,7 @@ namespace GearboxDriver.SampleApplication.Demo
             cabinService.SetAggressivenessLevel(AggressivenessLevel.Third);
             TimeHelper.WaitSeconds(4);
 
-            DoSomeManualDrivingInTheMiddle(cabinService);
+            DoAggressivePedalChangesToCauseKickdown(cabinService);
 
             eventBus.Kill();
         }
@@ -235,6 +235,26 @@ namespace GearboxDriver.SampleApplication.Demo
             cabinService.ApplyGasPedalPressure(new PedalPressure(0.55));
             TimeHelper.WaitSeconds(3);
             _externalSystems.getLights().setLightsPosition(5);
+            cabinService.ApplyGasPedalPressure(new PedalPressure(0.35));
+            TimeHelper.WaitSeconds(3);
+            cabinService.ApplyGasPedalPressure(new PedalPressure(0));
+            TimeHelper.WaitSeconds(3);
+            cabinService.ApplyBrakePedalPressure(new PedalPressure(0.5));
+            TimeHelper.WaitSeconds(5);
+        }
+
+        private static void DoAggressivePedalChangesToCauseKickdown(CabinService cabinService)
+        {
+            cabinService.ApplyGasPedalPressure(new PedalPressure(0.15));
+            TimeHelper.WaitSeconds(3);
+            cabinService.ApplyGasPedalPressure(new PedalPressure(0.35));
+            TimeHelper.WaitSeconds(3);
+            cabinService.ApplyGasPedalPressure(new PedalPressure(0.55));
+            TimeHelper.WaitSeconds(10);
+            cabinService.ApplyGasPedalPressure(new PedalPressure(0.75));
+            TimeHelper.WaitSeconds(5);
+            cabinService.ApplyGasPedalPressure(new PedalPressure(0.55));
+            TimeHelper.WaitSeconds(3);
             cabinService.ApplyGasPedalPressure(new PedalPressure(0.35));
             TimeHelper.WaitSeconds(3);
             cabinService.ApplyGasPedalPressure(new PedalPressure(0));

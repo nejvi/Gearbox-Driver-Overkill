@@ -26,10 +26,13 @@ namespace GearboxDriver.Hardware.ACL.VehicleSlippingReporting
             if (LastReportedSlipping == currentSlipping && HasEverReported) // VehicleStartedSlipping, VehicleStoppedSlipping
                 return;
 
-            if (currentSlipping)
-                _eventBus.SendEvent(new VehicleStartedSlipping());
-            else
-                _eventBus.SendEvent(new VehicleStoppedSlipping());
+            if (HasEverReported)
+            {
+                if (currentSlipping)
+                    _eventBus.SendEvent(new VehicleStartedSlipping());
+                else
+                    _eventBus.SendEvent(new VehicleStoppedSlipping());
+            }
 
             LastReportedSlipping = currentSlipping;
             HasEverReported = true;

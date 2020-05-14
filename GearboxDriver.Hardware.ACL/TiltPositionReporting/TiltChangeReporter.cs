@@ -24,14 +24,17 @@ namespace GearboxDriver.Hardware.ACL.TiltPositionReporting
             if (LastReportedVehicleTiltPosition == vehicleTiltPosition && HasEverReported)
                 return;
 
-            if (vehicleTiltPosition == TiltPosition.Balanced)
-                _eventBus.SendEvent(new VehicleTiledToStraightPosition());
+            if(HasEverReported)
+            {
+                if (vehicleTiltPosition == TiltPosition.Balanced)
+                    _eventBus.SendEvent(new VehicleTiledToStraightPosition());
 
-            if (vehicleTiltPosition == TiltPosition.Downwards)
-                _eventBus.SendEvent(new VehicleTiltedDownhill());
+                if (vehicleTiltPosition == TiltPosition.Downwards)
+                    _eventBus.SendEvent(new VehicleTiltedDownhill());
 
-            if (vehicleTiltPosition == TiltPosition.Upwards)
-                _eventBus.SendEvent(new VehicleTiltedUphill());
+                if (vehicleTiltPosition == TiltPosition.Upwards)
+                    _eventBus.SendEvent(new VehicleTiltedUphill());
+            }
 
             LastReportedVehicleTiltPosition = vehicleTiltPosition;
             HasEverReported = true;

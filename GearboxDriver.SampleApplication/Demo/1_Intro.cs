@@ -51,7 +51,7 @@ namespace GearboxDriver.SampleApplication.Demo
 
             new AntiCorruptionLayerStartup(eventBus, externalSystemsAdapter, gearbox).Start();
             new GearshiftStartup(eventBus, automaticGearshifter).Start();
-            new ProcessesStartup(eventBus, new GearshiftService(new Negotiator(), automaticGearshifter), new EngineCharacteristics()).Start();
+            new ProcessesStartup(eventBus, new GearshiftService(new Negotiator(), automaticGearshifter), new EngineCharacteristics(), new KickdownCharacteristics()).Start();
             TimeHelper.WaitSeconds(3);
             var cabinService = new CabinService(eventBus);
             cabinService.SetDriveMode();

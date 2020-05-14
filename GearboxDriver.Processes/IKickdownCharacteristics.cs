@@ -9,6 +9,6 @@ namespace GearboxDriver.Processes
 {
     public interface IKickdownCharacteristics
     {
-        KickdownAction GetActionFor(ResponsivenessMode responsivenessMode, PedalPressure pedalPressure);
+        SuggestedKickdownAction GetActionFor(ResponsivenessMode responsivenessMode, PedalPressure pedalPressure);
     }
 }

@@ -55,7 +55,7 @@ namespace GearboxDriver.CabinControls
                     break;
 
                 case RpmChanged rpmChanged:
-                    CurrentRpm = rpmChanged.Rpm.Value.ToString();
+                    CurrentRpm = rpmChanged.NewRpm.Value.ToString();
                     break;
 
                 case ManualGearshiftingModeEntered _:

@@ -4,16 +4,16 @@ namespace GearboxDriver.PublishedLanguage.Gearbox
 {
     public class RpmChanged : IEvent
     {
-        public Rpm Rpm { get; }
+        public Rpm NewRpm { get; }
 
-        public RpmChanged(Rpm rpm)
+        public RpmChanged(Rpm newRpm)
         {
-            Rpm = rpm;
+            NewRpm = newRpm;
         }
 
         public override string ToString()
         {
-            return $"Rpm changed to {Rpm.Value}";
+            return $"Rpm changed to {NewRpm.Value}";
         }
     }
 }

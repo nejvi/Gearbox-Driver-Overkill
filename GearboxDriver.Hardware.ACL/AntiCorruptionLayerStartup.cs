@@ -20,7 +20,7 @@ namespace GearboxDriver.Hardware.ACL
         public void Start()
         {
             var builder = new EngineBuilder()
-                .AddReporter(new RpmReporter(_eventBus, _adapter))
+                .AddReporter(new RPMReporter(_eventBus, _adapter))
                 .AddReporter(new SlippingReporter(_eventBus, _adapter));
 
             if (_adapter.SupportsTiltPosition())

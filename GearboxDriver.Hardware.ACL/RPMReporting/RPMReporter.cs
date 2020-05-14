@@ -4,14 +4,14 @@ using GearboxDriver.Seedwork;
 
 namespace GearboxDriver.Hardware.ACL.RpmReporting
 {
-    public class RpmReporter : IReporter
+    public class RPMReporter : IReporter
     {
         private readonly IEventBus _eventBus;
         private readonly IRpmSensor _rpmSensor;
         private Rpm LastReportedRpm { get; set; }
         private bool IsEverReported { get; set; }
 
-        public RpmReporter(IEventBus eventBus, IRpmSensor rpmSensor)
+        public RPMReporter(IEventBus eventBus, IRpmSensor rpmSensor)
         {
             _eventBus = eventBus;
             _rpmSensor = rpmSensor;

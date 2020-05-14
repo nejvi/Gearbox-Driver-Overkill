@@ -4,7 +4,7 @@ using System.Text;
 
 namespace GearboxDriver.PublishedLanguage
 {
-    public enum KickdownAction
+    public enum SuggestedKickdownAction
     {
         None,
         Singular,

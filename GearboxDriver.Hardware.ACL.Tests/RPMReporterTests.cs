@@ -10,14 +10,14 @@ namespace GearboxDriver.Hardware.ACL.Tests
     {
         private Mock<IEventBus> _eventBusMock;
         private Mock<IRpmSensor> _providerMock;
-        private RpmReporter _reporter;
+        private RPMReporter _reporter;
         
         [SetUp]
         public void SetUp()
         {
             _eventBusMock = new Mock<IEventBus>();
             _providerMock = new Mock<IRpmSensor>();
-            _reporter = new RpmReporter(_eventBusMock.Object, _providerMock.Object);
+            _reporter = new RPMReporter(_eventBusMock.Object, _providerMock.Object);
         }
 
         [Test]

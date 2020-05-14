@@ -11,6 +11,7 @@ namespace GearboxDriver.CabinControls
         private readonly Lever _lever;
         private readonly TrailerHook _hook;
         private readonly ResponsivenessModeSelector _responsivenessModeSelector;
+        private readonly ManualGearshift _manualGearshift;
         private readonly MDynamicModeSelector _mDynamicModeSelector;
 
         public CabinService(IEventBus eventBus)
@@ -19,6 +20,7 @@ namespace GearboxDriver.CabinControls
             _mDynamicModeSelector = new MDynamicModeSelector();
             _responsivenessModeSelector = new ResponsivenessModeSelector();
             _pedalPanel = new PedalPanel();
+            _manualGearshift = new ManualGearshift();
             _lever = new Lever();
             _hook = new TrailerHook();
         }
@@ -41,6 +43,26 @@ namespace GearboxDriver.CabinControls
         public void EnterDynamicMode()
         {
             _eventBus.SendEvent(_mDynamicModeSelector.Enable());
+        }
+
+        public void EnterManualMode()
+        {
+            _eventBus.SendEvent(_manualGearshift.EnterManualMode());
+        }
+
+        public void UpshiftManually()
+        {
+            _eventBus.SendEvent(_manualGearshift.Upshift());
+        }
+
+        public void DownshiftManually()
+        {
+            _eventBus.SendEvent(_manualGearshift.Downshift());
+        }
+
+        public void ExitManualMode()
+        {
+            _eventBus.SendEvent(_manualGearshift.ExitManualMode());
         }
 
         public void SetDriveMode()

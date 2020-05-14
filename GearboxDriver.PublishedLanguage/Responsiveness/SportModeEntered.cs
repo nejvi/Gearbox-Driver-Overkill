@@ -6,7 +6,7 @@ namespace GearboxDriver.PublishedLanguage.Responsiveness
     {
         public override string ToString()
         {
-            return $"Comfort mode entered.";
+            return $"Sport mode entered.";
         }
     }
 }

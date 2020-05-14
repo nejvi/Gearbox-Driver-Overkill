@@ -20,7 +20,7 @@ namespace GearboxDriver.SampleApplication
         {
            
 
-            Intro.Play();
+            DemoShow.Play();
 
             
 

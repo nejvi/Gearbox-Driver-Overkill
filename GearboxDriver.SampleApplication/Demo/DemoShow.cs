@@ -12,17 +12,18 @@ using GearboxDriver.Hardware.API;
 using GearboxDriver.Processes;
 using GearboxDriver.PublishedLanguage.Pedals;
 using GearboxDriver.PublishedLanguage.Responsiveness;
+using GearboxDriver.Seedwork;
 
 namespace GearboxDriver.SampleApplication.Demo
 {
-    public class Intro
+    public class DemoShow
     {
         public static void Play()
         {
             PlayIntroduction();
-            PlayFirstScenario();
-            PlaySecondScenario();
-
+            PlayEconomicScenario();
+            PlaySportsScenario();
+            PlaySportsAggressiveScenario();
         }
 
         public static void PlayIntroduction()
@@ -36,30 +37,65 @@ namespace GearboxDriver.SampleApplication.Demo
             TimeHelper.PlayMessage("(Please don't close the application until the end not to miss anything) \n", 2);
         }
 
-        public static void PlayFirstScenario()
+        public static void PlayEconomicScenario()
         {
             TimeHelper.PlayMessage("Our driver will enter the car now.", 3);
             TimeHelper.PlayMessage("He is going to setup Comfort Mode, slowly accelerate and then decelerate.", 3);
             TimeHelper.PlayMessage("You will the have chance to observe the changes in the gears and Rpm being between 1000 - 2000.", 5);
 
             var eventBus = new EventBusThatYouDontWantToUseInProduction();
-            var externalSystems = new ExternalSystems();
-            var externalSystemsAdapter = new ExternalSystemsAdapter(externalSystems);
-            var gearbox = new Gearbox();
-            var gearboxAdapter = new GearboxAdapter(gearbox);
-            var automaticGearshifter = new AutomaticGearshifter(gearboxAdapter);
-            eventBus.Attach(new EventLogger());
-            eventBus.Attach(new EngineEmulator(externalSystems));
-
-            new AntiCorruptionLayerStartup(eventBus, externalSystemsAdapter, gearbox).Start();
-            new GearshiftStartup(eventBus, automaticGearshifter).Start();
-            new ProcessesStartup(eventBus, new GearshiftService(new Negotiator(), automaticGearshifter), new EngineCharacteristics(), new KickdownCharacteristics()).Start();
-            TimeHelper.WaitSeconds(3);
+            SetupSystem(eventBus);
             var cabinService = new CabinService(eventBus);
+
             cabinService.SetDriveMode();
             TimeHelper.WaitSeconds(4);
             cabinService.SetResponsivenessMode(ResponsivenessMode.Economic);
             TimeHelper.WaitSeconds(4);
+
+            DoCommonPedalOperations(cabinService);
+
+            eventBus.Kill();
+        }
+
+        public static void PlaySportsScenario()
+        {
+            TimeHelper.PlayMessage("Now we will observe the same situation in sport mode.", 3);
+
+            var eventBus = new EventBusThatYouDontWantToUseInProduction();
+            SetupSystem(eventBus);
+            var cabinService = new CabinService(eventBus);
+
+            cabinService.SetDriveMode();
+            TimeHelper.WaitSeconds(4);
+            cabinService.SetResponsivenessMode(ResponsivenessMode.Sport);
+            TimeHelper.WaitSeconds(4);
+
+            DoCommonPedalOperations(cabinService);
+
+            eventBus.Kill();
+        }
+
+        public static void PlaySportsAggressiveScenario()
+        {
+            TimeHelper.PlayMessage("Let's add third aggressive mode now!", 3);
+
+            var eventBus = new EventBusThatYouDontWantToUseInProduction();
+            SetupSystem(eventBus);
+            var cabinService = new CabinService(eventBus);
+
+            cabinService.SetDriveMode();
+            TimeHelper.WaitSeconds(4);
+            cabinService.SetResponsivenessMode(ResponsivenessMode.Sport);
+            cabinService.SetAggressivenessLevel(AggressivenessLevel.Third);
+            TimeHelper.WaitSeconds(4);
+
+            DoCommonPedalOperations(cabinService);
+
+            eventBus.Kill();
+        }
+
+        private static void DoCommonPedalOperations(CabinService cabinService)
+        {
             cabinService.ApplyGasPedalPressure(new PedalPressure(0.15));
             TimeHelper.WaitSeconds(3);
             cabinService.ApplyGasPedalPressure(new PedalPressure(0.35));
@@ -75,16 +111,11 @@ namespace GearboxDriver.SampleApplication.Demo
             cabinService.ApplyGasPedalPressure(new PedalPressure(0));
             TimeHelper.WaitSeconds(3);
             cabinService.ApplyBrakePedalPressure(new PedalPressure(0.5));
-            TimeHelper.WaitSeconds(20);
-
-            eventBus.Kill();
+            TimeHelper.WaitSeconds(15);
         }
 
-        public static void PlaySecondScenario()
+        private static void SetupSystem(IEventBus eventBus)
         {
-            TimeHelper.PlayMessage("Now we will observe the same situation in sport mode.", 3);
-
-            var eventBus = new EventBusThatYouDontWantToUseInProduction();
             var externalSystems = new ExternalSystems();
             var externalSystemsAdapter = new ExternalSystemsAdapter(externalSystems);
             var gearbox = new Gearbox();
@@ -92,34 +123,10 @@ namespace GearboxDriver.SampleApplication.Demo
             var automaticGearshifter = new AutomaticGearshifter(gearboxAdapter);
             eventBus.Attach(new EventLogger());
             eventBus.Attach(new EngineEmulator(externalSystems));
-
             new AntiCorruptionLayerStartup(eventBus, externalSystemsAdapter, gearbox).Start();
             new GearshiftStartup(eventBus, automaticGearshifter).Start();
             new ProcessesStartup(eventBus, new GearshiftService(new Negotiator(), automaticGearshifter), new EngineCharacteristics(), new KickdownCharacteristics()).Start();
             TimeHelper.WaitSeconds(3);
-            var cabinService = new CabinService(eventBus);
-            cabinService.SetDriveMode();
-            TimeHelper.WaitSeconds(4);
-            cabinService.SetResponsivenessMode(ResponsivenessMode.Sport);
-            TimeHelper.WaitSeconds(4);
-            cabinService.ApplyGasPedalPressure(new PedalPressure(0.15));
-            TimeHelper.WaitSeconds(3);
-            cabinService.ApplyGasPedalPressure(new PedalPressure(0.35));
-            TimeHelper.WaitSeconds(3);
-            cabinService.ApplyGasPedalPressure(new PedalPressure(0.55));
-            TimeHelper.WaitSeconds(3);
-            cabinService.ApplyGasPedalPressure(new PedalPressure(0.75));
-            TimeHelper.WaitSeconds(3);
-            cabinService.ApplyGasPedalPressure(new PedalPressure(0.55));
-            TimeHelper.WaitSeconds(3);
-            cabinService.ApplyGasPedalPressure(new PedalPressure(0.35));
-            TimeHelper.WaitSeconds(3);
-            cabinService.ApplyGasPedalPressure(new PedalPressure(0));
-            TimeHelper.WaitSeconds(3);
-            cabinService.ApplyBrakePedalPressure(new PedalPressure(0.5));
-            TimeHelper.WaitSeconds(20);
-
-            eventBus.Kill();
         }
     }
 }

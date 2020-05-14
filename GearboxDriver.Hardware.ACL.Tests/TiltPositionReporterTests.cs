@@ -32,35 +32,32 @@ namespace GearboxDriver.Hardware.ACL.Tests
         [Test]
         public void SendsTiltPositionEventOnChange()
         {
-            var tiltPosition = TiltPosition.Balanced;
+            var tiltPosition = TiltPosition.Upwards;
             _providerMock.Setup(x => x.GetTiltPosition()).Returns(tiltPosition);
 
             _reporter.TryToReport();
 
-            _eventBusMock.Verify(x => x.SendEvent(It.IsAny<VehicleTiledToStraightPosition>()), Times.Once);
+            _eventBusMock.Verify(x => x.SendEvent(It.IsAny<VehicleTiltedUphill>()), Times.Once);
         }
 
         [Test]
         public void WhenValueDuplicatedSendsOnlyOneEvent()
         {
-            var tiltPosition = TiltPosition.Balanced;
+            var tiltPosition = TiltPosition.Upwards;
             _providerMock.Setup(x => x.GetTiltPosition()).Returns(tiltPosition);
 
             _reporter.TryToReport();
             _reporter.TryToReport();
 
-            _eventBusMock.Verify(x => x.SendEvent(It.IsAny<VehicleTiledToStraightPosition>()), Times.Once);
+            _eventBusMock.Verify(x => x.SendEvent(It.IsAny<VehicleTiltedUphill>()), Times.Once);
         }
 
         [Test]
         public void WhenTwoDifferentValuesSendsTwoEvents()
         {
-            var firstTiltPosition = TiltPosition.Balanced;
-            var secondTiltPosition = TiltPosition.Downwards;
-
             _providerMock.SetupSequence(x => x.GetTiltPosition())
-                .Returns(firstTiltPosition)
-                .Returns(secondTiltPosition);
+                .Returns(TiltPosition.Downwards)
+                .Returns(TiltPosition.Balanced);
 
             _reporter.TryToReport();
             _reporter.TryToReport();
@@ -72,9 +69,11 @@ namespace GearboxDriver.Hardware.ACL.Tests
         [Test]
         public void WhenTiltPositionIsBalancedSendsEvent()
         {
-            var tiltPosition = TiltPosition.Balanced;
-            _providerMock.Setup(x => x.GetTiltPosition()).Returns(tiltPosition);
+            _providerMock.SetupSequence(x => x.GetTiltPosition())
+                .Returns(TiltPosition.Downwards)
+                .Returns(TiltPosition.Balanced);
 
+            _reporter.TryToReport();
             _reporter.TryToReport();
 
             _eventBusMock.Verify(x => x.SendEvent(It.IsAny<VehicleTiledToStraightPosition>()), Times.Once);

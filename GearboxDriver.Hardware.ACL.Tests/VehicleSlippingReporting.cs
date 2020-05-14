@@ -77,8 +77,11 @@ namespace GearboxDriver.Hardware.ACL.Tests
         [Test]
         public void WhenVehicleIsNotCurrentlySlippingSendsEvent()
         {
-            _providerMock.Setup(x => x.IsCurrentlySlipping()).Returns(false);
+            _providerMock.SetupSequence(x => x.IsCurrentlySlipping())
+                .Returns(true)
+                .Returns(false);
 
+            _reporter.TryToReport();
             _reporter.TryToReport();
 
             _eventBusMock.Verify(x => x.SendEvent(It.IsAny<VehicleStoppedSlipping>()), Times.Once);

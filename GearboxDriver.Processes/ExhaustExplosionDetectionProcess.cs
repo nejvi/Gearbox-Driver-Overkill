@@ -7,12 +7,12 @@ using System;
 
 namespace GearboxDriver.Processes
 {
-    public class SoundEffectsProcess : IProcess
+    public class ExhaustExplosionDetectionProcess : IProcess
     {
         private readonly IEventBus _eventBus;
         private AggressivenessLevel AggressivenessLevel { get; set; }
 
-        public SoundEffectsProcess(IEventBus eventBus)
+        public ExhaustExplosionDetectionProcess(IEventBus eventBus)
         {
             _eventBus = eventBus;
         }

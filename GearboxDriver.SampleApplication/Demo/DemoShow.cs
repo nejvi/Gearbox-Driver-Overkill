@@ -162,9 +162,9 @@ namespace GearboxDriver.SampleApplication.Demo
         {
             cabinService.ApplyGasPedalPressure(new PedalPressure(0.15));
             TimeHelper.WaitSeconds(3);
-            cabinService.ApplyGasPedalPressure(new PedalPressure(0.35));
+            cabinService.ApplyGasPedalPressure(new PedalPressure(0.45));
             TimeHelper.WaitSeconds(3);
-            cabinService.ApplyGasPedalPressure(new PedalPressure(0.55));
+            cabinService.ApplyGasPedalPressure(new PedalPressure(0.60));
             TimeHelper.WaitSeconds(3);
             cabinService.ApplyGasPedalPressure(new PedalPressure(0.75));
             TimeHelper.WaitSeconds(5);

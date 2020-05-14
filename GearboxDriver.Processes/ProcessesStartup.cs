@@ -20,7 +20,7 @@ namespace GearboxDriver.Processes
         {
             var pool = new ProcessPool();
             pool.Add(new TrailerEngineBrakingDetectionProcess(_gearshiftService));
-            pool.Add(new KickdownDetectionProcess());
+            //pool.Add(new KickdownDetectionProcess());
             pool.Add(new ManualModeProgramUpdatingProcess(_gearshiftService));
             pool.Add(new MDynamicSlippingDetectionProcess(_gearshiftService));
             pool.Add(new ResponsivenessModeProgramUpdatingProcess(_gearshiftService, _engineCharacteristics));

@@ -10,6 +10,7 @@ using System.Diagnostics;
 using System.Text;
 using GearboxDriver.Gearshift.Shifting;
 using GearboxDriver.PublishedLanguage.VehicleMotion;
+using GearboxDriver.PublishedLanguage.MDynamic;
 
 namespace GearboxDriver.Processes.Test
 {
@@ -22,6 +23,7 @@ namespace GearboxDriver.Processes.Test
 
             var processManager = new MDynamicSlippingDetectionProcess(serviceMock.Object);
 
+            processManager.ApplyEvent(new MDynamicModeEntered());
             processManager.ApplyEvent(new VehicleStartedSlipping());
 
             serviceMock.Verify(x => x.AbstainFromChangingGears(), Times.Once);
@@ -34,7 +36,9 @@ namespace GearboxDriver.Processes.Test
 
             var processManager = new MDynamicSlippingDetectionProcess(serviceMock.Object);
 
-            processManager.ApplyEvent(new VehicleStoppedSlipping()); // todo I guess it has to start slipping first ??
+            processManager.ApplyEvent(new MDynamicModeEntered());
+            processManager.ApplyEvent(new VehicleStartedSlipping());
+            processManager.ApplyEvent(new VehicleStoppedSlipping());
 
             serviceMock.Verify(x => x.StopAbstainingFromChangingGears(), Times.Once);
         }

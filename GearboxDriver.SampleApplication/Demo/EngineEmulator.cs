@@ -57,8 +57,15 @@ namespace GearboxDriver.SampleApplication.Demo
         {
             while (true)
             {
-                _systems.setCurrentRpm(Math.Max(Math.Min(_systems.getCurrentRpm() + GetRpmIncreaseForGasPressure(GasPressure), 15000), 0));
-                _systems.setCurrentRpm(Math.Max(Math.Min(_systems.getCurrentRpm() - BrakePressure.Value * 30, 15000), 0));
+                var gasIncrease =  GetRpmIncreaseForGasPressure(GasPressure);
+                var brakeDecrease = BrakePressure.Value * 30 * (_systems.getCurrentRpm() / 5000);
+                var targetRpm = Math.Max(Math.Min(_systems.getCurrentRpm() + gasIncrease - brakeDecrease, 15000), 0);
+
+                if (CurrentGear.Value == 1 && targetRpm < 1000)
+                    targetRpm = 1000;
+
+                _systems.setCurrentRpm(targetRpm);
+
                 Task.Delay(TimeSpan.FromMilliseconds(25)).Wait();
             }
         }
@@ -71,17 +78,17 @@ namespace GearboxDriver.SampleApplication.Demo
                 case 0:
                     return pressure.Value * 35;
                 case 1:
-                    return 10 + pressure.Value * 30 - 2;
+                    return pressure.Value * 30 - 2 * (_systems.getCurrentRpm() / 5000);
                 case 2: 
-                    return pressure.Value * 25 - 2;
+                    return pressure.Value * 25 - 2 * (_systems.getCurrentRpm()/5000);
                 case 3: 
-                    return pressure.Value * 20 - 3;
+                    return pressure.Value * 20 - 3 * (_systems.getCurrentRpm() / 5000);
                 case 4: 
-                    return pressure.Value * 15 - 5;
+                    return pressure.Value * 15 - 4 * (_systems.getCurrentRpm() / 5000);
                 case 5:
-                    return pressure.Value * 10 - 7;
+                    return pressure.Value * 10 - 5 * (_systems.getCurrentRpm() / 5000);
                 case 6:
-                    return pressure.Value * 5 - 9;
+                    return pressure.Value * 5 - 6 * (_systems.getCurrentRpm() / 5000);
             }
 
             return 0;

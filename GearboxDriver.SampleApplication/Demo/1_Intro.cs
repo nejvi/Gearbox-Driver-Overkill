@@ -38,7 +38,7 @@ namespace GearboxDriver.SampleApplication.Demo
         {
             TimeHelper.PlayMessage("Our driver will enter the car now.", 3);
             TimeHelper.PlayMessage("He is going to setup Comfort Mode, slowly accelerate and then decelerate.", 3);
-            TimeHelper.PlayMessage("You will the have chance to observe the changes in the gears.", 5);
+            TimeHelper.PlayMessage("You will the have chance to observe the changes in the gears and Rpm being between 1000 - 2000.", 5);
 
             var eventBus = new EventBusThatYouDontWantToUseInProduction();
             var externalSystems = new ExternalSystems();
@@ -72,8 +72,8 @@ namespace GearboxDriver.SampleApplication.Demo
             TimeHelper.WaitSeconds(3);
             cabinService.ApplyGasPedalPressure(new PedalPressure(0));
             TimeHelper.WaitSeconds(3);
-            cabinService.ApplyBrakePedalPressure(new PedalPressure(1.0));
-            TimeHelper.WaitSeconds(10);
+            cabinService.ApplyBrakePedalPressure(new PedalPressure(0.5));
+            TimeHelper.WaitSeconds(20);
 
             eventBus.Kill();
         }

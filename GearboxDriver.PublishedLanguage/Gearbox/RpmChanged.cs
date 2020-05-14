@@ -1,4 +1,5 @@
-﻿using GearboxDriver.Seedwork;
+﻿using System;
+using GearboxDriver.Seedwork;
 
 namespace GearboxDriver.PublishedLanguage.Gearbox
 {
@@ -15,7 +16,7 @@ namespace GearboxDriver.PublishedLanguage.Gearbox
 
         public override string ToString()
         {
-            return $"Rpm changed from {OldRpm.Value} to {NewRpm.Value}";
+            return $"Rpm changed from {Math.Floor(OldRpm.Value)} to {Math.Floor(NewRpm.Value)}";
         }
     }
 }

@@ -3,7 +3,7 @@ using GearboxDriver.PublishedLanguage.Responsiveness;
 
 namespace GearboxDriver.Processes
 {
-    public interface ICharacteristics
+    public interface IEngineCharacteristics
     {
         public ShiftpointRange GetRangeFor(ResponsivenessMode responsivenessMode, AggressivenessLevel aggressivenessLevel);
     }

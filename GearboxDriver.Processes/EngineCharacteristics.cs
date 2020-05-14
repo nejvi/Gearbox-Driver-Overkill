@@ -6,7 +6,7 @@ using GearboxDriver.PublishedLanguage.Responsiveness;
 
 namespace GearboxDriver.Processes
 {
-    public class Characteristics : ICharacteristics
+    public class EngineCharacteristics : IEngineCharacteristics
     {
         private readonly Dictionary<ResponsivenessMode, ShiftpointRange> _rangeForMode =
             new Dictionary<ResponsivenessMode, ShiftpointRange>

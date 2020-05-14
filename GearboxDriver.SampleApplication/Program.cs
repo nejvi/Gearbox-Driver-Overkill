@@ -23,7 +23,7 @@ namespace GearboxDriver.SampleApplication
             eventBus.Attach(new EngineEmulator(externalSystems));
 
             new AntiCorruptionLayerStartup(eventBus, externalSystemsAdapter).Start();
-            new ProcessesStartup(eventBus, new GearshiftService(new Negotiator(), new AutomaticGearshifter(null /*todo*/)), new Characteristics()).Start();
+            new ProcessesStartup(eventBus, new GearshiftService(new Negotiator(), new AutomaticGearshifter(null /*todo*/)), new EngineCharacteristics()).Start();
 
             var cabinService = new CabinService(eventBus);
             cabinService.SetDriveMode();

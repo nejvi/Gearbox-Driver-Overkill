@@ -1,4 +1,5 @@
-﻿using GearboxDriver.PublishedLanguage.Pedals;
+﻿using GearboxDriver.PublishedLanguage;
+using GearboxDriver.PublishedLanguage.Pedals;
 using GearboxDriver.PublishedLanguage.Responsiveness;
 using GearboxDriver.Seedwork;
 
@@ -6,14 +7,13 @@ namespace GearboxDriver.Processes
 {
     public class KickdownDetectionProcess : IProcess
     {
-        private bool KickdownActivated { get; set; }
-        private bool StrongKickdownActivated { get; set; }
+        private readonly IKickdownCharacteristics _kickdownCharacteristics;
         private ResponsivenessMode ResponsivenessMode { get; set; }
+        private PedalPressure LastGasPressure { get; set; }
 
-        public KickdownDetectionProcess()
+        public KickdownDetectionProcess(IKickdownCharacteristics kickdownCharacteristics)
         {
-            KickdownActivated = false;
-            StrongKickdownActivated = false;
+            _kickdownCharacteristics = kickdownCharacteristics;
             ResponsivenessMode = ResponsivenessMode.Economic;
         }
 
@@ -22,40 +22,7 @@ namespace GearboxDriver.Processes
             switch (@event)
             {
                 case GasPressureChanged gasPressure:
-                    switch (ResponsivenessMode)
-                    {
-                        case ResponsivenessMode.Comfort:
-                            {
-                                if (gasPressure.PedalPressure.Value > 0.5d)
-                                    KickdownActivated = true;
-                                else
-                                {
-                                    if(KickdownActivated)
-                                    {
-                                        KickdownActivated = false;
-                                    }
-                                }
-                            }
-                            break;
-                        case ResponsivenessMode.Sport:
-                            {
-                                if (gasPressure.PedalPressure.Value >= 0.7d)
-                                    KickdownActivated = true;
-                                else if (gasPressure.PedalPressure.Value > 0.9d) // Not delivered info
-                                {
-                                    KickdownActivated = false;
-                                    StrongKickdownActivated = true;
-                                }
-                                else
-                                {
-                                    if (KickdownActivated)
-                                        KickdownActivated = false;
-                                    else if (StrongKickdownActivated)
-                                        StrongKickdownActivated = false;
-                                }
-                            }
-                            break;
-                    }
+                    LastGasPressure = gasPressure.PedalPressure;
                     break;
                 case EconomicModeEntered _:
                     ResponsivenessMode = ResponsivenessMode.Economic;
@@ -67,6 +34,8 @@ namespace GearboxDriver.Processes
                     ResponsivenessMode = ResponsivenessMode.Sport;
                     break;
             }
+
+            _kickdownCharacteristics.GetActionFor(ResponsivenessMode, LastGasPressure);
         }
     }
 }

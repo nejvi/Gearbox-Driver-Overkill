@@ -7,9 +7,9 @@ namespace GearboxDriver.Processes
     {
         private readonly IGearshiftService _gearshiftService;
         private readonly IEventBus _eventBus;
-        private readonly Characteristics _engineCharacteristics;
+        private readonly EngineCharacteristics _engineCharacteristics;
 
-        public ProcessesStartup(IEventBus eventBus, IGearshiftService gearshiftService, Characteristics engineCharacteristics)
+        public ProcessesStartup(IEventBus eventBus, IGearshiftService gearshiftService, EngineCharacteristics engineCharacteristics)
         {
             _gearshiftService = gearshiftService;
             _engineCharacteristics = engineCharacteristics;

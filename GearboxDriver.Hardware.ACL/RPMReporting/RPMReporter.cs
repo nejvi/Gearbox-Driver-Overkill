@@ -9,6 +9,7 @@ namespace GearboxDriver.Hardware.ACL.RpmReporting
         private readonly IEventBus _eventBus;
         private readonly IRpmSensor _rpmSensor;
         private Rpm LastReportedRpm { get; set; }
+        private bool IsEverReported { get; set; }
 
         public RpmReporter(IEventBus eventBus, IRpmSensor rpmSensor)
         {
@@ -19,11 +20,12 @@ namespace GearboxDriver.Hardware.ACL.RpmReporting
         public void TryToReport()
         {
             var rpm = _rpmSensor.GetCurrentRpm();
-            if (LastReportedRpm == rpm) 
+            if (LastReportedRpm == rpm && IsEverReported) 
                 return;
 
             _eventBus.SendEvent(new RpmChanged(rpm));
             LastReportedRpm = rpm;
+            IsEverReported = true;
         }
     }
 }

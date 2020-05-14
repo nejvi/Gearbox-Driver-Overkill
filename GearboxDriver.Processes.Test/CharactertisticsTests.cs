@@ -18,7 +18,7 @@ namespace GearboxDriver.Processes.Test
         [TestCase(ResponsivenessMode.Sport, AggressivenessLevel.Third, 1950d, 6500d)]
         public void ReturnsProperRangeForModeAndAggressivenessLevel(ResponsivenessMode selectedMode, AggressivenessLevel selectedAggressiveness, double lowerShiftPoint, double upperShiftPoint)
         {
-            var characteristics = new Characteristics();
+            var characteristics = new EngineCharacteristics();
 
             var characteristicsRange = characteristics.GetRangeFor(selectedMode, selectedAggressiveness);
 

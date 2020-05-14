@@ -6,11 +6,11 @@ namespace GearboxDriver.Processes
     public class ResponsivenessModeProgramUpdatingProcess : IProcess
     {
         private readonly IGearshiftService _service;
-        private readonly Characteristics _characteristics;
+        private readonly EngineCharacteristics _characteristics;
         private ResponsivenessMode CurrentResponsivenessMode { get; set; }
         private AggressivenessLevel CurrentAggressivenessLevel { get; set; }
 
-        public ResponsivenessModeProgramUpdatingProcess(IGearshiftService service, Characteristics characteristics)
+        public ResponsivenessModeProgramUpdatingProcess(IGearshiftService service, EngineCharacteristics characteristics)
         {
             _service = service;
             _characteristics = characteristics;

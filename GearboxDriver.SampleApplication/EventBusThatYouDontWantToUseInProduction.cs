@@ -7,6 +7,7 @@ namespace GearboxDriver.SampleApplication
     public class EventBusThatYouDontWantToUseInProduction : IEventBus
     {
         private readonly List<IEventListener> _listeners;
+        private bool _dead;
 
         public EventBusThatYouDontWantToUseInProduction()
         {
@@ -15,8 +16,9 @@ namespace GearboxDriver.SampleApplication
 
         public void SendEvent(IEvent @event)
         {
-            foreach (var listener in _listeners.ToList())
-                listener.HandleEvent(@event);
+            if(!_dead)
+                foreach (var listener in _listeners.ToList())
+                 listener.HandleEvent(@event);
         }
 
         public void SendEvent(IEnumerable<IEvent> events)
@@ -28,6 +30,11 @@ namespace GearboxDriver.SampleApplication
         public void Attach(IEventListener listener)
         {
             _listeners.Add(listener);
+        }
+
+        public void Kill()
+        {
+            _dead = true;
         }
     }
 }

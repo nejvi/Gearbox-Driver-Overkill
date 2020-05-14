@@ -15,6 +15,7 @@ namespace GearboxDriver.Hardware.ACL.RpmReporting
         {
             _eventBus = eventBus;
             _rpmSensor = rpmSensor;
+            LastReportedRpm = new Rpm(0);
         }
 
         public void TryToReport()
@@ -23,7 +24,7 @@ namespace GearboxDriver.Hardware.ACL.RpmReporting
             if (LastReportedRpm == rpm && HasEverReported) 
                 return;
 
-            _eventBus.SendEvent(new RpmChanged(rpm));
+            _eventBus.SendEvent(new RpmChanged(LastReportedRpm, rpm));
             LastReportedRpm = rpm;
             HasEverReported = true;
         }

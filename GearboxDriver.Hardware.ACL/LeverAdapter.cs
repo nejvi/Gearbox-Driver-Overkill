@@ -14,24 +14,22 @@ namespace GearboxDriver.Hardware.ACL
 
         public void SetDriveMode()
         {
-            _gearbox.setGearBoxCurrentParams(new Object[2] { 1, CurrentGearOrFallback });
+            _gearbox.setGearBoxCurrentParams(new Object[2] { 1, 1 });
         }
 
         public void SetNeutralMode()
         {
-            _gearbox.setGearBoxCurrentParams(new Object[2] { 4, CurrentGearOrFallback });
+            _gearbox.setGearBoxCurrentParams(new Object[2] { 4, 0 });
         }
 
         public void SetParkMode()
         {
-            _gearbox.setGearBoxCurrentParams(new Object[2] { 2, CurrentGearOrFallback });
+            _gearbox.setGearBoxCurrentParams(new Object[2] { 2, 0 });
         }
 
         public void SetReverseMode()
         {
-            _gearbox.setGearBoxCurrentParams(new Object[2] { 3, CurrentGearOrFallback });
+            _gearbox.setGearBoxCurrentParams(new Object[2] { 3, -1 });
         }
-
-        private object CurrentGearOrFallback => _gearbox.getCurrentGear() ?? 0;
     }
 }

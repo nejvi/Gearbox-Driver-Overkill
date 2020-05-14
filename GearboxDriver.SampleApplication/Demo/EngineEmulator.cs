@@ -1,13 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 using GearboxDriver.Hardware.API;
 using GearboxDriver.PublishedLanguage.Gearbox;
 using GearboxDriver.PublishedLanguage.Pedals;
+using GearboxDriver.PublishedLanguage.Transmission;
 using GearboxDriver.Seedwork;
 
-namespace GearboxDriver.SampleApplication
+namespace GearboxDriver.SampleApplication.Demo
 {
     // Class only for application demonstration and is out of scope of the model, contains very naive implementations
     class EngineEmulator : IEventListener
@@ -41,12 +40,15 @@ namespace GearboxDriver.SampleApplication
                 case GearChanged gearChanged:
                     CurrentGear = gearChanged.EnteredGear;
 
-                    if (gearChanged.EnteredGear.Value > gearChanged.PreviousGear.Value)
-                        _systems.setCurrentRpm(Math.Max(_systems.getCurrentRpm() - 1500, 0));
+                    if (gearChanged.EnteredGear.Value > gearChanged.PreviousGear.Value && _systems.getCurrentRpm() > 1200)
+                        _systems.setCurrentRpm(Math.Max(_systems.getCurrentRpm() - 500, 0));
 
                     if (gearChanged.EnteredGear.Value < gearChanged.PreviousGear.Value)
-                        _systems.setCurrentRpm(Math.Max(_systems.getCurrentRpm() + 1500, 0));
+                        _systems.setCurrentRpm(Math.Max(_systems.getCurrentRpm() + 200, 0));
 
+                    break;
+                case DriveModeEntered _:
+                    _systems.setCurrentRpm(1000);
                     break;
             }
         }
@@ -55,9 +57,9 @@ namespace GearboxDriver.SampleApplication
         {
             while (true)
             {
-                _systems.setCurrentRpm(Math.Min(_systems.getCurrentRpm() + GetRpmIncreaseForGasPressure(GasPressure), 15000));
-                _systems.setCurrentRpm(Math.Max(_systems.getCurrentRpm() - BrakePressure.Value * 10, 0));
-                Task.Delay(TimeSpan.FromMilliseconds(30)).Wait();
+                _systems.setCurrentRpm(Math.Max(Math.Min(_systems.getCurrentRpm() + GetRpmIncreaseForGasPressure(GasPressure), 15000), 0));
+                _systems.setCurrentRpm(Math.Max(Math.Min(_systems.getCurrentRpm() - BrakePressure.Value * 30, 15000), 0));
+                Task.Delay(TimeSpan.FromMilliseconds(25)).Wait();
             }
         }
 
@@ -67,9 +69,9 @@ namespace GearboxDriver.SampleApplication
             switch (CurrentGear.Value)
             {
                 case 0:
-                    return 10 + pressure.Value * 35;
+                    return pressure.Value * 35;
                 case 1:
-                    return pressure.Value * 30 - 2;
+                    return 10 + pressure.Value * 30 - 2;
                 case 2: 
                     return pressure.Value * 25 - 2;
                 case 3: 

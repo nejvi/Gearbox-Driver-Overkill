@@ -43,7 +43,7 @@ namespace GearboxDriver.Hardware.ACL
         {
             var currentAngularSpeed = _externalSystems.getAngularSpeed();
 
-            if (currentAngularSpeed >= 0.5d)
+            if (currentAngularSpeed >= 250d)
                 return true;
             else
                 return false;

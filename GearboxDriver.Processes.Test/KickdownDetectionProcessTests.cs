@@ -17,7 +17,7 @@ namespace GearboxDriver.Processes.Test
             var process = new KickdownDetectionProcess(characteristics, serviceMock.Object);;
 
             process.ApplyEvent(new GearChanged(new Gear(3), new Gear(2)));
-            process.ApplyEvent(new RpmChanged(new Rpm(4500)));
+            process.ApplyEvent(new RpmChanged(new Rpm(1500), new Rpm(4500)));
             process.ApplyEvent(new ComfortModeEntered());
             process.ApplyEvent(new GasPressureChanged(new PedalPressure(0.75)));
 
@@ -32,7 +32,7 @@ namespace GearboxDriver.Processes.Test
             var process = new KickdownDetectionProcess(characteristics, serviceMock.Object);;
 
             process.ApplyEvent(new GearChanged(new Gear(3), new Gear(2)));
-            process.ApplyEvent(new RpmChanged(new Rpm(5000)));
+            process.ApplyEvent(new RpmChanged(new Rpm(1500), new Rpm(5000)));
             process.ApplyEvent(new SportModeEntered());
             process.ApplyEvent(new GasPressureChanged(new PedalPressure(0.75)));
 
@@ -47,7 +47,7 @@ namespace GearboxDriver.Processes.Test
             var process = new KickdownDetectionProcess(characteristics, serviceMock.Object);;
 
             process.ApplyEvent(new GearChanged(new Gear(3), new Gear(2)));
-            process.ApplyEvent(new RpmChanged(new Rpm(5000)));
+            process.ApplyEvent(new RpmChanged(new Rpm(1500), new Rpm(5000)));
             process.ApplyEvent(new SportModeEntered());
             process.ApplyEvent(new GasPressureChanged(new PedalPressure(0.9)));
 

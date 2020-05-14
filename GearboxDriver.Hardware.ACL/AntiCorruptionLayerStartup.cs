@@ -31,6 +31,8 @@ namespace GearboxDriver.Hardware.ACL
             if (_adapter.SupportsTiltPosition())
                 builder.AddReporter(new TiltChangeReporter(_eventBus, _adapter));
 
+            _eventBus.Attach(new TransmissionEventListener(new LeverAdapter(_gearbox)));
+
             builder.Build().Start();
         }
     }

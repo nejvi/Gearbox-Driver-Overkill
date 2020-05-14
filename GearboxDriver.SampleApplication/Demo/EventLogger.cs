@@ -1,7 +1,7 @@
 ﻿using System;
 using GearboxDriver.Seedwork;
 
-namespace GearboxDriver.SampleApplication
+namespace GearboxDriver.SampleApplication.Demo
 {
     class EventLogger : IEventListener
     {

@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using GearboxDriver.Hardware.ACL.TiltPositionReporting;
+using GearboxDriver.PublishedLanguage.VehicleMotion;
 using GearboxDriver.Seedwork;
 
 namespace GearboxDriver.Hardware.ACL.Tests
@@ -11,14 +12,14 @@ namespace GearboxDriver.Hardware.ACL.Tests
     public class TiltPositionReporterTests
     {
         private Mock<IEventBus> _eventBusMock;
-        private Mock<ITiltPositionProvider> _providerMock;
+        private Mock<ITiltPositionSensor> _providerMock;
         private TiltChangeReporter _reporter;
 
         [SetUp]
         public void SetUp()
         {
             _eventBusMock = new Mock<IEventBus>();
-            _providerMock = new Mock<ITiltPositionProvider>();
+            _providerMock = new Mock<ITiltPositionSensor>();
             _reporter = new TiltChangeReporter(_eventBusMock.Object, _providerMock.Object);
         }
 

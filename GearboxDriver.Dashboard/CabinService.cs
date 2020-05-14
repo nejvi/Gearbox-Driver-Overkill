@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using GearboxDriver.Cabin.Pedals;
-using GearboxDriver.Cabin.Responsiveness;
-using GearboxDriver.Cabin.Transmission;
-using GearboxDriver.Hardware.ACL;
+﻿using GearboxDriver.PublishedLanguage.Pedals;
+using GearboxDriver.PublishedLanguage.Responsiveness;
 using GearboxDriver.Seedwork;
 
-namespace GearboxDriver.Cabin
+namespace GearboxDriver.CabinControls
 {
     public class CabinService
     {

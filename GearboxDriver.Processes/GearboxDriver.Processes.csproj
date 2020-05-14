@@ -5,7 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\GearboxDriver.Dashboard\GearboxDriver.Cabin.csproj" />
+    <ProjectReference Include="..\GearboxDriver.Dashboard\GearboxDriver.CabinControls.csproj" />
     <ProjectReference Include="..\GearboxDriver.Gearshift\GearboxDriver.Gearshift.csproj" />
     <ProjectReference Include="..\GearboxDriver.Seedwork\GearboxDriver.Seedwork.csproj" />
   </ItemGroup>

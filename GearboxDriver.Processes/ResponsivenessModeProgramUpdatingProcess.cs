@@ -1,7 +1,6 @@
-﻿using GearboxDriver.Cabin.Responsiveness;
-using GearboxDriver.Gearshift;
+﻿using GearboxDriver.Gearshift;
+using GearboxDriver.PublishedLanguage.Responsiveness;
 using GearboxDriver.Seedwork;
-
 namespace GearboxDriver.Processes
 {
     public class ResponsivenessModeProgramUpdatingProcess : IProcess

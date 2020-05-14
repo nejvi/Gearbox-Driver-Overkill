@@ -1,7 +1,7 @@
-﻿using GearboxDriver.Cabin.ManualGearshifting;
-using GearboxDriver.Gearshift;
+﻿using GearboxDriver.Gearshift;
 using GearboxDriver.Seedwork;
 using GearboxDriver.PublishedLanguage.Gearbox;
+using GearboxDriver.PublishedLanguage.ManualGearshifting;
 
 namespace GearboxDriver.Processes
 {

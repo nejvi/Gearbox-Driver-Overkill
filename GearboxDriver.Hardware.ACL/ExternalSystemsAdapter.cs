@@ -1,14 +1,15 @@
-﻿using GearboxDriver.Hardware.ACL.RPMReporting;
-using GearboxDriver.Hardware.ACL.TiltPositionReporting;
+﻿using GearboxDriver.Hardware.ACL.TiltPositionReporting;
 using GearboxDriver.Hardware.ACL.VehicleSlippingReporting;
 using GearboxDriver.Hardware.API;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using GearboxDriver.Hardware.ACL.RpmReporting;
+using GearboxDriver.PublishedLanguage.Gearbox;
 
 namespace GearboxDriver.Hardware.ACL
 {
-    public class ExternalSystemsAdapter : IRPMProvider, ITiltPositionProvider, ISlippingProvider
+    public class ExternalSystemsAdapter : IRpmSensor, ITiltPositionSensor, ISlippingSensor
     {
         private readonly ExternalSystems _externalSystems;
 

@@ -1,28 +1,29 @@
 ﻿using GearboxDriver.Hardware.ACL.Runtime;
+using GearboxDriver.PublishedLanguage.Gearbox;
 using GearboxDriver.Seedwork;
 
-namespace GearboxDriver.Hardware.ACL.RPMReporting
+namespace GearboxDriver.Hardware.ACL.RpmReporting
 {
-    public class RPMReporter : IReporter
+    public class RpmReporter : IReporter
     {
         private readonly IEventBus _eventBus;
-        private readonly IRPMProvider _rpmProvider;
-        private Rpm _lastReportedRpm { get; set; }
+        private readonly IRpmSensor _rpmSensor;
+        private Rpm LastReportedRpm { get; set; }
 
-        public RPMReporter(IEventBus eventBus, IRPMProvider rpmProvider)
+        public RpmReporter(IEventBus eventBus, IRpmSensor rpmSensor)
         {
             _eventBus = eventBus;
-            _rpmProvider = rpmProvider;
+            _rpmSensor = rpmSensor;
         }
 
         public void TryToReport()
         {
-            var rpm = _rpmProvider.GetCurrentRpm();
-            if (_lastReportedRpm == rpm) 
+            var rpm = _rpmSensor.GetCurrentRpm();
+            if (LastReportedRpm == rpm) 
                 return;
 
             _eventBus.SendEvent(new RpmChanged(rpm));
-            _lastReportedRpm = rpm;
+            LastReportedRpm = rpm;
         }
     }
 }

@@ -2,6 +2,7 @@
 using GearboxDriver.Hardware.ACL;
 using GearboxDriver.PublishedLanguage.Gearbox;
 using GearboxDriver.PublishedLanguage.Towing;
+using GearboxDriver.PublishedLanguage.VehicleMotion;
 using GearboxDriver.Seedwork;
 
 namespace GearboxDriver.Processes

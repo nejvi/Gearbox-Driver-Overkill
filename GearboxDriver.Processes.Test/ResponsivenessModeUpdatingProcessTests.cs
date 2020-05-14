@@ -1,5 +1,5 @@
-﻿using GearboxDriver.Cabin.Responsiveness;
-using GearboxDriver.Gearshift;
+﻿using GearboxDriver.Gearshift;
+using GearboxDriver.PublishedLanguage.Responsiveness;
 using Moq;
 using NUnit.Framework;
 

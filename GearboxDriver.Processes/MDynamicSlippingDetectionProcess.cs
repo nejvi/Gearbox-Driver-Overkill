@@ -1,6 +1,7 @@
 ﻿using GearboxDriver.Gearshift;
 using GearboxDriver.Hardware.ACL;
 using GearboxDriver.PublishedLanguage.MDynamic;
+using GearboxDriver.PublishedLanguage.VehicleMotion;
 using GearboxDriver.Seedwork;
 
 namespace GearboxDriver.Processes

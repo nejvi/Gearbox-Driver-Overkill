@@ -1,4 +1,5 @@
-using GearboxDriver.Hardware.ACL.RPMReporting;
+using GearboxDriver.Hardware.ACL.RpmReporting;
+using GearboxDriver.PublishedLanguage.Gearbox;
 using GearboxDriver.Seedwork;
 using Moq;
 using NUnit.Framework;
@@ -8,15 +9,15 @@ namespace GearboxDriver.Hardware.ACL.Tests
     public class RPMReporterTests
     {
         private Mock<IEventBus> _eventBusMock;
-        private Mock<IRPMProvider> _providerMock;
-        private RPMReporter _reporter;
+        private Mock<IRpmSensor> _providerMock;
+        private RpmReporter _reporter;
         
         [SetUp]
         public void SetUp()
         {
             _eventBusMock = new Mock<IEventBus>();
-            _providerMock = new Mock<IRPMProvider>();
-            _reporter = new RPMReporter(_eventBusMock.Object, _providerMock.Object);
+            _providerMock = new Mock<IRpmSensor>();
+            _reporter = new RpmReporter(_eventBusMock.Object, _providerMock.Object);
         }
 
         [Test]

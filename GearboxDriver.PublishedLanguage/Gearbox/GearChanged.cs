@@ -12,5 +12,10 @@ namespace GearboxDriver.PublishedLanguage.Gearbox
             EnteredGear = enteredGear;
             PreviousGear = previousGear;
         }
+
+        public override string ToString()
+        {
+            return $"Gear changed from {PreviousGear} to {EnteredGear}";
+        }
     }
 }

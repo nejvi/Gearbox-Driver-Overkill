@@ -9,11 +9,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GearboxDriver.Hardware.ACL"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GearboxDriver.Hardware.ACL.Tests", "GearboxDriver.Hardware.ACL.Tests\GearboxDriver.Hardware.ACL.Tests.csproj", "{14045A50-45FF-4045-958C-DFE8E6E5052E}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GearboxDriver.Cabin", "GearboxDriver.Dashboard\GearboxDriver.Cabin.csproj", "{E0B914D6-7AE8-4CF7-B42E-3A39E1EB1D7D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GearboxDriver.CabinControls", "GearboxDriver.Dashboard\GearboxDriver.CabinControls.csproj", "{E0B914D6-7AE8-4CF7-B42E-3A39E1EB1D7D}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GearboxDriver.Seedwork", "GearboxDriver.Seedwork\GearboxDriver.Seedwork.csproj", "{E9F14412-BC09-4B24-A547-7E685A4F006C}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GearboxDriver.Dashboard.Tests", "GearboxDriver.Dashboard.Tests\GearboxDriver.Dashboard.Tests.csproj", "{D74985C0-1029-4BFB-9096-F9F07EFD4DF6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GearboxDriver.CabinControls.Tests", "GearboxDriver.Dashboard.Tests\GearboxDriver.CabinControls.Tests.csproj", "{D74985C0-1029-4BFB-9096-F9F07EFD4DF6}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GearboxDriver.Gearshift", "GearboxDriver.Gearshift\GearboxDriver.Gearshift.csproj", "{684B953D-B58A-4A41-B3BB-011B34D7CA5A}"
 EndProject
@@ -25,9 +25,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GearboxDriver.Gearshift.Tes
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GearboxDriver.SampleApplication", "GearboxDriver.SampleApplication\GearboxDriver.SampleApplication.csproj", "{F04A2B15-9087-4357-BBE4-AEAF5F920001}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GearboxDriver.SampleInfrastructure", "GearboxDriver.SampleInfrastructure\GearboxDriver.SampleInfrastructure.csproj", "{69376BDA-B7C9-4582-8E26-69863A296F03}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GearboxDriver.PublishedLanguage", "GearboxDriver.PublishedLanguage\GearboxDriver.PublishedLanguage.csproj", "{E12197F8-68D5-4BBD-BBB6-69D85D071845}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GearboxDriver.PublishedLanguage", "GearboxDriver.PublishedLanguage\GearboxDriver.PublishedLanguage.csproj", "{E12197F8-68D5-4BBD-BBB6-69D85D071845}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -79,10 +77,6 @@ Global
 		{F04A2B15-9087-4357-BBE4-AEAF5F920001}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F04A2B15-9087-4357-BBE4-AEAF5F920001}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F04A2B15-9087-4357-BBE4-AEAF5F920001}.Release|Any CPU.Build.0 = Release|Any CPU
-		{69376BDA-B7C9-4582-8E26-69863A296F03}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{69376BDA-B7C9-4582-8E26-69863A296F03}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{69376BDA-B7C9-4582-8E26-69863A296F03}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{69376BDA-B7C9-4582-8E26-69863A296F03}.Release|Any CPU.Build.0 = Release|Any CPU
 		{E12197F8-68D5-4BBD-BBB6-69D85D071845}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{E12197F8-68D5-4BBD-BBB6-69D85D071845}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E12197F8-68D5-4BBD-BBB6-69D85D071845}.Release|Any CPU.ActiveCfg = Release|Any CPU

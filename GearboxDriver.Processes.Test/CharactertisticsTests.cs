@@ -1,6 +1,6 @@
-﻿using GearboxDriver.Cabin.Responsiveness;
-using GearboxDriver.Gearshift;
+﻿using GearboxDriver.Gearshift;
 using GearboxDriver.Hardware.ACL;
+using GearboxDriver.PublishedLanguage.Responsiveness;
 using NUnit.Framework;
 
 namespace GearboxDriver.Processes.Test

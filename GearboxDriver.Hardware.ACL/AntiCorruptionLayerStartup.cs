@@ -1,4 +1,4 @@
-﻿using GearboxDriver.Hardware.ACL.RPMReporting;
+﻿using GearboxDriver.Hardware.ACL.RpmReporting;
 using GearboxDriver.Hardware.ACL.Runtime;
 using GearboxDriver.Hardware.ACL.TiltPositionReporting;
 using GearboxDriver.Hardware.ACL.VehicleSlippingReporting;
@@ -20,7 +20,7 @@ namespace GearboxDriver.Hardware.ACL
         public void Start()
         {
             var builder = new EngineBuilder()
-                .AddReporter(new RPMReporter(_eventBus, _adapter))
+                .AddReporter(new RpmReporter(_eventBus, _adapter))
                 .AddReporter(new SlippingReporter(_eventBus, _adapter));
 
             if (_adapter.SupportsTiltPosition())

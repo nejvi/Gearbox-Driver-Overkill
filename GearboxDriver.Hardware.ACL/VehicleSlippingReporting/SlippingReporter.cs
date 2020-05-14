@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using GearboxDriver.PublishedLanguage.VehicleMotion;
 using GearboxDriver.Seedwork;
 
 namespace GearboxDriver.Hardware.ACL.VehicleSlippingReporting
@@ -9,19 +10,19 @@ namespace GearboxDriver.Hardware.ACL.VehicleSlippingReporting
     public class SlippingReporter : IReporter
     {
         private readonly IEventBus _eventBus;
-        private readonly ISlippingProvider _angularProvider;
+        private readonly ISlippingSensor _angularSensor;
         private bool LastReportedSlipping { get; set; }
         private bool isEverReported { get; set; }
 
-        public SlippingReporter(IEventBus eventBus, ISlippingProvider slippingProvider)
+        public SlippingReporter(IEventBus eventBus, ISlippingSensor slippingSensor)
         {
             _eventBus = eventBus;
-            _angularProvider = slippingProvider;
+            _angularSensor = slippingSensor;
         }
 
         public void TryToReport()
         {
-            var currentSlipping = _angularProvider.IsCurrentlySlipping();
+            var currentSlipping = _angularSensor.IsCurrentlySlipping();
             if (LastReportedSlipping == currentSlipping && isEverReported) // VehicleStartedSlipping, VehicleStoppedSlipping
                 return;
 

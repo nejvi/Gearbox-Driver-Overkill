@@ -1,5 +1,5 @@
-﻿using GearboxDriver.Cabin.Pedals;
-using GearboxDriver.Cabin.Responsiveness;
+﻿using GearboxDriver.PublishedLanguage.Pedals;
+using GearboxDriver.PublishedLanguage.Responsiveness;
 using GearboxDriver.Seedwork;
 
 namespace GearboxDriver.Processes
@@ -26,7 +26,7 @@ namespace GearboxDriver.Processes
                     {
                         case ResponsivenessMode.Comfort:
                             {
-                                if (gasPressure.PedalPressure.Pressure > 0.5d)
+                                if (gasPressure.PedalPressure.Value > 0.5d)
                                     KickdownActivated = true;
                                 else
                                 {
@@ -39,9 +39,9 @@ namespace GearboxDriver.Processes
                             break;
                         case ResponsivenessMode.Sport:
                             {
-                                if (gasPressure.PedalPressure.Pressure >= 0.7d)
+                                if (gasPressure.PedalPressure.Value >= 0.7d)
                                     KickdownActivated = true;
-                                else if (gasPressure.PedalPressure.Pressure > 0.9d) // Not delivered info
+                                else if (gasPressure.PedalPressure.Value > 0.9d) // Not delivered info
                                 {
                                     KickdownActivated = false;
                                     StrongKickdownActivated = true;

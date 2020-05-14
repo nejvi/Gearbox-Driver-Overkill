@@ -4,6 +4,7 @@ using NUnit.Framework;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using GearboxDriver.PublishedLanguage.VehicleMotion;
 using GearboxDriver.Seedwork;
 
 namespace GearboxDriver.Hardware.ACL.Tests
@@ -11,14 +12,14 @@ namespace GearboxDriver.Hardware.ACL.Tests
     public class VehicleSlippingReporting
     {
         private Mock<IEventBus> _eventBusMock;
-        private Mock<ISlippingProvider> _providerMock;
+        private Mock<ISlippingSensor> _providerMock;
         private SlippingReporter _reporter;
 
         [SetUp]
         public void SetUp()
         {
             _eventBusMock = new Mock<IEventBus>();
-            _providerMock = new Mock<ISlippingProvider>();
+            _providerMock = new Mock<ISlippingSensor>();
             _reporter = new SlippingReporter(_eventBusMock.Object, _providerMock.Object);
         }
 

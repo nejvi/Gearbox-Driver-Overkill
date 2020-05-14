@@ -13,5 +13,10 @@ namespace GearboxDriver.PublishedLanguage.Pedals
         {
             PedalPressure = pedalPressure;
         }
+
+        public override string ToString()
+        {
+            return $"Gas pedal pressure changed to {PedalPressure.Value}.";
+        }
     }
 }

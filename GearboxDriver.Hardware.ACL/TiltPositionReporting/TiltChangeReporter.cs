@@ -1,4 +1,5 @@
 ﻿using GearboxDriver.Hardware.ACL.Runtime;
+using GearboxDriver.PublishedLanguage.VehicleMotion;
 using GearboxDriver.Seedwork;
 
 namespace GearboxDriver.Hardware.ACL.TiltPositionReporting
@@ -6,19 +7,19 @@ namespace GearboxDriver.Hardware.ACL.TiltPositionReporting
     public class TiltChangeReporter : IReporter
     {
         private readonly IEventBus _eventBus;
-        private readonly ITiltPositionProvider _tiltProvider;
+        private readonly ITiltPositionSensor _tiltSensor;
         private TiltPosition LastReportedVehicleTiltPosition { get; set; }
         private bool isEverReported { get; set; }
 
-        public TiltChangeReporter(IEventBus eventBus, ITiltPositionProvider tiltProvider)
+        public TiltChangeReporter(IEventBus eventBus, ITiltPositionSensor tiltSensor)
         {
             _eventBus = eventBus;
-            _tiltProvider = tiltProvider;
+            _tiltSensor = tiltSensor;
         }
 
         public void TryToReport()
         {
-            var vehicleTiltPosition = _tiltProvider.GetTiltPosition();
+            var vehicleTiltPosition = _tiltSensor.GetTiltPosition();
 
             if (LastReportedVehicleTiltPosition == vehicleTiltPosition && isEverReported)
                 return;

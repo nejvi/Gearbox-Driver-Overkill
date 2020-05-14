@@ -1,5 +1,6 @@
 ﻿using GearboxDriver.Gearshift;
 using GearboxDriver.Hardware.ACL;
+using GearboxDriver.PublishedLanguage.VehicleMotion;
 using Moq;
 using NUnit.Framework;
 

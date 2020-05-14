@@ -7,16 +7,16 @@ namespace GearboxDriver.PublishedLanguage.Pedals
 {
     public class PedalPressure : ValueObject
     {
-        public double Pressure { get; }
+        public double Value { get; }
 
-        public PedalPressure(double pressure)
+        public PedalPressure(double value)
         {
-            Pressure = pressure;
+            Value = value;
         }
 
         protected override IEnumerable<object> GetAtomicValues()
         {
-            yield return Pressure;
+            yield return Value;
         }
     }
 }

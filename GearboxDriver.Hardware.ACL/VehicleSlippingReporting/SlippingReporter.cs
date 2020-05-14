@@ -12,7 +12,7 @@ namespace GearboxDriver.Hardware.ACL.VehicleSlippingReporting
         private readonly IEventBus _eventBus;
         private readonly ISlippingSensor _angularSensor;
         private bool LastReportedSlipping { get; set; }
-        private bool isEverReported { get; set; }
+        private bool HasEverReported { get; set; }
 
         public SlippingReporter(IEventBus eventBus, ISlippingSensor slippingSensor)
         {
@@ -23,7 +23,7 @@ namespace GearboxDriver.Hardware.ACL.VehicleSlippingReporting
         public void TryToReport()
         {
             var currentSlipping = _angularSensor.IsCurrentlySlipping();
-            if (LastReportedSlipping == currentSlipping && isEverReported) // VehicleStartedSlipping, VehicleStoppedSlipping
+            if (LastReportedSlipping == currentSlipping && HasEverReported) // VehicleStartedSlipping, VehicleStoppedSlipping
                 return;
 
             if (currentSlipping)
@@ -32,7 +32,7 @@ namespace GearboxDriver.Hardware.ACL.VehicleSlippingReporting
                 _eventBus.SendEvent(new VehicleStoppedSlipping());
 
             LastReportedSlipping = currentSlipping;
-            isEverReported = true;
+            HasEverReported = true;
         }
     }
 }

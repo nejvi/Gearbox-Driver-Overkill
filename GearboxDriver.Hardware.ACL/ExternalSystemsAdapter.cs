@@ -2,6 +2,7 @@
 using GearboxDriver.Hardware.ACL.VehicleSlippingReporting;
 using GearboxDriver.Hardware.API;
 using System;
+using GearboxDriver.Gearshift.Shifting;
 using GearboxDriver.Hardware.ACL.RpmReporting;
 using GearboxDriver.PublishedLanguage.Gearbox;
 

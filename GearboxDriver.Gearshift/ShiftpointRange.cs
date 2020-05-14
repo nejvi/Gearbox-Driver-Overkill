@@ -1,8 +1,5 @@
-﻿using GearboxDriver.Hardware.ACL;
-using GearboxDriver.Seedwork;
-using System;
+﻿using GearboxDriver.Seedwork;
 using System.Collections.Generic;
-using System.Text;
 using GearboxDriver.PublishedLanguage.Gearbox;
 
 namespace GearboxDriver.Gearshift

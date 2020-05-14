@@ -6,18 +6,17 @@ namespace GearboxDriver.Gearshift
     public class GearshiftStartup
     {
         private readonly IEventBus _eventBus;
-        private readonly IGearbox _gearbox;
+        private readonly AutomaticGearshifter _gearshifter;
 
-        public GearshiftStartup(IEventBus eventBus, IGearbox gearbox)
+        public GearshiftStartup(IEventBus eventBus, AutomaticGearshifter gearshifter)
         {
             _eventBus = eventBus;
-            _gearbox = gearbox;
+            _gearshifter = gearshifter;
         }
 
         public void Start()
         {
-            var gearshifter = new AutomaticGearshifter(_gearbox);
-            var listener = new RpmChangedListener(gearshifter);
+            var listener = new RpmChangedListener(_gearshifter);
             _eventBus.Attach(listener);
         }
     }

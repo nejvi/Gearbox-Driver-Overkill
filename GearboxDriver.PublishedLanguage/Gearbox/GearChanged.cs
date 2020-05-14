@@ -15,7 +15,7 @@ namespace GearboxDriver.PublishedLanguage.Gearbox
 
         public override string ToString()
         {
-            return $"Gear changed from {PreviousGear} to {EnteredGear}";
+            return $"Gear changed from {PreviousGear.Value} to {EnteredGear.Value}";
         }
     }
 }

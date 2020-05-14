@@ -9,7 +9,7 @@ namespace GearboxDriver.Hardware.ACL.TiltPositionReporting
         private readonly IEventBus _eventBus;
         private readonly ITiltPositionSensor _tiltSensor;
         private TiltPosition LastReportedVehicleTiltPosition { get; set; }
-        private bool isEverReported { get; set; }
+        private bool HasEverReported { get; set; }
 
         public TiltChangeReporter(IEventBus eventBus, ITiltPositionSensor tiltSensor)
         {
@@ -21,7 +21,7 @@ namespace GearboxDriver.Hardware.ACL.TiltPositionReporting
         {
             var vehicleTiltPosition = _tiltSensor.GetTiltPosition();
 
-            if (LastReportedVehicleTiltPosition == vehicleTiltPosition && isEverReported)
+            if (LastReportedVehicleTiltPosition == vehicleTiltPosition && HasEverReported)
                 return;
 
             if (vehicleTiltPosition == TiltPosition.Balanced)
@@ -34,7 +34,7 @@ namespace GearboxDriver.Hardware.ACL.TiltPositionReporting
                 _eventBus.SendEvent(new VehicleTiltedUphill());
 
             LastReportedVehicleTiltPosition = vehicleTiltPosition;
-            isEverReported = true;
+            HasEverReported = true;
         }
     }
 }

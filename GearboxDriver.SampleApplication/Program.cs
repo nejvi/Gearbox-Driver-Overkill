@@ -19,12 +19,15 @@ namespace GearboxDriver.SampleApplication
             var externalSystems = new ExternalSystems();
             var eventBus = new EventBusThatYouDontWantToUseInProduction();
             var externalSystemsAdapter = new ExternalSystemsAdapter(externalSystems);
+            var gearbox = new Gearbox();
+            var gearboxAdapter = new GearboxAdapter(gearbox);
+            var automaticGearshifter = new AutomaticGearshifter(gearboxAdapter);
             eventBus.Attach(new EventLogger());
             eventBus.Attach(new EngineEmulator(externalSystems));
 
-            new AntiCorruptionLayerStartup(eventBus, externalSystemsAdapter).Start();
-            new ProcessesStartup(eventBus, new GearshiftService(new Negotiator(), new AutomaticGearshifter(null /*todo*/)), new EngineCharacteristics()).Start();
-            new GearshiftStartup(eventBus, null);
+            new AntiCorruptionLayerStartup(eventBus, externalSystemsAdapter, gearbox).Start();
+            new GearshiftStartup(eventBus, automaticGearshifter).Start();
+            new ProcessesStartup(eventBus, new GearshiftService(new Negotiator(), automaticGearshifter), new EngineCharacteristics()).Start();
 
             var cabinService = new CabinService(eventBus);
             cabinService.SetDriveMode();
@@ -33,11 +36,10 @@ namespace GearboxDriver.SampleApplication
             cabinService.ApplyGasPedalPressure(new PedalPressure(0.75));
             Task.Delay(TimeSpan.FromSeconds(10)).Wait();
             cabinService.ApplyGasPedalPressure(new PedalPressure(0.5));
-            Task.Delay(TimeSpan.FromSeconds(20)).Wait();
+            Task.Delay(TimeSpan.FromSeconds(10)).Wait();
             cabinService.ApplyGasPedalPressure(new PedalPressure(0.0));
-            Task.Delay(TimeSpan.FromSeconds(15)).Wait();
+            Task.Delay(TimeSpan.FromSeconds(5)).Wait();
             cabinService.ApplyBrakePedalPressure(new PedalPressure(1.0));
-            Task.Delay(TimeSpan.FromSeconds(3)).Wait();
 
             Console.ReadKey();
         }

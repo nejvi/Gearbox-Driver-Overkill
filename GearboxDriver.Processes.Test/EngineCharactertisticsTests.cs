@@ -5,7 +5,7 @@ using NUnit.Framework;
 
 namespace GearboxDriver.Processes.Test
 {
-    public class CharactertisticsTests
+    public class EngineCharactertisticsTests
     {
         [TestCase(ResponsivenessMode.Economic, AggressivenessLevel.First , 1000d, 2000d)]
         [TestCase(ResponsivenessMode.Economic, AggressivenessLevel.Second , 1300d, 2600d)]

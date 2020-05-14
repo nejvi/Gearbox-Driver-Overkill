@@ -60,7 +60,6 @@ namespace GearboxDriver.Processes
 
         private void Act()
         {
-            var test = _kickdownCharacteristics.GetActionFor(ResponsivenessMode, LastGasPressure, CurrentRpm);
             if (ShouldStopKickdown)
                 StopKickdown();
 

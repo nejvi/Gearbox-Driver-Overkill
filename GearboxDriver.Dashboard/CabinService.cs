@@ -9,14 +9,18 @@ namespace GearboxDriver.CabinControls
         private readonly IEventBus _eventBus;
         private readonly PedalPanel _pedalPanel;
         private readonly Lever _lever;
-        private readonly ResponsivenessModeSelector _selector;
+        private readonly TrailerHook _hook;
+        private readonly ResponsivenessModeSelector _responsivenessModeSelector;
+        private readonly MDynamicModeSelector _mDynamicModeSelector;
 
         public CabinService(IEventBus eventBus)
         {
             _eventBus = eventBus;
-            _selector = new ResponsivenessModeSelector();
+            _mDynamicModeSelector = new MDynamicModeSelector();
+            _responsivenessModeSelector = new ResponsivenessModeSelector();
             _pedalPanel = new PedalPanel();
             _lever = new Lever();
+            _hook = new TrailerHook();
         }
 
         public void ApplyGasPedalPressure(PedalPressure pressure)
@@ -34,6 +38,11 @@ namespace GearboxDriver.CabinControls
             _eventBus.SendEvent(_lever.EnterParkMode());
         }
 
+        public void EnterDynamicMode()
+        {
+            _eventBus.SendEvent(_mDynamicModeSelector.Enable());
+        }
+
         public void SetDriveMode()
         {
             _eventBus.SendEvent(_lever.EnterDriveMode());
@@ -44,20 +53,25 @@ namespace GearboxDriver.CabinControls
             switch (mode)
             {
                 case ResponsivenessMode.Comfort:
-                    _eventBus.SendEvent(_selector.EnterComfort());
+                    _eventBus.SendEvent(_responsivenessModeSelector.EnterComfort());
                     break;
                 case ResponsivenessMode.Sport:
-                    _eventBus.SendEvent(_selector.EnterSport());
+                    _eventBus.SendEvent(_responsivenessModeSelector.EnterSport());
                     break;
                 case ResponsivenessMode.Economic:
-                    _eventBus.SendEvent(_selector.EnterEconomic());
+                    _eventBus.SendEvent(_responsivenessModeSelector.EnterEconomic());
                     break;
             }
         }
 
         public void SetAggressivenessLevel(AggressivenessLevel level)
         {
-            _eventBus.SendEvent(_selector.SetAggressivenessLevel(level));
+            _eventBus.SendEvent(_responsivenessModeSelector.SetAggressivenessLevel(level));
+        }
+
+        public void AttachTrailer()
+        {
+            _eventBus.SendEvent(_hook.AttachTrailer());
         }
     }
 }

@@ -71,7 +71,7 @@ namespace GearboxDriver.Processes
         private void StopEngineBraking()
         {
             _service.StopDoingEngineBraking();
-            RequestedEngineBraking = true;
+            RequestedEngineBraking = false;
         }
     }
 }

@@ -31,9 +31,9 @@ namespace GearboxDriver.Hardware.ACL
             if (lightsPosition == null)
                 throw new Exception("No option in vehicle.");
 
-            if (lightsPosition <= 1 && lightsPosition >= 3)
+            if (lightsPosition >= 1 && lightsPosition <= 3)
                 return TiltPosition.Downwards;
-            else if (lightsPosition <= 7 && lightsPosition >= 10)
+            else if (lightsPosition >= 7 && lightsPosition <= 10)
                 return TiltPosition.Upwards;
             else
                 return TiltPosition.Balanced;

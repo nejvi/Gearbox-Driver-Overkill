@@ -18,5 +18,11 @@ namespace GearboxDriver.Hardware.API
         {
             return position;
         }
+
+        // method added to enable demo
+        public void setLightsPosition(int position)
+        {
+            this.position = position;
+        }
     }
 }

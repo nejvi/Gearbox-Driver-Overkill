@@ -11,7 +11,7 @@ namespace GearboxDriver.Hardware.ACL.Tests
         [Test]
         public void CannotCreateEngineWithNoReporters()
         {
-            Assert.Throws<EngineStartUpException>(() =>
+            Assert.Throws<EngineStartupException>(() =>
             {
                 new Engine(new List<IReporter>());
             });
@@ -25,7 +25,7 @@ namespace GearboxDriver.Hardware.ACL.Tests
 
             var engine = new Engine(reporters);
 
-            Assert.Throws<EngineStartUpException>(() =>
+            Assert.Throws<EngineStartupException>(() =>
             {
                 engine.Start();
                 engine.Start();

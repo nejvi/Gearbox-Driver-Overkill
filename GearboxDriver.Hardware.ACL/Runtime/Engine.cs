@@ -13,7 +13,7 @@ namespace GearboxDriver.Hardware.ACL.Runtime
         public Engine(IReadOnlyCollection<IReporter> reporters)
         {
             if (reporters.Count == 0)
-                throw new EngineStartUpException("Engine has no reporters");
+                throw new EngineStartupException("Engine has no reporters");
 
             _reporters = reporters;
         }
@@ -21,7 +21,7 @@ namespace GearboxDriver.Hardware.ACL.Runtime
         public void Start()
         {
             if(_isRunning)
-                throw new EngineStartUpException("Engine is already running.");
+                throw new EngineStartupException("Engine is already running.");
 
             _isRunning = true;
 

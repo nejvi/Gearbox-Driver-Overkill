@@ -10,7 +10,7 @@ namespace GearboxDriver.PublishedLanguage.Gearbox
 
         public Gear(int value)
         {
-            if (Value < 0)
+            if (value < 0)
                 throw new Exception("Gear number must be a positive value");
 
             Value = value;

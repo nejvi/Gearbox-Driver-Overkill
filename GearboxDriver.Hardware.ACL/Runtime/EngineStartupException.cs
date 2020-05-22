@@ -2,9 +2,9 @@
 
 namespace GearboxDriver.Hardware.ACL.Runtime
 {
-    public class EngineStartUpException : Exception
+    public class EngineStartupException : Exception
     {
-        public EngineStartUpException(string message) : base(message)
+        public EngineStartupException(string message) : base(message)
         {
             
         }

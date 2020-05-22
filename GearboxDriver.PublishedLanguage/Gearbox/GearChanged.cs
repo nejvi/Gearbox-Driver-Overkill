@@ -15,7 +15,7 @@ namespace GearboxDriver.PublishedLanguage.Gearbox
 
         public override string ToString()
         {
-            if (PreviousGear.Value == EnteredGear.Value)
+            if (PreviousGear.Equals(EnteredGear))
                 return $"Gear changed to 0.";
 
             return $"Gear changed from {PreviousGear.Value} to {EnteredGear.Value}";

@@ -21,7 +21,7 @@ Projekt CabinControls zawiera obsługę wejścia od użytkownika, jest tam mała
 
 Całość zwieńczona jest programem demo, na którego potrzeby napisaliśmy bardzo prosty emulator silnika, który symuluje spadki Rpm przy zrzucaniu biegu, a także ich wzrosty przy dociskaniu/odpuszczaniu gazu.
 
-Program demo demonstruje większość feature'ów.
+Program demo demonstruje większość feature'ów - wystarczy odpalić Sample App.
 
 PS Mniej więcej w połowie implementacji skapnęliśmy się, że trochę przesadziliśmy z rozmachem rozwiązania. No regrets.
 

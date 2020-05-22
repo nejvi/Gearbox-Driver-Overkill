@@ -17,7 +17,7 @@ Eventy są interpretowane przez procesy (projekt .Processes). Odkryliśmy, że p
 
 Pod wpływem działania procesów i negocjatora, wynegocjowany zostaje program zmiany biegów, który jest wstrzykiwany do mechanizmu skrzyni (projekt Gearshift).
 
-Projekt CabinControls zbiera wejście od użytkownika, jest tam mała zabawa z agregatami i prostym readmodelem, którego do tej pory jednak nie wykorzystaliśmy.
+Projekt CabinControls zawiera obsługę wejścia od użytkownika, jest tam mała zabawa z agregatami i prostym readmodelem, którego do tej pory jednak nie wykorzystaliśmy.
 
 Całość zwieńczona jest programem demo, na którego potrzeby napisaliśmy bardzo prosty emulator silnika, który symuluje spadki Rpm przy zrzucaniu biegu, a także ich wzrosty przy dociskaniu/odpuszczaniu gazu.
 

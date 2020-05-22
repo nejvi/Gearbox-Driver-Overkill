@@ -21,6 +21,7 @@ namespace GearboxDriver.CabinControls.Tests
         {
             var lever = new Lever();
 
+            lever.EnterDriveMode();
             var events = lever.EnterParkMode();
 
             Assert.True(events.Any(x => x is ParkModeEntered));

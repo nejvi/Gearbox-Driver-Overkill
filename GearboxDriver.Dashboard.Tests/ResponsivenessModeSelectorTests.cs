@@ -22,6 +22,7 @@ namespace GearboxDriver.CabinControls.Tests
         {
             var selector = new ResponsivenessModeSelector();
 
+            selector.EnterEconomic();
             var events = selector.EnterComfort();
 
             Assert.True(events.Any(x => x is ComfortModeEntered));

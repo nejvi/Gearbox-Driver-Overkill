@@ -8,10 +8,6 @@ namespace GearboxDriver.CabinControls
     {
         private bool InManualMode { get; set; }
 
-        public ManualGearshift()
-        {
-        }
-
         public IReadOnlyCollection<IEvent> Upshift()
         {
             return new List<IEvent>{ new GearUpshiftedManually() };

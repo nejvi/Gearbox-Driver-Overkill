@@ -14,9 +14,9 @@ namespace GearboxDriver.Processes
     {
         private bool VehicleInManualMode { get; set; }
         private Gear CurrentGear { get; set; }
-        private Gear SelectedGear { get; set; }
         private CancellationTokenSource _tokenSource;
         private readonly IGearshiftService _service;
+        private bool _vehicleInTemporalManualControlMode;
         private readonly TimeSpan _comebackDelay = TimeSpan.FromSeconds(5);
 
         public TemporalManualControlProcess(IGearshiftService service)
@@ -25,6 +25,7 @@ namespace GearboxDriver.Processes
             _tokenSource = new CancellationTokenSource();
             VehicleInManualMode = false;
             CurrentGear = new Gear(0);
+            _vehicleInTemporalManualControlMode = false;
         }
 
         public void ApplyEvent(IEvent @event)
@@ -35,23 +36,25 @@ namespace GearboxDriver.Processes
                     CurrentGear = gearChanged.EnteredGear;
                     break;
                 case ManualGearshiftingModeEntered _:
-                    _service.StopTargetingAnyGear();
-                    _tokenSource.Cancel();
-                    break;
-                case GearUpshiftedManually _:
-                    if (VehicleInManualMode)
-                        break;
+                    if (_vehicleInTemporalManualControlMode)
+                    {
+                        _service.StopTargetingAnyGear();
+                        _tokenSource.Cancel();
+                    }
 
-                    SelectedGear = SelectedGear.UpshiftedBy(new Gear(1));
-                    _service.TargetGear(SelectedGear);
+                    VehicleInManualMode = true;
+                    break;
+                case ManualGearshiftingModeExited _:
+                    VehicleInManualMode = false;
+                    break;
+                case GearUpshiftedManually _ when !VehicleInManualMode:
+                    _vehicleInTemporalManualControlMode = true;
+                    _service.TargetGear(CurrentGear.UpshiftedBy(new Gear(1)));
                     RescheduleComebackTimer();
                     break;
-                case GearDownshiftedManually _:
-                    if (VehicleInManualMode)
-                        break;
-
-                    SelectedGear = SelectedGear.DownshiftedBy(new Gear(1));
-                    _service.TargetGear(SelectedGear);
+                case GearDownshiftedManually _ when !VehicleInManualMode:
+                    _vehicleInTemporalManualControlMode = true;
+                    _service.TargetGear(CurrentGear.DownshiftedBy(new Gear(1)));
                     RescheduleComebackTimer();
                     break;
             }
@@ -66,8 +69,8 @@ namespace GearboxDriver.Processes
 
         private void ComeBackToAutomatic()
         {
+            _vehicleInTemporalManualControlMode = false;
             _service.StopTargetingAnyGear();
-            SelectedGear = CurrentGear;
         }
 
     }

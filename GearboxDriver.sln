@@ -3,29 +3,29 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30011.22
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GearboxDriver.Hardware.API", "GearboxDriver.Hardware.API\GearboxDriver.Hardware.API.csproj", "{F66531A7-B496-4AF4-A653-48F301194A6B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GearboxDriver.CabinControls", "src\GearboxDriver.Dashboard\GearboxDriver.CabinControls.csproj", "{B3C247EA-714C-431A-8B3E-020DE6D61B78}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GearboxDriver.Hardware.ACL", "GearboxDriver.Hardware.ACL\GearboxDriver.Hardware.ACL.csproj", "{7FD9859A-E056-4BDC-B0AB-87F00EF26E23}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GearboxDriver.CabinControls.Tests", "src\GearboxDriver.Dashboard.Tests\GearboxDriver.CabinControls.Tests.csproj", "{E3650D64-ABFE-4E9A-A2A5-976FE357C1E2}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GearboxDriver.Hardware.ACL.Tests", "GearboxDriver.Hardware.ACL.Tests\GearboxDriver.Hardware.ACL.Tests.csproj", "{14045A50-45FF-4045-958C-DFE8E6E5052E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GearboxDriver.Gearshift", "src\GearboxDriver.Gearshift\GearboxDriver.Gearshift.csproj", "{31209674-5120-4D79-B2F8-837F8E9425ED}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GearboxDriver.CabinControls", "GearboxDriver.Dashboard\GearboxDriver.CabinControls.csproj", "{E0B914D6-7AE8-4CF7-B42E-3A39E1EB1D7D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GearboxDriver.Gearshift.Tests", "src\GearboxDriver.Gearshift.Tests\GearboxDriver.Gearshift.Tests.csproj", "{E0F1C916-0158-447B-9046-38C47CB6AE41}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GearboxDriver.Seedwork", "GearboxDriver.Seedwork\GearboxDriver.Seedwork.csproj", "{E9F14412-BC09-4B24-A547-7E685A4F006C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GearboxDriver.Hardware.ACL", "src\GearboxDriver.Hardware.ACL\GearboxDriver.Hardware.ACL.csproj", "{A8DF7326-CDF1-4A7B-A8B3-B3AA71A9D3BB}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GearboxDriver.CabinControls.Tests", "GearboxDriver.Dashboard.Tests\GearboxDriver.CabinControls.Tests.csproj", "{D74985C0-1029-4BFB-9096-F9F07EFD4DF6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GearboxDriver.Hardware.ACL.Tests", "src\GearboxDriver.Hardware.ACL.Tests\GearboxDriver.Hardware.ACL.Tests.csproj", "{DFCC31EC-8DAD-4637-A538-4D4390F67910}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GearboxDriver.Gearshift", "GearboxDriver.Gearshift\GearboxDriver.Gearshift.csproj", "{684B953D-B58A-4A41-B3BB-011B34D7CA5A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GearboxDriver.Hardware.API", "src\GearboxDriver.Hardware.API\GearboxDriver.Hardware.API.csproj", "{314A9051-F836-46C5-AD43-A00AE392F913}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GearboxDriver.Processes", "GearboxDriver.Processes\GearboxDriver.Processes.csproj", "{64D67AA4-121F-4700-BD7E-1CA360B9900E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GearboxDriver.Processes", "src\GearboxDriver.Processes\GearboxDriver.Processes.csproj", "{09792B7E-1C85-4794-BFAD-79C7050A68B1}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GearboxDriver.Processes.Test", "GearboxDriver.Processes.Test\GearboxDriver.Processes.Test.csproj", "{607CDF67-267B-47B1-983A-22DB0A40E8BC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GearboxDriver.Processes.Test", "src\GearboxDriver.Processes.Test\GearboxDriver.Processes.Test.csproj", "{D791AD55-5761-4907-9642-D6E6BDACC3B7}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GearboxDriver.Gearshift.Tests", "GearboxDriver.Gearshift.Tests\GearboxDriver.Gearshift.Tests.csproj", "{EFD4DECD-F714-473E-B894-4D9C2BC83809}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GearboxDriver.PublishedLanguage", "src\GearboxDriver.PublishedLanguage\GearboxDriver.PublishedLanguage.csproj", "{D5E9B06B-AA08-412C-8D68-A17F96DBB094}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GearboxDriver.SampleApplication", "GearboxDriver.SampleApplication\GearboxDriver.SampleApplication.csproj", "{F04A2B15-9087-4357-BBE4-AEAF5F920001}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GearboxDriver.SampleApplication", "src\GearboxDriver.SampleApplication\GearboxDriver.SampleApplication.csproj", "{C35930BC-ABAD-4DF2-A87D-E2ECA02E468D}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GearboxDriver.PublishedLanguage", "GearboxDriver.PublishedLanguage\GearboxDriver.PublishedLanguage.csproj", "{E12197F8-68D5-4BBD-BBB6-69D85D071845}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GearboxDriver.Seedwork", "src\GearboxDriver.Seedwork\GearboxDriver.Seedwork.csproj", "{6B596379-9ED1-4663-ACDD-FA56C5EC1ACB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,54 +33,54 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{F66531A7-B496-4AF4-A653-48F301194A6B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F66531A7-B496-4AF4-A653-48F301194A6B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F66531A7-B496-4AF4-A653-48F301194A6B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F66531A7-B496-4AF4-A653-48F301194A6B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{7FD9859A-E056-4BDC-B0AB-87F00EF26E23}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7FD9859A-E056-4BDC-B0AB-87F00EF26E23}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7FD9859A-E056-4BDC-B0AB-87F00EF26E23}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7FD9859A-E056-4BDC-B0AB-87F00EF26E23}.Release|Any CPU.Build.0 = Release|Any CPU
-		{14045A50-45FF-4045-958C-DFE8E6E5052E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{14045A50-45FF-4045-958C-DFE8E6E5052E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{14045A50-45FF-4045-958C-DFE8E6E5052E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{14045A50-45FF-4045-958C-DFE8E6E5052E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E0B914D6-7AE8-4CF7-B42E-3A39E1EB1D7D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E0B914D6-7AE8-4CF7-B42E-3A39E1EB1D7D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E0B914D6-7AE8-4CF7-B42E-3A39E1EB1D7D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E0B914D6-7AE8-4CF7-B42E-3A39E1EB1D7D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E9F14412-BC09-4B24-A547-7E685A4F006C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E9F14412-BC09-4B24-A547-7E685A4F006C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E9F14412-BC09-4B24-A547-7E685A4F006C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E9F14412-BC09-4B24-A547-7E685A4F006C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D74985C0-1029-4BFB-9096-F9F07EFD4DF6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D74985C0-1029-4BFB-9096-F9F07EFD4DF6}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D74985C0-1029-4BFB-9096-F9F07EFD4DF6}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D74985C0-1029-4BFB-9096-F9F07EFD4DF6}.Release|Any CPU.Build.0 = Release|Any CPU
-		{684B953D-B58A-4A41-B3BB-011B34D7CA5A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{684B953D-B58A-4A41-B3BB-011B34D7CA5A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{684B953D-B58A-4A41-B3BB-011B34D7CA5A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{684B953D-B58A-4A41-B3BB-011B34D7CA5A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{64D67AA4-121F-4700-BD7E-1CA360B9900E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{64D67AA4-121F-4700-BD7E-1CA360B9900E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{64D67AA4-121F-4700-BD7E-1CA360B9900E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{64D67AA4-121F-4700-BD7E-1CA360B9900E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{607CDF67-267B-47B1-983A-22DB0A40E8BC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{607CDF67-267B-47B1-983A-22DB0A40E8BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{607CDF67-267B-47B1-983A-22DB0A40E8BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{607CDF67-267B-47B1-983A-22DB0A40E8BC}.Release|Any CPU.Build.0 = Release|Any CPU
-		{EFD4DECD-F714-473E-B894-4D9C2BC83809}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{EFD4DECD-F714-473E-B894-4D9C2BC83809}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{EFD4DECD-F714-473E-B894-4D9C2BC83809}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{EFD4DECD-F714-473E-B894-4D9C2BC83809}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F04A2B15-9087-4357-BBE4-AEAF5F920001}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F04A2B15-9087-4357-BBE4-AEAF5F920001}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F04A2B15-9087-4357-BBE4-AEAF5F920001}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F04A2B15-9087-4357-BBE4-AEAF5F920001}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E12197F8-68D5-4BBD-BBB6-69D85D071845}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E12197F8-68D5-4BBD-BBB6-69D85D071845}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E12197F8-68D5-4BBD-BBB6-69D85D071845}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E12197F8-68D5-4BBD-BBB6-69D85D071845}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B3C247EA-714C-431A-8B3E-020DE6D61B78}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B3C247EA-714C-431A-8B3E-020DE6D61B78}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B3C247EA-714C-431A-8B3E-020DE6D61B78}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B3C247EA-714C-431A-8B3E-020DE6D61B78}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E3650D64-ABFE-4E9A-A2A5-976FE357C1E2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E3650D64-ABFE-4E9A-A2A5-976FE357C1E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E3650D64-ABFE-4E9A-A2A5-976FE357C1E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E3650D64-ABFE-4E9A-A2A5-976FE357C1E2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{31209674-5120-4D79-B2F8-837F8E9425ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{31209674-5120-4D79-B2F8-837F8E9425ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{31209674-5120-4D79-B2F8-837F8E9425ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{31209674-5120-4D79-B2F8-837F8E9425ED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E0F1C916-0158-447B-9046-38C47CB6AE41}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E0F1C916-0158-447B-9046-38C47CB6AE41}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E0F1C916-0158-447B-9046-38C47CB6AE41}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E0F1C916-0158-447B-9046-38C47CB6AE41}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A8DF7326-CDF1-4A7B-A8B3-B3AA71A9D3BB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A8DF7326-CDF1-4A7B-A8B3-B3AA71A9D3BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A8DF7326-CDF1-4A7B-A8B3-B3AA71A9D3BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A8DF7326-CDF1-4A7B-A8B3-B3AA71A9D3BB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DFCC31EC-8DAD-4637-A538-4D4390F67910}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DFCC31EC-8DAD-4637-A538-4D4390F67910}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DFCC31EC-8DAD-4637-A538-4D4390F67910}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DFCC31EC-8DAD-4637-A538-4D4390F67910}.Release|Any CPU.Build.0 = Release|Any CPU
+		{314A9051-F836-46C5-AD43-A00AE392F913}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{314A9051-F836-46C5-AD43-A00AE392F913}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{314A9051-F836-46C5-AD43-A00AE392F913}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{314A9051-F836-46C5-AD43-A00AE392F913}.Release|Any CPU.Build.0 = Release|Any CPU
+		{09792B7E-1C85-4794-BFAD-79C7050A68B1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{09792B7E-1C85-4794-BFAD-79C7050A68B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{09792B7E-1C85-4794-BFAD-79C7050A68B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{09792B7E-1C85-4794-BFAD-79C7050A68B1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D791AD55-5761-4907-9642-D6E6BDACC3B7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D791AD55-5761-4907-9642-D6E6BDACC3B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D791AD55-5761-4907-9642-D6E6BDACC3B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D791AD55-5761-4907-9642-D6E6BDACC3B7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D5E9B06B-AA08-412C-8D68-A17F96DBB094}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D5E9B06B-AA08-412C-8D68-A17F96DBB094}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D5E9B06B-AA08-412C-8D68-A17F96DBB094}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D5E9B06B-AA08-412C-8D68-A17F96DBB094}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C35930BC-ABAD-4DF2-A87D-E2ECA02E468D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C35930BC-ABAD-4DF2-A87D-E2ECA02E468D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C35930BC-ABAD-4DF2-A87D-E2ECA02E468D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C35930BC-ABAD-4DF2-A87D-E2ECA02E468D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6B596379-9ED1-4663-ACDD-FA56C5EC1ACB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6B596379-9ED1-4663-ACDD-FA56C5EC1ACB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6B596379-9ED1-4663-ACDD-FA56C5EC1ACB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6B596379-9ED1-4663-ACDD-FA56C5EC1ACB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

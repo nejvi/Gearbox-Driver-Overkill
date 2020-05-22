@@ -2,7 +2,7 @@
 Implementacja automatycznej skrzyni biegów na konkurs devupgrade.online.
 
 ## O rozwiązaniu
-Całe rozwiązanie zrealizowaliśmy w około 4 dni (we dwójkę, co czyni 8 ludziodni) - cała praca odbywała się w trakcie połączenia na Skype ze screensharingiem. Jesteśmy znajomymi z różnych firm i jest to nasze pierwsze wspólne kodowanie (prozowanie). 
+Całe rozwiązanie zrealizowaliśmy w około 4 dni (we dwójkę, co razem czyni 8 ludziodni) - cała praca odbywała się w trakcie połączenia na Skype ze screensharingiem. Jesteśmy znajomymi z różnych firm i jest to nasze pierwsze wspólne kodowanie (prozowanie). 
 
 Implementację rozpoczęliśmy z jednym bazowym założeniem - *to ma działać*.
 W tym celu w ciągu 5 godzinnej sesji na miro i seansów dokonaliśmy naszego pierwszego "event stormingu", który wyszedł raczej słabo (wiele akcji prowadziło do tych samych zdarzeń - zmiany biegu, etc.), natomiast bardzo przyjemnie zorganizowały nam się w ten sposób wymagania, a także dało nam to dobre spojrzenie na problem - nie żałujemy.

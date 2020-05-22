@@ -43,7 +43,7 @@ namespace GearboxDriver.SampleApplication.Demo
         {
             TimeHelper.PlayMessage("Our driver will enter the car now.", 3);
             TimeHelper.PlayMessage("He is going to setup Comfort Mode, slowly accelerate and then decelerate.", 3);
-            TimeHelper.PlayMessage("You will the have chance to observe the changes in the gears and Rpm being between 1000 - 2000.", 5);
+            TimeHelper.PlayMessage("You will the have chance to observe the changes in the gears and rpm being kept between 1000 - 2000.", 5);
 
             var eventBus = new EventBusThatYouDontWantToUseInProduction();
             SetupSystem(eventBus);

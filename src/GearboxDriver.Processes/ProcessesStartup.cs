@@ -27,6 +27,7 @@ namespace GearboxDriver.Processes
             pool.Add(new MDynamicSlippingDetectionProcess(_gearshiftService));
             pool.Add(new ResponsivenessModeProgramUpdatingProcess(_gearshiftService, _engineCharacteristics));
             pool.Add(new ExhaustExplosionDetectionProcess(_eventBus));
+            pool.Add(new TemporalManualControlProcess(_gearshiftService));
             _eventBus.Attach(pool);
         }
     }

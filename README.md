@@ -23,6 +23,8 @@ Całość zwieńczona jest programem demo, na którego potrzeby napisaliśmy bar
 
 Program demo demonstruje większość feature'ów.
 
+PS Mniej więcej w połowie implementacji skapnęliśmy się, że trochę przesadziliśmy z rozmachem rozwiązania. No regrets.
+
 Disclaimer - Żaden z nas nie stosował DDD komercyjnie i nasza wiedza jest raczej ograniczona (posiadamy ok. 3,5 i 1,5 roku doświadczenia), raczej nie należy stosować tego rozwiązania w celach edukacyjnych, gdyż niektórych technik i nazewnictw mogliśmy użyć błędnie  
 Disclaimer 2 - Oprogramowanie zostało zostało dostarczone w stanie "jak jest". Nie bierzemy odpowiedzialności za katastrofy lądowe powstałe w wyniku wdrożenia. Przed użyciem skontaktuj się z administratorem lub developerem.
 

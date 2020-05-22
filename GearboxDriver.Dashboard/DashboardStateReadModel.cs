@@ -1,5 +1,4 @@
-﻿using GearboxDriver.Hardware.ACL;
-using GearboxDriver.PublishedLanguage.Gearbox;
+﻿using GearboxDriver.PublishedLanguage.Gearbox;
 using GearboxDriver.PublishedLanguage.ManualGearshifting;
 using GearboxDriver.PublishedLanguage.Responsiveness;
 using GearboxDriver.PublishedLanguage.Transmission;

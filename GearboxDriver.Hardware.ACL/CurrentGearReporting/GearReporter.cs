@@ -1,5 +1,4 @@
 ﻿using GearboxDriver.Gearshift.Shifting;
-using GearboxDriver.Hardware.ACL.RpmReporting;
 using GearboxDriver.Hardware.ACL.Runtime;
 using GearboxDriver.PublishedLanguage.Gearbox;
 using GearboxDriver.Seedwork;

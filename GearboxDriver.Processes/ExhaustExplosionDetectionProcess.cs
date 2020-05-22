@@ -1,9 +1,7 @@
 ﻿using GearboxDriver.PublishedLanguage.Gearbox;
-using GearboxDriver.PublishedLanguage.ManualGearshifting;
 using GearboxDriver.PublishedLanguage.Responsiveness;
 using GearboxDriver.PublishedLanguage.SoundEffects;
 using GearboxDriver.Seedwork;
-using System;
 
 namespace GearboxDriver.Processes
 {

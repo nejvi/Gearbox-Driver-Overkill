@@ -1,5 +1,4 @@
 ﻿using GearboxDriver.PublishedLanguage.Gearbox;
-using GearboxDriver.Seedwork;
 
 namespace GearboxDriver.Gearshift.Shifting
 {

@@ -1,5 +1,4 @@
 ﻿using GearboxDriver.Gearshift;
-using GearboxDriver.Hardware.ACL;
 using System.Collections.Generic;
 using GearboxDriver.PublishedLanguage.Gearbox;
 using GearboxDriver.PublishedLanguage.Responsiveness;

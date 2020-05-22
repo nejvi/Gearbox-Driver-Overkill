@@ -67,15 +67,6 @@ namespace GearboxDriver.Processes
                 StartKickdown();
         }
 
-        private bool ShouldStopKickdown =>
-            IsKickdownStarted && _kickdownCharacteristics.GetActionFor(ResponsivenessMode, LastGasPressure, CurrentRpm) == SuggestedKickdownAction.None;
-
-        private void StopKickdown()
-        {
-            _gearshiftService.StopTargetingAnyGear();
-            IsKickdownStarted = false;
-        }
-
         private bool ShouldStartKickdown =>
             !IsKickdownStarted && _kickdownCharacteristics.GetActionFor(ResponsivenessMode, LastGasPressure, CurrentRpm) != SuggestedKickdownAction.None;
 
@@ -92,6 +83,15 @@ namespace GearboxDriver.Processes
             }
 
             IsKickdownStarted = true;
+        }
+
+        private bool ShouldStopKickdown =>
+            IsKickdownStarted && _kickdownCharacteristics.GetActionFor(ResponsivenessMode, LastGasPressure, CurrentRpm) == SuggestedKickdownAction.None;
+
+        private void StopKickdown()
+        {
+            _gearshiftService.StopTargetingAnyGear();
+            IsKickdownStarted = false;
         }
     }
 }

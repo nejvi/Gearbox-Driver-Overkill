@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace GearboxDriver.Hardware.API
+﻿namespace GearboxDriver.Hardware.API
 {
     public class Lights
     {

@@ -1,5 +1,4 @@
-﻿using System;
-using GearboxDriver.Hardware.API;
+﻿using GearboxDriver.Hardware.API;
 using GearboxDriver.Gearshift.Shifting;
 using GearboxDriver.PublishedLanguage.Gearbox;
 

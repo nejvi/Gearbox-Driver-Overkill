@@ -1,5 +1,4 @@
-﻿using System;
-using GearboxDriver.Seedwork;
+﻿using GearboxDriver.Seedwork;
 
 namespace GearboxDriver.Processes
 {

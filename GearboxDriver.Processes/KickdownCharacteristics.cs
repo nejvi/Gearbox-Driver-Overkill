@@ -2,9 +2,6 @@
 using GearboxDriver.PublishedLanguage.Gearbox;
 using GearboxDriver.PublishedLanguage.Pedals;
 using GearboxDriver.PublishedLanguage.Responsiveness;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace GearboxDriver.Processes
 {

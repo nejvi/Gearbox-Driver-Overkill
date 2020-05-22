@@ -1,11 +1,7 @@
 ﻿using GearboxDriver.Gearshift;
-using GearboxDriver.Seedwork;
 using Moq;
 using NUnit.Framework;
 using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Text;
 
 namespace GearboxDriver.Processes.Test
 {

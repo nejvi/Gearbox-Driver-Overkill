@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace GearboxDriver.PublishedLanguage
+﻿namespace GearboxDriver.PublishedLanguage
 {
     public enum SuggestedKickdownAction
     {

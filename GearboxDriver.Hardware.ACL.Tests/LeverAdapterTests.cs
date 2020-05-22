@@ -1,7 +1,5 @@
 ﻿using GearboxDriver.Hardware.API;
-using Moq;
 using NUnit.Framework;
-using System;
 
 namespace GearboxDriver.Hardware.ACL.Tests
 {

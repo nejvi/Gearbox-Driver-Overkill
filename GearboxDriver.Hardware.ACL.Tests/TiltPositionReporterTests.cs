@@ -1,8 +1,5 @@
 ﻿using Moq;
 using NUnit.Framework;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using GearboxDriver.Hardware.ACL.TiltPositionReporting;
 using GearboxDriver.PublishedLanguage.VehicleMotion;
 using GearboxDriver.Seedwork;

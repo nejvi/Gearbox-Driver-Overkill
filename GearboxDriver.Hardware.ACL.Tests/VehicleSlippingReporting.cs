@@ -1,9 +1,6 @@
 ﻿using GearboxDriver.Hardware.ACL.VehicleSlippingReporting;
 using Moq;
 using NUnit.Framework;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using GearboxDriver.PublishedLanguage.VehicleMotion;
 using GearboxDriver.Seedwork;
 

@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading.Channels;
-using System.Threading.Tasks;
-using GearboxDriver.CabinControls;
+﻿using GearboxDriver.CabinControls;
 using GearboxDriver.Gearshift;
 using GearboxDriver.Gearshift.Negotiation;
 using GearboxDriver.Gearshift.Shifting;

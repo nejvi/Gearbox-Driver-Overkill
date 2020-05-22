@@ -3,7 +3,6 @@ using GearboxDriver.PublishedLanguage.Gearbox;
 using GearboxDriver.PublishedLanguage.ManualGearshifting;
 using Moq;
 using NUnit.Framework;
-using NUnit.Framework.Constraints;
 
 namespace GearboxDriver.Processes.Test
 {

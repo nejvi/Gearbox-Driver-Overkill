@@ -106,7 +106,6 @@ namespace GearboxDriver.SampleApplication.Demo
 
             cabinService.SetDriveMode();
             TimeHelper.WaitSeconds(4);
-            cabinService.SetResponsivenessMode(ResponsivenessMode.Comfort);
             cabinService.EnterDynamicMode();
             TimeHelper.WaitSeconds(4);
 
@@ -126,7 +125,6 @@ namespace GearboxDriver.SampleApplication.Demo
 
             cabinService.SetDriveMode();
             TimeHelper.WaitSeconds(4);
-            cabinService.SetResponsivenessMode(ResponsivenessMode.Comfort);
             cabinService.AttachTrailer();
             TimeHelper.WaitSeconds(4);
 
